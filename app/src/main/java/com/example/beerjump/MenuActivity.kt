@@ -14,7 +14,7 @@ import android.widget.TextView
  * An example full-screen activity that shows and hides the system UI (i.e.
  * status bar and navigation/system bar) with user interaction.
  */
-class FullscreenActivity : AppCompatActivity() {
+class MenuActivity : AppCompatActivity() {
     private lateinit var fullscreenContent: TextView
     private lateinit var fullscreenContentControls: LinearLayout
     private val hideHandler = Handler()
