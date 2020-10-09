@@ -2,4 +2,7 @@
     <string name="app_name">BeerJump</string>
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="play">Spielen</string>
+    <string name="highscore">Highscore</string>
+    <string name="settings">Einstellungen</string>
 </resources>

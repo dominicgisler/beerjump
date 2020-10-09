@@ -14,4 +14,9 @@
         <item name="metaButtonBarButtonStyle">?android:attr/buttonBarButtonStyle</item>
     </style>
 
+    <style name="SplashTheme" parent="DefaultTheme">
+        <item name="colorPrimary">@color/colorPrimarySplash</item>
+        <item name="colorPrimaryDark">@color/colorPrimarySplashDark</item>
+    </style>
+
 </resources>
