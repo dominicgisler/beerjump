@@ -13,4 +13,13 @@
         android:layout_width="70dp"
         android:layout_height="80dp"
         app:srcCompat="@drawable/player" />
+
+    <SeekBar
+        android:id="@+id/directionSlider"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:max="10"
+        android:min="-10"
+        android:layout_alignParentBottom="true"/>
+
 </RelativeLayout>
