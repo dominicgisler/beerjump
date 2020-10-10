@@ -20,8 +20,6 @@ class GameActivity : AppCompatActivity() {
         val width = displayMetrics.widthPixels
         val height = displayMetrics.heightPixels
 
-        Toast.makeText(this, "$width / $height", Toast.LENGTH_LONG).show();
-
         for (i in 0..20) {
             val bar = ImageView(this)
             gameView.addView(bar)
@@ -35,13 +33,16 @@ class GameActivity : AppCompatActivity() {
         playerView.layoutParams.width = 70
         playerView.layoutParams.height = 80
 
+        var dirX = 1;
+        var dirY = 1;
         val handler = Handler()
         handler.post(object : Runnable {
             override fun run() {
-                playerView.x = Random.nextFloat() * (width - 70)
-                playerView.y = Random.nextFloat() * (height - 80)
-                Thread.sleep(100)
-                handler.postDelayed(this, 500)
+                dirX = if (playerView.x <= 0) 1 else if (playerView.x >= (width - 70)) -1 else dirX;
+                dirY = if (playerView.y <= 0) 1 else if (playerView.y >= (height - 80)) -1 else dirY;
+                playerView.x += 10*dirX
+                playerView.y += 10*dirY
+                handler.postDelayed(this, 0)
             }
         })
     }
