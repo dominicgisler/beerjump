@@ -16,9 +16,9 @@ const val barWIth = 240
 const val barHeight = 40
 const val playerWidth = 140
 const val playerHeight = 160
-const val numberOfBars = 12
-const val ground = 0
-const val speed = 10
+const val numberOfBars = 8
+const val speedUp = 30
+const val startSpeed = 10
 
 class GameActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -47,11 +47,11 @@ class GameActivity : AppCompatActivity() {
 
         val act = this
         var dirX = 0
-        var dirY = speed
+        var dirY = startSpeed
         val handler = Handler()
         handler.post(object : Runnable {
             override fun run() {
-                dirY = if (playerView.y <= ground) speed else dirY
+                dirY++
 
                 if (playerView.x < -playerWidth) {
                     playerView.x = width.toFloat()
@@ -59,10 +59,12 @@ class GameActivity : AppCompatActivity() {
                     playerView.x = -playerWidth.toFloat()
                 }
 
-                // detect bar contact
-                for (bar in bars) {
-                    if ((playerView.x + playerWidth / 2) in bar.x..(bar.x + barWIth) && (playerView.y + playerHeight) in bar.y..(bar.y + barHeight)) {
-                        dirY = -speed
+                // detect bar contact if going down
+                if (dirY > 0) {
+                    for (bar in bars) {
+                        if ((playerView.x + playerWidth / 2) in bar.x..(bar.x + barWIth) && (playerView.y + playerHeight) in bar.y..(bar.y + barHeight)) {
+                            dirY = -speedUp
+                        }
                     }
                 }
 
