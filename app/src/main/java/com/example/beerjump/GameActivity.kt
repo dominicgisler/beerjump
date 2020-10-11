@@ -12,6 +12,14 @@ import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_game.*
 import kotlin.random.Random
 
+const val barWIth = 240
+const val barHeight = 40
+const val playerWidth = 140
+const val playerHeight = 160
+const val numberOfBars = 12
+const val ground = 0
+const val speed = 10
+
 class GameActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,38 +31,38 @@ class GameActivity : AppCompatActivity() {
         val height = displayMetrics.heightPixels
 
         val bars = ArrayList<ImageView>()
-        for (i in 0..20) {
+        for (i in 0..numberOfBars) {
             val bar = ImageView(this)
             gameView.addView(bar)
-            bar.layoutParams.width = 120
-            bar.layoutParams.height = 20
-            bar.x = Random.nextFloat() * (width - 120)
-            bar.y = Random.nextFloat() * (height - 20)
+            bar.layoutParams.width = barWIth
+            bar.layoutParams.height = barHeight
+            bar.x = Random.nextFloat() * (width - barWIth)
+            bar.y = Random.nextFloat() * (height - barHeight)
             bar.setBackgroundColor(Color.GRAY)
             bars.add(bar)
         }
 
-        playerView.layoutParams.width = 70
-        playerView.layoutParams.height = 80
+        playerView.layoutParams.width = playerWidth
+        playerView.layoutParams.height = playerHeight
 
         val act = this
         var dirX = 0
-        var dirY = 10
+        var dirY = speed
         val handler = Handler()
         handler.post(object : Runnable {
             override fun run() {
-                dirY = if (playerView.y <= 0) 10 else dirY
+                dirY = if (playerView.y <= ground) speed else dirY
 
-                if (playerView.x < -70) {
-                    playerView.x = width * 1f
+                if (playerView.x < -playerWidth) {
+                    playerView.x = width.toFloat()
                 } else if (playerView.x > width) {
-                    playerView.x = -70f
+                    playerView.x = -playerWidth.toFloat()
                 }
 
                 // detect bar contact
                 for (bar in bars) {
-                    if ((playerView.x + 35) in bar.x..(bar.x + 120) && (playerView.y + 80) in bar.y..(bar.y + 20)) {
-                        dirY = -10
+                    if ((playerView.x + playerWidth / 2) in bar.x..(bar.x + barWIth) && (playerView.y + playerHeight) in bar.y..(bar.y + barHeight)) {
+                        dirY = -speed
                     }
                 }
 

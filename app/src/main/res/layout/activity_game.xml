@@ -18,8 +18,9 @@
         android:id="@+id/directionSlider"
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="-8dp"
         android:max="10"
-        android:min="-10"
-        android:layout_alignParentBottom="true"/>
+        android:min="-10" />
 
 </RelativeLayout>
