@@ -3,7 +3,6 @@ package com.example.beerjump
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_menu.*
 
 class MenuActivity : AppCompatActivity() {
@@ -16,10 +15,11 @@ class MenuActivity : AppCompatActivity() {
             finish()
         }
         buttonHighscore.setOnClickListener {
-            Toast.makeText(this, "Highscore", Toast.LENGTH_LONG).show();
+            startActivity(Intent(this, HighscoreActivity::class.java))
+            finish()
         }
         buttonSettings.setOnClickListener {
-            startActivity(Intent(this, TestActivity::class.java))
+            startActivity(Intent(this, SettingsActivity::class.java))
             finish()
         }
     }

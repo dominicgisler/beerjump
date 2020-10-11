@@ -5,4 +5,10 @@
     <string name="play">Spielen</string>
     <string name="highscore">Highscore</string>
     <string name="settings">Einstellungen</string>
+    <string name="zurueck">zurueck</string>
+    <string name="zur_ck_ins_men">zurück ins Menü</string>
+    <string name="spieler_wechseln">Spieler wechseln</string>
+    <string name="hintergrund_wechseln">Hintergrund wechseln</string>
+    <string name="highscore_zur_cksetzen">Highscore zurücksetzen</string>
+    <string name="standard_wiederherstellen">Standard wiederherstellen</string>
 </resources>
