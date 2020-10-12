@@ -9,18 +9,10 @@ import kotlinx.android.synthetic.main.activity_highscore.*
 class SettingsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_menu)
-
-        val act = this
-        val handler = Handler()
-        handler.post(object : Runnable {
-            override fun run() {
-                handler.postDelayed(this, 0)
-                buttonMenu.setOnClickListener {
-                    startActivity(Intent(act, MenuActivity::class.java))
-                    finish()
-                }
-            }
-        })
+        setContentView(R.layout.activity_settings)
+        buttonMenu.setOnClickListener {
+            startActivity(Intent(this, MenuActivity::class.java))
+            finish()
+        }
     }
 }

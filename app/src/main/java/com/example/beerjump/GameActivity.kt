@@ -12,15 +12,16 @@ import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_game.*
 import kotlin.random.Random
 
-const val barWIth = 240
-const val barHeight = 40
-const val playerWidth = 140
-const val playerHeight = 160
-const val numberOfBars = 8
-const val speedUp = 30
-const val startSpeed = 10
+
 
 class GameActivity : AppCompatActivity() {
+    val barWIth = 240
+    val barHeight = 40
+    val playerWidth = 140
+    val playerHeight = 160
+    val numberOfBars = 8
+    val speedUp = 30
+    val startSpeed = 10
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_game)

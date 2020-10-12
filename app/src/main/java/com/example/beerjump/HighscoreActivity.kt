@@ -11,16 +11,9 @@ class HighscoreActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_highscore)
 
-        val act = this
-        val handler = Handler()
-        handler.post(object : Runnable {
-            override fun run() {
-                handler.postDelayed(this, 0)
-                buttonMenu.setOnClickListener {
-                    startActivity(Intent(act, MenuActivity::class.java))
-                    finish()
-                }
-            }
-        })
+        buttonMenu.setOnClickListener {
+            startActivity(Intent(this, MenuActivity::class.java))
+            finish()
+        }
     }
 }
