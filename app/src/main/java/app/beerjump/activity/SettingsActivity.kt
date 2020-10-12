@@ -5,13 +5,25 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import app.beerjump.R
 import kotlinx.android.synthetic.main.activity_highscore.*
+import kotlinx.android.synthetic.main.activity_highscore.buttonMenu
+import kotlinx.android.synthetic.main.activity_menu.*
+import kotlinx.android.synthetic.main.activity_settings.*
 
 class SettingsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_settings)
+
         buttonMenu.setOnClickListener {
             startActivity(Intent(this, MenuActivity::class.java))
+            finish()
+        }
+        buttonChangeBackground.setOnClickListener {
+            startActivity(Intent(this, ChangeBackgroundActivity::class.java))
+            finish()
+        }
+        buttonChangePlayer.setOnClickListener {
+            startActivity(Intent(this, ChangePlayerActivity::class.java))
             finish()
         }
     }
