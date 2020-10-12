@@ -18,34 +18,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".activity.MenuActivity"
-            android:label="@string/app_name"
-            android:theme="@style/DefaultTheme" />
-        <activity
-            android:name=".activity.ChangePlayerActivity"
-            android:label="@string/app_name"
-            android:theme="@style/DefaultTheme" />
-        <activity
-            android:name=".activity.ChangeBackgroundActivity"
-            android:label="@string/app_name"
-            android:theme="@style/DefaultTheme" />
-        <activity
-            android:name=".activity.SettingsActivity"
-            android:label="@string/app_name"
-            android:theme="@style/DefaultTheme" />
-        <activity
-            android:name=".activity.HighscoreActivity"
-            android:label="@string/app_name"
-            android:theme="@style/DefaultTheme" />
-        <activity
-            android:name=".activity.GameActivity"
-            android:label="@string/app_name"
-            android:theme="@style/DefaultTheme" />
-        <activity
-            android:name=".activity.TestActivity"
-            android:label="@string/app_name"
-            android:theme="@style/DefaultTheme" />
+        <activity android:name=".activity.MenuActivity" />
+        <activity android:name=".activity.ChangePlayerActivity" />
+        <activity android:name=".activity.ChangeBackgroundActivity" />
+        <activity android:name=".activity.SettingsActivity" />
+        <activity android:name=".activity.HighscoreActivity" />
+        <activity android:name=".activity.GameActivity" />
+        <activity android:name=".activity.TestActivity" />
     </application>
-
 </manifest>
