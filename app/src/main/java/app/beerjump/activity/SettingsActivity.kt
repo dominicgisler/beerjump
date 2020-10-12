@@ -1,9 +1,9 @@
-package com.example.beerjump
+package app.beerjump.activity
 
 import android.content.Intent
 import android.os.Bundle
-import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity
+import app.beerjump.R
 import kotlinx.android.synthetic.main.activity_highscore.*
 
 class SettingsActivity : AppCompatActivity() {

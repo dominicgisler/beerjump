@@ -1,4 +1,4 @@
-package com.example.beerjump
+package app.beerjump.activity
 
 import android.content.Intent
 import android.graphics.Color
@@ -9,10 +9,9 @@ import android.widget.ImageView
 import android.widget.SeekBar
 import android.widget.SeekBar.OnSeekBarChangeListener
 import androidx.appcompat.app.AppCompatActivity
+import app.beerjump.R
 import kotlinx.android.synthetic.main.activity_game.*
 import kotlin.random.Random
-
-
 
 class GameActivity : AppCompatActivity() {
     val barWIth = 240

@@ -1,4 +1,4 @@
-package com.example.beerjump
+package app.beerjump.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.annotation.SuppressLint
@@ -9,6 +9,7 @@ import android.view.View
 import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.TextView
+import app.beerjump.R
 
 /**
  * An example full-screen activity that shows and hides the system UI (i.e.

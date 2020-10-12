@@ -1,4 +1,4 @@
-package com.example.beerjump
+package app.beerjump
 
 import org.junit.Test
 
