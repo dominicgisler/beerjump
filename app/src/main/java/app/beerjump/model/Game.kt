@@ -11,7 +11,7 @@ class Game(val width: Int, val height: Int) {
     val player: Player = Player()
     val bars: ArrayList<Bar> = ArrayList()
 
-    fun init() {
+    init {
         val startBar = Bar()
         startBar.posX = width / 2 - startBar.width / 2
         startBar.posY = height -220
