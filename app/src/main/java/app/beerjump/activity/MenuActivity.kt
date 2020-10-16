@@ -13,15 +13,15 @@ class MenuActivity : AppCompatActivity() {
 
         buttonPlay.setOnClickListener {
             startActivity(Intent(this, GameActivity::class.java))
-            finish()
+
         }
         buttonHighscore.setOnClickListener {
             startActivity(Intent(this, HighscoreActivity::class.java))
-            finish()
+
         }
         buttonSettings.setOnClickListener {
             startActivity(Intent(this, SettingsActivity::class.java))
-            finish()
+
         }
     }
 }
