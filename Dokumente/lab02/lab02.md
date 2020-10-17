@@ -3,7 +3,7 @@
 Ein Benutzer möchte das Spiel spielen.
 
 ## Benutzer Hypothese
-BeerJump soll ein guter Ausgleich zum Studienalltag sein.
+Beer Jump soll ein guter Ausgleich zum Studienalltag sein.
 
 ## Persona
 ### Alter 
