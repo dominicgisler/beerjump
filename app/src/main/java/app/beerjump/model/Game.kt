@@ -1,13 +1,13 @@
 package app.beerjump.model
 
-import android.graphics.Color
-import android.graphics.drawable.Drawable
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.content.ContextCompat
+import app.beerjump.R
 import kotlin.random.Random
 
-class Game(val gameView: ViewGroup, val playerDrawable: Drawable?) {
+class Game(val gameView: ViewGroup) {
     val speedUp = 30
     val sectionHeight = 250
     val sectionPadding = 30
@@ -85,12 +85,16 @@ class Game(val gameView: ViewGroup, val playerDrawable: Drawable?) {
             viewBar.layoutParams.height = bar.height
             viewBar.x = bar.posX.toFloat()
             viewBar.y = posY
-            viewBar.setBackgroundColor(Color.GRAY)
+            viewBar.setImageDrawable(ContextCompat.getDrawable(gameView.context, R.drawable.ic_bar))
         }
 
         val playerView = ImageView(gameView.context)
         gameView.addView(playerView)
-        playerView.setImageDrawable(playerDrawable)
+        if (player.speed > 0) {
+            playerView.setImageDrawable(ContextCompat.getDrawable(gameView.context, R.drawable.ic_player_up))
+        } else {
+            playerView.setImageDrawable(ContextCompat.getDrawable(gameView.context, R.drawable.ic_player_down))
+        }
 
         playerView.layoutParams.width = player.width
         playerView.layoutParams.height = player.height

@@ -17,7 +17,7 @@ class GameActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_game)
 
-        game = Game(gameView, ContextCompat.getDrawable(this, R.drawable.player))
+        game = Game(gameView)
         val act = this
 
         val renderRun = object : Runnable {
