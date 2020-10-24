@@ -41,7 +41,7 @@ class Game(val gameView: ViewGroup) {
             bar.posX = ((Random.nextFloat() * (maxX - minX)) + minX).toInt()
             bar.posY = ((Random.nextFloat() * (maxY - minY)) + minY).toInt()
             bars.add(bar)
-            if(genBeer == j) {
+            if (genBeer == j) {
                 val beer = Beer()
                 beer.posX = bar.posX + bar.width / 2 - beer.width / 2
                 beer.posY = bar.posY + bar.height + 20
@@ -68,13 +68,14 @@ class Game(val gameView: ViewGroup) {
                 }
             }
         }
-        for (beer in beers) {
-            if ((player.posX + player.width / 2) in beer.posX..(beer.posX + beer.width) && (player.posY) in beer.posY..(beer.posY + beer.height)) {
-                beers.remove(beer)
+        val iter = beers.iterator()
+        while (iter.hasNext()) {
+            val beer = iter.next()
+            if ((player.posX + player.width / 2) in beer.posX..(beer.posX + beer.width) && player.posY in (beer.posY - player.height)..(beer.posY + beer.height)) {
+                iter.remove()
                 beerCnt++
             }
         }
-
 
         if (player.posY > (gameView.height / 2 + height) && player.speed > 0) {
             height += player.speed
@@ -159,7 +160,7 @@ class Game(val gameView: ViewGroup) {
         beerValue.x = (sectionPadding + 350).toFloat()
         beerValue.y = heightLabel.y + 40
         beerValue.textSize = 32f
-        beerValue.text = (beerCnt*promillePerBeer).toString()
+        beerValue.text = (beerCnt * promillePerBeer).toString()
         gameView.addView(beerLabel)
         gameView.addView(beerValue)
     }
