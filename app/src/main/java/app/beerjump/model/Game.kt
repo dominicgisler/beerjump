@@ -2,23 +2,27 @@ package app.beerjump.model
 
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.TextView
 import androidx.core.content.ContextCompat
 import app.beerjump.R
+import kotlinx.android.synthetic.main.activity_game.view.*
 import kotlin.random.Random
 
-class Game(val gameView: ViewGroup) {
+class Game(val gameLayout: ViewGroup) {
     val speedUp = 30
     val sectionHeight = 250
     val sectionPadding = 30
+    var score = 0
     var height = 0
     var sections = 0
-    var beerCnt = 0
+    var promille = 0.0
     val promillePerBeer = 0.2
 
     val player: Player = Player()
     val bars: ArrayList<Bar> = ArrayList()
     val beers: ArrayList<Beer> = ArrayList()
+
+    var gameView = gameLayout.gameView
+    var statsView = gameLayout.statsView
 
     fun generate() {
         for (i in 0..gameView.height / sectionHeight) {
@@ -29,7 +33,7 @@ class Game(val gameView: ViewGroup) {
     }
 
     private fun addBarSection(startY: Int) {
-        val genBeer = (0..20).random()
+        val genBeer = (0..5).random()
         val numBars = (1..3).random()
         val secWidth = gameView.width / numBars
         for (j in 0..numBars) {
@@ -73,12 +77,13 @@ class Game(val gameView: ViewGroup) {
             val beer = iter.next()
             if ((player.posX + player.width / 2) in beer.posX..(beer.posX + beer.width) && player.posY in (beer.posY - player.height)..(beer.posY + beer.height)) {
                 iter.remove()
-                beerCnt++
+                promille += promillePerBeer
             }
         }
 
         if (player.posY > (gameView.height / 2 + height) && player.speed > 0) {
             height += player.speed
+            score += (player.speed * (1 + promille)).toInt()
         }
 
         if (sections * sectionHeight < height + gameView.height) {
@@ -138,31 +143,9 @@ class Game(val gameView: ViewGroup) {
         playerView.x = player.posX.toFloat()
         playerView.y = (gameView.height - player.posY - player.height).toFloat() + height
 
-        val heightLabel = TextView(gameView.context)
-        heightLabel.x = sectionPadding.toFloat()
-        heightLabel.y = sectionPadding.toFloat()
-        heightLabel.textSize = 18f
-        heightLabel.text = "Aktuelle Höhe"
-        val heightValue = TextView(gameView.context)
-        heightValue.x = sectionPadding.toFloat()
-        heightValue.y = heightLabel.y + 40
-        heightValue.textSize = 32f
-        heightValue.text = height.toString()
-        gameView.addView(heightLabel)
-        gameView.addView(heightValue)
-
-        val beerLabel = TextView(gameView.context)
-        beerLabel.x = (sectionPadding + 350).toFloat()
-        beerLabel.y = (sectionPadding).toFloat()
-        beerLabel.textSize = 18f
-        beerLabel.text = "Promille"
-        val beerValue = TextView(gameView.context)
-        beerValue.x = (sectionPadding + 350).toFloat()
-        beerValue.y = heightLabel.y + 40
-        beerValue.textSize = 32f
-        beerValue.text = (beerCnt * promillePerBeer).toString()
-        gameView.addView(beerLabel)
-        gameView.addView(beerValue)
+        statsView.scoreHeight.text = height.toString()
+        statsView.scorePromille.text = String.format("%.2f‰", promille)
+        statsView.scoreScore.text = score.toString()
     }
 
     fun setDirection(direction: Int) {

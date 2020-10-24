@@ -24,6 +24,5 @@
         <activity android:name=".activity.SettingsActivity" />
         <activity android:name=".activity.HighscoreActivity" />
         <activity android:name=".activity.GameActivity" />
-        <activity android:name=".activity.TestActivity" />
     </application>
 </manifest>
