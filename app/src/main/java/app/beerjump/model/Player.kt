@@ -5,4 +5,6 @@ class Player : GuiElement() {
     val height = 160
     var speed = 30
     var direction = 0
+    var promille = 0.0
+    var score = 0
 }

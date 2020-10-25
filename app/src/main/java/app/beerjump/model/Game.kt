@@ -11,11 +11,10 @@ class Game(val gameLayout: ViewGroup) {
     val speedUp = 30
     val sectionHeight = 250
     val sectionPadding = 30
-    var score = 0
     var height = 0
     var sections = 0
-    var promille = 0.0
     val promillePerBeer = 0.2
+    val promilleStep = -0.0001
 
     val player: Player = Player()
     val bars: ArrayList<Bar> = ArrayList()
@@ -33,7 +32,7 @@ class Game(val gameLayout: ViewGroup) {
     }
 
     private fun addBarSection(startY: Int) {
-        val genBeer = (0..5).random()
+        val genBeer = (0..20).random()
         val numBars = (1..3).random()
         val secWidth = gameView.width / numBars
         for (j in 0..numBars) {
@@ -57,6 +56,9 @@ class Game(val gameLayout: ViewGroup) {
 
     fun step(): Boolean {
         player.speed--
+        if (player.promille > 0) {
+            player.promille += promilleStep
+        }
 
         if (player.posX < -player.width) {
             player.posX = gameView.width
@@ -77,13 +79,13 @@ class Game(val gameLayout: ViewGroup) {
             val beer = iter.next()
             if ((player.posX + player.width / 2) in beer.posX..(beer.posX + beer.width) && player.posY in (beer.posY - player.height)..(beer.posY + beer.height)) {
                 iter.remove()
-                promille += promillePerBeer
+                player.promille += promillePerBeer
             }
         }
 
         if (player.posY > (gameView.height / 2 + height) && player.speed > 0) {
             height += player.speed
-            score += (player.speed * (1 + promille)).toInt()
+            player.score += (player.speed * (1 + player.promille)).toInt()
         }
 
         if (sections * sectionHeight < height + gameView.height) {
@@ -144,8 +146,8 @@ class Game(val gameLayout: ViewGroup) {
         playerView.y = (gameView.height - player.posY - player.height).toFloat() + height
 
         statsView.scoreHeight.text = height.toString()
-        statsView.scorePromille.text = String.format("%.2f‰", promille)
-        statsView.scoreScore.text = score.toString()
+        statsView.scorePromille.text = String.format("%.2f‰", player.promille)
+        statsView.scoreScore.text = player.score.toString()
     }
 
     fun setDirection(direction: Int) {
