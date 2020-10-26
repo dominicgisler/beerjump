@@ -9,6 +9,7 @@ import kotlin.random.Random
 
 class Game(val gameLayout: ViewGroup) {
     val speedUp = 30
+    val rocketSpeed = 120
     val sectionHeight = 250
     val sectionPadding = 30
     var height = 0
@@ -22,6 +23,7 @@ class Game(val gameLayout: ViewGroup) {
     val bars: ArrayList<Bar> = ArrayList()
     val beers: ArrayList<Beer> = ArrayList()
     val shots: ArrayList<Shot> = ArrayList()
+    val rockets: ArrayList<Rocket> = ArrayList()
 
     var gameView = gameLayout.gameView
     var statsView = gameLayout.statsView
@@ -37,6 +39,7 @@ class Game(val gameLayout: ViewGroup) {
     private fun addBarSection(startY: Int) {
         val genBeer = (0..20).random()
         val genShot = (0..50).random()
+        val genRocket = (0..100).random()
         val maxBars = 5 - height/difficultyStep
         val numBars = (1..(if (maxBars > 0) maxBars else 1)).random()
         val secWidth = gameView.width / numBars
@@ -54,12 +57,16 @@ class Game(val gameLayout: ViewGroup) {
                 beer.posX = bar.posX + bar.width / 2 - beer.width / 2
                 beer.posY = bar.posY + bar.height + 20
                 beers.add(beer)
-            }
-            if (genShot == j) {
+            } else if (genShot == j) {
                 val shot = Shot()
                 shot.posX = bar.posX + bar.width / 2 - shot.width / 2
                 shot.posY = bar.posY + bar.height + 20
                 shots.add(shot)
+            }else if (genRocket == j) {
+                val rocket = Rocket()
+                rocket.posX = bar.posX + bar.width / 2 - rocket.width / 2
+                rocket.posY = bar.posY + bar.height + 20
+                rockets.add(rocket)
             }
         }
         sections++
@@ -99,6 +106,14 @@ class Game(val gameLayout: ViewGroup) {
             if ((player.posX + player.width / 2) in shot.posX..(shot.posX + shot.width) && player.posY in (shot.posY - player.height)..(shot.posY + shot.height)) {
                 iterShot.remove()
                 player.promille += promillePerShot
+            }
+        }
+        val iterRocket = rockets.iterator()
+        while (iterRocket.hasNext()) {
+            val rocket = iterRocket.next()
+            if ((player.posX + player.width / 2) in rocket.posX..(rocket.posX + rocket.width) && player.posY in (rocket.posY - player.height)..(rocket.posY + rocket.height)) {
+                iterRocket.remove()
+                player.speed = rocketSpeed
             }
         }
 
@@ -164,6 +179,20 @@ class Game(val gameLayout: ViewGroup) {
             viewBar.x = shot.posX.toFloat()
             viewBar.y = posY
             viewBar.setImageDrawable(ContextCompat.getDrawable(gameView.context, R.drawable.ic_shot))
+        }
+
+        for (rocket in rockets) {
+            val posY = (gameView.height - rocket.posY - rocket.height).toFloat() + height
+            if (posY < -sectionHeight || posY > gameView.height + sectionHeight) {
+                continue
+            }
+            val viewBar = ImageView(gameView.context)
+            gameView.addView(viewBar)
+            viewBar.layoutParams.width = rocket.width
+            viewBar.layoutParams.height = rocket.height
+            viewBar.x = rocket.posX.toFloat()
+            viewBar.y = posY
+            viewBar.setImageDrawable(ContextCompat.getDrawable(gameView.context, R.drawable.ic_rocket))
         }
 
         val playerView = ImageView(gameView.context)
