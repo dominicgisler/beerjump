@@ -15,6 +15,7 @@ class Game(val gameLayout: ViewGroup) {
     var sections = 0
     val promillePerBeer = 0.2
     val promilleStep = -0.0001
+    val difficultyStep = 20000
 
     val player: Player = Player()
     val bars: ArrayList<Bar> = ArrayList()
@@ -33,7 +34,8 @@ class Game(val gameLayout: ViewGroup) {
 
     private fun addBarSection(startY: Int) {
         val genBeer = (0..20).random()
-        val numBars = (1..3).random()
+        val maxBars = 5 - height/difficultyStep
+        val numBars = (1..(if (maxBars > 0) maxBars else 1)).random()
         val secWidth = gameView.width / numBars
         for (j in 0..numBars) {
             val bar = Bar()
