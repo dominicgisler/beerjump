@@ -14,12 +14,14 @@ class Game(val gameLayout: ViewGroup) {
     var height = 0
     var sections = 0
     val promillePerBeer = 0.2
+    val promillePerShot = 0.5
     val promilleStep = -0.0001
     val difficultyStep = 20000
 
     val player: Player = Player()
     val bars: ArrayList<Bar> = ArrayList()
     val beers: ArrayList<Beer> = ArrayList()
+    val shots: ArrayList<Shot> = ArrayList()
 
     var gameView = gameLayout.gameView
     var statsView = gameLayout.statsView
@@ -34,6 +36,7 @@ class Game(val gameLayout: ViewGroup) {
 
     private fun addBarSection(startY: Int) {
         val genBeer = (0..20).random()
+        val genShot = (0..50).random()
         val maxBars = 5 - height/difficultyStep
         val numBars = (1..(if (maxBars > 0) maxBars else 1)).random()
         val secWidth = gameView.width / numBars
@@ -51,6 +54,12 @@ class Game(val gameLayout: ViewGroup) {
                 beer.posX = bar.posX + bar.width / 2 - beer.width / 2
                 beer.posY = bar.posY + bar.height + 20
                 beers.add(beer)
+            }
+            if (genShot == j) {
+                val shot = Shot()
+                shot.posX = bar.posX + bar.width / 2 - shot.width / 2
+                shot.posY = bar.posY + bar.height + 20
+                shots.add(shot)
             }
         }
         sections++
@@ -76,14 +85,23 @@ class Game(val gameLayout: ViewGroup) {
                 }
             }
         }
-        val iter = beers.iterator()
-        while (iter.hasNext()) {
-            val beer = iter.next()
+        val iterBeer = beers.iterator()
+        while (iterBeer.hasNext()) {
+            val beer = iterBeer.next()
             if ((player.posX + player.width / 2) in beer.posX..(beer.posX + beer.width) && player.posY in (beer.posY - player.height)..(beer.posY + beer.height)) {
-                iter.remove()
+                iterBeer.remove()
                 player.promille += promillePerBeer
             }
         }
+        val iterShot = shots.iterator()
+        while (iterShot.hasNext()) {
+            val shot = iterShot.next()
+            if ((player.posX + player.width / 2) in shot.posX..(shot.posX + shot.width) && player.posY in (shot.posY - player.height)..(shot.posY + shot.height)) {
+                iterShot.remove()
+                player.promille += promillePerShot
+            }
+        }
+
 
         if (player.posY > (gameView.height / 2 + height) && player.speed > 0) {
             height += player.speed
@@ -132,6 +150,20 @@ class Game(val gameLayout: ViewGroup) {
             viewBar.x = beer.posX.toFloat()
             viewBar.y = posY
             viewBar.setImageDrawable(ContextCompat.getDrawable(gameView.context, R.drawable.ic_beer))
+        }
+
+        for (shot in shots) {
+            val posY = (gameView.height - shot.posY - shot.height).toFloat() + height
+            if (posY < -sectionHeight || posY > gameView.height + sectionHeight) {
+                continue
+            }
+            val viewBar = ImageView(gameView.context)
+            gameView.addView(viewBar)
+            viewBar.layoutParams.width = shot.width
+            viewBar.layoutParams.height = shot.height
+            viewBar.x = shot.posX.toFloat()
+            viewBar.y = posY
+            viewBar.setImageDrawable(ContextCompat.getDrawable(gameView.context, R.drawable.ic_shot))
         }
 
         val playerView = ImageView(gameView.context)
