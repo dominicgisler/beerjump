@@ -14,4 +14,6 @@
     <string name="hintergrund_wechseln">Hintergrund wechseln</string>
     <string name="highscore_zur_cksetzen">Highscore zurücksetzen</string>
     <string name="standard_wiederherstellen">Standard wiederherstellen</string>
+    <string name="gameScore">Game Score</string>
+    <string name="ok">OK!</string>
 </resources>

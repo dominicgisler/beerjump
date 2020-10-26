@@ -3,13 +3,11 @@ package app.beerjump.activity
 import android.content.Intent
 import android.os.Bundle
 import android.view.MotionEvent
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
 import app.beerjump.R
 import app.beerjump.model.Game
 import kotlinx.android.synthetic.main.activity_game.*
 
-class GameActivity : AppCompatActivity() {
+class GameActivity : AbstractActivity() {
     var lastX = -1
     lateinit var game: Game
 
@@ -23,7 +21,11 @@ class GameActivity : AppCompatActivity() {
         val renderRun = object : Runnable {
             override fun run() {
                 if (!game.step()) {
-                    startActivity(Intent(act, MenuActivity::class.java))
+                    val intent = Intent(act, GameScoreActivity::class.java)
+                    intent.putExtra("score", game.player.score)
+                    intent.putExtra("promille", game.player.promille)
+                    intent.putExtra("height", game.player.height)
+                    startActivity(intent)
                     finish()
                 } else {
                     game.render()

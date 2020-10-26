@@ -1,12 +1,11 @@
 package app.beerjump.activity
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import app.beerjump.R
 
-class SplashActivity : AppCompatActivity() {
+class SplashActivity : AbstractActivity() {
     private val SPLASH_TIME_OUT:Long = 3000 // 1 sec
 
     override fun onCreate(savedInstanceState: Bundle?) {
