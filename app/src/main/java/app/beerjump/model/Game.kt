@@ -30,6 +30,7 @@ class Game(val gameLayout: ViewGroup) {
     var statsView = gameLayout.statsView
 
     val hop = MediaPlayer.create(gameView.context, R.raw.hop)
+    val beerSound = MediaPlayer.create(gameView.context, R.raw.beer)
 
     fun generate() {
         for (i in 0..gameView.height / sectionHeight) {
@@ -102,6 +103,7 @@ class Game(val gameLayout: ViewGroup) {
             if ((player.posX + player.width / 2) in beer.posX..(beer.posX + beer.width) && player.posY in (beer.posY - player.height)..(beer.posY + beer.height)) {
                 iterBeer.remove()
                 player.promille += promillePerBeer
+                beerSound.start()
             }
         }
         val iterShot = shots.iterator()
