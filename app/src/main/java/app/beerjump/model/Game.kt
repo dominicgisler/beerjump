@@ -1,5 +1,6 @@
 package app.beerjump.model
 
+import android.media.MediaPlayer
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.core.content.ContextCompat
@@ -27,6 +28,8 @@ class Game(val gameLayout: ViewGroup) {
 
     var gameView = gameLayout.gameView
     var statsView = gameLayout.statsView
+
+    val hop = MediaPlayer.create(gameView.context, R.raw.hop)
 
     fun generate() {
         for (i in 0..gameView.height / sectionHeight) {
@@ -89,6 +92,7 @@ class Game(val gameLayout: ViewGroup) {
             for (bar in bars) {
                 if ((player.posX + player.width / 2) in bar.posX..(bar.posX + bar.width) && (player.posY) in bar.posY..(bar.posY + bar.height)) {
                     player.speed = speedUp
+                    hop.start()
                 }
             }
         }
