@@ -1,7 +1,6 @@
 package app.beerjump.model
 
 import android.view.ViewGroup
-import android.widget.ImageView
 import androidx.core.content.ContextCompat
 import app.beerjump.R
 
@@ -14,18 +13,26 @@ class Player(gameView: ViewGroup, posX: Int, posY: Int) : GuiElement(gameView, p
     var direction = 0
     var promille = 0.0
     var score = 0
-    override var view = ImageView(gameView.context)
 
     init {
-        gameView.addView(view)
         view.layoutParams.width = width
         view.layoutParams.height = height
-        view.x = posX.toFloat()
+        view.y = -height.toFloat()
         view.setImageDrawable(
             ContextCompat.getDrawable(
                 gameView.context,
                 R.drawable.ic_player_up
             )
         )
+        view.translationZ = 1f
+    }
+
+    override fun updateView() {
+        if (speed > 0) {
+            view.setImageDrawable(ContextCompat.getDrawable(gameView.context, R.drawable.ic_player_up))
+        } else {
+            view.setImageDrawable(ContextCompat.getDrawable(gameView.context, R.drawable.ic_player_down))
+        }
+        view.x = posX.toFloat()
     }
 }

@@ -44,11 +44,11 @@ class GameActivity : AbstractActivity() {
         val x = event.x.toInt()
         if (event.action == MotionEvent.ACTION_DOWN || event.action == MotionEvent.ACTION_MOVE) {
             if (lastX != -1) {
-                game.setDirection(-lastX + x)
+                game.player.direction = -lastX + x
             }
             lastX = x
         } else if (event.action == MotionEvent.ACTION_UP) {
-            game.setDirection(0)
+            game.player.direction = 0
             lastX = -1
         }
         return false
