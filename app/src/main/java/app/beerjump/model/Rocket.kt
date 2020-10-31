@@ -1,7 +1,10 @@
 package app.beerjump.model
 
-class Rocket() : GuiElement() {
-    val width = 70
-    val height = 70
+import android.view.ViewGroup
 
+class Rocket(gameView: ViewGroup, posX: Int, posY: Int) : GuiElement(gameView, posX, posY) {
+    companion object {
+        val width = 70
+        val height = 70
+    }
 }
