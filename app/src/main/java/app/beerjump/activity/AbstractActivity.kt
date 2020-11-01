@@ -20,5 +20,6 @@ abstract class AbstractActivity : AppCompatActivity() {
                 or View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
                 or View.SYSTEM_UI_FLAG_FULLSCREEN)
         config = Config(this.getSharedPreferences("config", Context.MODE_PRIVATE))
+        config.highscoreList.scores.sortByDescending { it.score }
     }
 }

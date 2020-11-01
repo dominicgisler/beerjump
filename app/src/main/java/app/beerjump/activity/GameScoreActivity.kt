@@ -23,7 +23,7 @@ class GameScoreActivity : AbstractActivity() {
         ok.setOnClickListener {
             config.highscoreList.addScore(Score(name.text.toString(), promille, score))
             config.save()
-            startActivity(Intent(this, MenuActivity::class.java))
+            startActivity(Intent(this, HighscoreActivity::class.java))
         }
     }
 }

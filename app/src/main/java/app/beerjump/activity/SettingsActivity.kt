@@ -2,6 +2,7 @@ package app.beerjump.activity
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import app.beerjump.R
 import kotlinx.android.synthetic.main.activity_highscore.buttonMenu
 import kotlinx.android.synthetic.main.activity_settings.*
@@ -22,6 +23,11 @@ class SettingsActivity : AbstractActivity() {
         buttonChangePlayer.setOnClickListener {
             startActivity(Intent(this, ChangePlayerActivity::class.java))
             finish()
+        }
+        buttonResetHighscore.setOnClickListener {
+            config.highscoreList.scores.clear()
+            config.save()
+            Toast.makeText(applicationContext, "Highscore zurückgesetzt", Toast.LENGTH_SHORT).show()
         }
     }
 }

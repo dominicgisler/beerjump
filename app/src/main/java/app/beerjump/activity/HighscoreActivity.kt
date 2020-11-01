@@ -11,10 +11,7 @@ class HighscoreActivity : AbstractActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_highscore)
 
-        val scores = config.highscoreList.scores
-        scores.sortByDescending { it.score }
-        var adapter = ScoreAdapter(scores, baseContext)
-        highscoreList.adapter = adapter
+        highscoreList.adapter = ScoreAdapter(config.highscoreList.scores, baseContext)
 
         buttonMenu.setOnClickListener {
             startActivity(Intent(this, MenuActivity::class.java))

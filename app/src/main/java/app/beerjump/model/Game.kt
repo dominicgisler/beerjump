@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import app.beerjump.R
 import kotlinx.android.synthetic.main.activity_game.view.*
 
-class Game(val gameLayout: ViewGroup) {
+class Game(val gameLayout: ViewGroup, val highscore: Int) {
     val speedUp = 30
     var height = 0
     val promilleStep = -0.0001
@@ -25,6 +25,7 @@ class Game(val gameLayout: ViewGroup) {
         }
         player.posX = gameView.width / 2 - Player.width / 2
         player.posY = 0
+        statsView.scoreHighscore.text = highscore.toString()
     }
 
     private fun addBarSection(startY: Int) {
@@ -103,7 +104,6 @@ class Game(val gameLayout: ViewGroup) {
         player.updateView()
         player.view.y = (gameView.height - player.posY - Player.height).toFloat() + height
 
-        statsView.scoreHeight.text = height.toString()
         statsView.scorePromille.text = String.format("%.2f‰", player.promille)
         statsView.scoreScore.text = player.score.toString()
     }

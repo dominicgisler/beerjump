@@ -18,12 +18,12 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/textHeight"
+            android:id="@+id/textHighscore"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginTop="20dp"
-            android:text="@string/height"
+            android:text="@string/highscore"
             android:textAlignment="textStart"
             android:textSize="18sp"
             app:layout_constraintEnd_toStartOf="@id/textPromille"
@@ -39,7 +39,7 @@
             android:textAlignment="center"
             android:textSize="18sp"
             app:layout_constraintEnd_toStartOf="@id/textScore"
-            app:layout_constraintStart_toEndOf="@id/textHeight"
+            app:layout_constraintStart_toEndOf="@id/textHighscore"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
@@ -56,7 +56,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/scoreHeight"
+            android:id="@+id/scoreHighscore"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
@@ -64,7 +64,7 @@
             android:textSize="30sp"
             app:layout_constraintEnd_toStartOf="@id/scorePromille"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textHeight" />
+            app:layout_constraintTop_toBottomOf="@id/textHighscore" />
 
         <TextView
             android:id="@+id/scorePromille"
@@ -73,7 +73,7 @@
             android:textAlignment="center"
             android:textSize="30sp"
             app:layout_constraintEnd_toStartOf="@id/scoreScore"
-            app:layout_constraintStart_toEndOf="@id/scoreHeight"
+            app:layout_constraintStart_toEndOf="@id/scoreHighscore"
             app:layout_constraintTop_toBottomOf="@id/textPromille" />
 
         <TextView

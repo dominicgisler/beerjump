@@ -15,7 +15,12 @@ class GameActivity : AbstractActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_game)
 
-        game = Game(gameLayout)
+        val scores = config.highscoreList.scores
+        var highscore = 0
+        if (scores.size > 0) {
+            highscore = scores.first().score
+        }
+        game = Game(gameLayout, highscore)
         val act = this
 
         val renderRun = object : Runnable {
