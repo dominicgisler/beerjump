@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background">
+    android:background="@drawable/background"
+    android:orientation="vertical">
 
     <ImageView
         android:id="@+id/imageView"
@@ -13,16 +12,24 @@
         android:layout_height="180dp"
         android:layout_marginTop="80dp"
         android:contentDescription="@string/app_name"
-        android:src="@drawable/ic_launcher_foreground" />
+        android:src="@drawable/ic_launcher_foreground"
+        app:layout_constraintBottom_toTopOf="@+id/textTitle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/textTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif-light"
         android:text="@string/app_name"
         android:textAlignment="center"
-        android:textSize="42sp" />
+        android:textSize="42sp"
+        app:layout_constraintBottom_toTopOf="@id/buttonPlay"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
     <Button
         android:id="@+id/buttonPlay"
@@ -31,7 +38,11 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="80dp"
         android:fontFamily="sans-serif-light"
-        android:text="@string/play" />
+        android:text="@string/play"
+        app:layout_constraintBottom_toTopOf="@id/buttonHighscore"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textTitle" />
 
     <Button
         android:id="@+id/buttonHighscore"
@@ -40,7 +51,11 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="20dp"
         android:fontFamily="sans-serif-light"
-        android:text="@string/highscore" />
+        android:text="@string/highscore"
+        app:layout_constraintBottom_toTopOf="@id/buttonSettings"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonPlay" />
 
     <Button
         android:id="@+id/buttonSettings"
@@ -49,6 +64,9 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="20dp"
         android:fontFamily="sans-serif-light"
-        android:text="@string/settings" />
+        android:text="@string/settings"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonHighscore" />
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
