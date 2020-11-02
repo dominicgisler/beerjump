@@ -13,11 +13,10 @@ class GameScoreActivity : AbstractActivity() {
 
         val score = intent.getIntExtra("score", 0)
         val promille = intent.getDoubleExtra("promille", 0.0)
-        val height = intent.getIntExtra("height", 0)
 
         scoreScore.text = score.toString()
         scorePromille.text = String.format("%.2f‰", promille)
-        scoreHeight.text = height.toString()
+        scoreHighscore.text = config.highscoreList.scores.first().score.toString()
         name.setText(config.highscoreList.lastUser)
 
         ok.setOnClickListener {

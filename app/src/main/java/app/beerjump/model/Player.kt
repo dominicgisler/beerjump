@@ -15,24 +15,19 @@ class Player(gameView: ViewGroup, posX: Int, posY: Int) : GuiElement(gameView, p
     var score = 0
 
     init {
-        view.layoutParams.width = width
-        view.layoutParams.height = height
-        view.y = -height.toFloat()
-        view.setImageDrawable(
-            ContextCompat.getDrawable(
-                gameView.context,
-                R.drawable.ic_player_up
-            )
-        )
+        initViews(width, height, R.drawable.ic_player_up)
         view.translationZ = 1f
+        view2.translationZ = 1f
     }
 
-    override fun updateView() {
+    fun updateView() {
+        super.updateView(this)
         if (speed > 0) {
             view.setImageDrawable(ContextCompat.getDrawable(gameView.context, R.drawable.ic_player_up))
+            view2.setImageDrawable(ContextCompat.getDrawable(gameView.context, R.drawable.ic_player_up))
         } else {
             view.setImageDrawable(ContextCompat.getDrawable(gameView.context, R.drawable.ic_player_down))
+            view2.setImageDrawable(ContextCompat.getDrawable(gameView.context, R.drawable.ic_player_down))
         }
-        view.x = posX.toFloat()
     }
 }

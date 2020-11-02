@@ -1,7 +1,6 @@
 package app.beerjump.model
 
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat
 import app.beerjump.R
 import kotlin.random.Random
 
@@ -14,15 +13,7 @@ class Bar(gameView: ViewGroup, posX: Int, posY: Int) : GuiElement(gameView, posX
     val itemChance = 0.05
 
     init {
-        view.layoutParams.width = width
-        view.layoutParams.height = height
-        view.y = -height.toFloat()
-        view.setImageDrawable(
-            ContextCompat.getDrawable(
-                gameView.context,
-                R.drawable.ic_bar
-            )
-        )
+        initViews(width, height, R.drawable.ic_bar)
 
         val genItem = Random.nextFloat() < itemChance
         if (genItem) {

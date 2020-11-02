@@ -8,11 +8,5 @@ abstract class Item(gameView: ViewGroup, posX: Int, posY: Int) : GuiElement(game
         val height = 70
     }
 
-    init {
-        view.layoutParams.width = width
-        view.layoutParams.height = height
-        view.y = -height.toFloat()
-    }
-
     abstract fun pickup(player: Player)
 }

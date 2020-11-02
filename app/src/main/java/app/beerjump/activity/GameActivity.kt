@@ -29,7 +29,6 @@ class GameActivity : AbstractActivity() {
                     val intent = Intent(act, GameScoreActivity::class.java)
                     intent.putExtra("score", game.player.score)
                     intent.putExtra("promille", game.player.promille)
-                    intent.putExtra("height", game.height)
                     startActivity(intent)
                     finish()
                 } else {

@@ -91,18 +91,21 @@ class Game(val gameLayout: ViewGroup, val highscore: Int) {
                     bar.removeView()
                     continue
                 }
-                bar.updateView()
+                bar.updateView(player)
                 bar.view.y = posY
+                bar.view2.y = posY
                 if (bar.item != null) {
                     posY = (gameView.height - bar.item!!.posY - Item.height).toFloat() + height
                     bar.item!!.view.y = posY
-                    bar.item!!.updateView()
+                    bar.item!!.view2.y = posY
+                    bar.item!!.updateView(player)
                 }
             }
         }
 
         player.updateView()
         player.view.y = (gameView.height - player.posY - Player.height).toFloat() + height
+        player.view2.y = (gameView.height - player.posY - Player.height).toFloat() + height
 
         statsView.scorePromille.text = String.format("%.2f‰", player.promille)
         statsView.scoreScore.text = player.score.toString()
