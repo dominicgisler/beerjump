@@ -16,7 +16,10 @@ class GameScoreActivity : AbstractActivity() {
 
         scoreScore.text = score.toString()
         scorePromille.text = String.format("%.2f‰", promille)
-        scoreHighscore.text = config.highscoreList.scores.first().score.toString()
+        if (!config.highscoreList.scores.isEmpty()) {
+            scoreHighscore.text = config.highscoreList.scores.first().score.toString()
+        }
+
         name.setText(config.highscoreList.lastUser)
 
         ok.setOnClickListener {
