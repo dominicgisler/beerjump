@@ -16,6 +16,7 @@ class Game(val gameLayout: ViewGroup, val highscore: Int) {
 
     var gameView = gameLayout.gameView
     var statsView = gameLayout.statsView
+    val tunnelView = gameLayout.tunnelOverlay
 
     val hop = MediaPlayer.create(gameView.context, R.raw.hop)
 
@@ -26,6 +27,8 @@ class Game(val gameLayout: ViewGroup, val highscore: Int) {
         player.posX = gameView.width / 2 - Player.width / 2
         player.posY = 0
         statsView.scoreHighscore.text = highscore.toString()
+        tunnelView.layoutParams.width = gameView.width * 2
+        tunnelView.layoutParams.height = gameView.height * 2
     }
 
     private fun addBarSection(startY: Int) {
@@ -84,6 +87,25 @@ class Game(val gameLayout: ViewGroup, val highscore: Int) {
     }
 
     fun render() {
+        val tWidth = (gameView.width * (2 - player.promille / 7)).toInt()
+        if (tunnelView.layoutParams.width > tWidth && tunnelView.width > gameView.width) {
+            tunnelView.layoutParams.width--
+        } else if (tunnelView.layoutParams.width < tWidth) {
+            tunnelView.layoutParams.width++
+        }
+        val tHeight = (gameView.height * (2 - player.promille / 7)).toInt()
+        if (tunnelView.layoutParams.height > tHeight && tunnelView.height > gameView.height) {
+            tunnelView.layoutParams.height--
+        } else if (tunnelView.layoutParams.height < tHeight) {
+            tunnelView.layoutParams.height++
+        }
+        val tAlpha = (player.promille / 7).toFloat()
+        if (tunnelView.alpha > tAlpha && tAlpha >= 0) {
+            tunnelView.alpha -= 0.01.toFloat()
+        } else if (tunnelView.alpha < tAlpha && tAlpha <= 1) {
+            tunnelView.alpha += 0.01.toFloat()
+        }
+
         for (sec in sections) {
             for (bar in sec.bars) {
                 var posY = (gameView.height - bar.posY - Bar.height).toFloat() + height

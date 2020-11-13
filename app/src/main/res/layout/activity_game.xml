@@ -11,8 +11,9 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/statsView"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:translationZ="1dp"
+        android:layout_height="90dp"
+        android:background="@color/black_overlay"
+        android:translationZ="3dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -25,6 +26,7 @@
             android:layout_marginTop="20dp"
             android:text="@string/highscore"
             android:textAlignment="textStart"
+            android:textColor="@color/white"
             android:textSize="18sp"
             app:layout_constraintEnd_toStartOf="@id/textPromille"
             app:layout_constraintStart_toStartOf="parent"
@@ -37,6 +39,7 @@
             android:layout_marginTop="20dp"
             android:text="@string/promille"
             android:textAlignment="center"
+            android:textColor="@color/white"
             android:textSize="18sp"
             app:layout_constraintEnd_toStartOf="@id/textScore"
             app:layout_constraintStart_toEndOf="@id/textHighscore"
@@ -50,6 +53,7 @@
             android:layout_marginEnd="20dp"
             android:text="@string/score"
             android:textAlignment="textEnd"
+            android:textColor="@color/white"
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/textPromille"
@@ -61,7 +65,8 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:textAlignment="textStart"
-            android:textSize="30sp"
+            android:textColor="@color/white"
+            android:textSize="24sp"
             app:layout_constraintEnd_toStartOf="@id/scorePromille"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/textHighscore" />
@@ -71,7 +76,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:textAlignment="center"
-            android:textSize="30sp"
+            android:textColor="@color/white"
+            android:textSize="24sp"
             app:layout_constraintEnd_toStartOf="@id/scoreScore"
             app:layout_constraintStart_toEndOf="@id/scoreHighscore"
             app:layout_constraintTop_toBottomOf="@id/textPromille" />
@@ -82,11 +88,26 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="20dp"
             android:textAlignment="textEnd"
-            android:textSize="30sp"
+            android:textColor="@color/white"
+            android:textSize="24sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/scorePromille"
             app:layout_constraintTop_toBottomOf="@id/textScore" />
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ImageView
+        android:id="@+id/tunnelOverlay"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:alpha="0"
+        android:contentDescription="@string/tunnel"
+        android:scaleType="fitXY"
+        android:translationZ="2dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/tunnel" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/gameView"
