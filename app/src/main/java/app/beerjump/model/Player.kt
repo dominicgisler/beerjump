@@ -17,17 +17,16 @@ class Player(gameView: ViewGroup, posX: Int, posY: Int) : GuiElement(gameView, p
     init {
         initViews(width, height, R.drawable.ic_player_up)
         view.translationZ = 1f
-        view2.translationZ = 1f
+        view.alpha = 1f
+        gameView.removeView(view2)
     }
 
     fun updateView() {
-        super.updateView(this)
+        view.x = posX.toFloat()
         if (speed > 0) {
             view.setImageDrawable(ContextCompat.getDrawable(gameView.context, R.drawable.ic_player_up))
-            view2.setImageDrawable(ContextCompat.getDrawable(gameView.context, R.drawable.ic_player_up))
         } else {
             view.setImageDrawable(ContextCompat.getDrawable(gameView.context, R.drawable.ic_player_down))
-            view2.setImageDrawable(ContextCompat.getDrawable(gameView.context, R.drawable.ic_player_down))
         }
     }
 }

@@ -1,4 +1,4 @@
-package app.beerjump.model
+package app.beerjump.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
 import app.beerjump.R
+import app.beerjump.model.Score
 import kotlinx.android.synthetic.main.score_cell.view.*
 
 class ScoreAdapter(

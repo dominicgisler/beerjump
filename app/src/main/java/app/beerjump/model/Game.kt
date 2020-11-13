@@ -105,7 +105,6 @@ class Game(val gameLayout: ViewGroup, val highscore: Int) {
 
         player.updateView()
         player.view.y = (gameView.height - player.posY - Player.height).toFloat() + height
-        player.view2.y = (gameView.height - player.posY - Player.height).toFloat() + height
 
         statsView.scorePromille.text = String.format("%.2f‰", player.promille)
         statsView.scoreScore.text = player.score.toString()

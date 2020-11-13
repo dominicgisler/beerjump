@@ -3,7 +3,7 @@ package app.beerjump.activity
 import android.content.Intent
 import android.os.Bundle
 import app.beerjump.R
-import app.beerjump.model.ScoreAdapter
+import app.beerjump.adapter.ScoreAdapter
 import kotlinx.android.synthetic.main.activity_highscore.*
 
 class HighscoreActivity : AbstractActivity() {

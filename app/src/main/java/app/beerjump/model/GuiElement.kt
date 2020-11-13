@@ -46,7 +46,7 @@ open class GuiElement(val gameView: ViewGroup, var posX: Int, var posY: Int) {
         view.x = (posX - player.promille * 10).toFloat()
         view2.x = (posX + player.promille * 10).toFloat()
         val alpha = (0.7 - player.promille / 10).toFloat()
-        view.alpha = if (alpha > 0.3) alpha else 0.3f
-        view2.alpha = if (alpha > 0.3) alpha else 0.3f
+        view.alpha = if (alpha > 0.4) alpha else 0.4f
+        view2.alpha = if (alpha > 0.4) alpha else 0.4f
     }
 }
