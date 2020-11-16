@@ -12,7 +12,6 @@
         android:id="@+id/statsView"
         android:layout_width="0dp"
         android:layout_height="90dp"
-        android:background="@color/black_overlay"
         android:translationZ="3dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -94,20 +93,6 @@
             app:layout_constraintStart_toEndOf="@id/scorePromille"
             app:layout_constraintTop_toBottomOf="@id/textScore" />
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <ImageView
-        android:id="@+id/tunnelOverlay"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:alpha="0"
-        android:contentDescription="@string/tunnel"
-        android:scaleType="fitXY"
-        android:translationZ="2dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/tunnel" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/gameView"
