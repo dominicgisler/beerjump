@@ -8,8 +8,9 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="0dp"
-        android:layout_height="150dp"
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:layout_marginTop="80dp"
         android:contentDescription="@string/app_name"
         android:src="@drawable/ic_launcher_foreground"
         app:layout_constraintBottom_toTopOf="@+id/textTitle"
@@ -22,60 +23,26 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif-light"
-        android:text="@string/spieler_wechseln"
+        android:text="@string/settings"
         android:textAlignment="center"
-        android:textSize="35sp"
+        android:textSize="42sp"
+        app:layout_constraintBottom_toTopOf="@id/buttonResetHighscore"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
-
-    <Button
-        android:id="@+id/buttonChangePlayer"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:fontFamily="sans-serif-light"
-        android:text="@string/spieler_wechseln"
-        app:layout_constraintBottom_toTopOf="@+id/buttonChangeBackground"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textTitle" />
-
-    <Button
-        android:id="@+id/buttonChangeBackground"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:fontFamily="sans-serif-light"
-        android:text="@string/hintergrund_wechseln"
-        app:layout_constraintBottom_toTopOf="@+id/buttonResetHighscore"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/buttonChangePlayer" />
 
     <Button
         android:id="@+id/buttonResetHighscore"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
+        android:layout_marginTop="80dp"
         android:fontFamily="sans-serif-light"
         android:text="@string/highscore_zur_cksetzen"
-        app:layout_constraintBottom_toTopOf="@+id/buttonStoreDefaults"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/buttonChangeBackground" />
-
-    <Button
-        android:id="@+id/buttonStoreDefaults"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:fontFamily="sans-serif-light"
-        android:text="@string/standard_wiederherstellen"
         app:layout_constraintBottom_toTopOf="@+id/buttonMenu"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/buttonResetHighscore" />
+        app:layout_constraintTop_toBottomOf="@id/textTitle" />
 
     <Button
         android:id="@+id/buttonMenu"
@@ -85,8 +52,8 @@
         android:layout_marginBottom="20dp"
         android:fontFamily="sans-serif-light"
         android:text="@string/zur_ck_ins_men"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/buttonResetHighscore" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

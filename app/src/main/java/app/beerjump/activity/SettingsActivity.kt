@@ -16,14 +16,6 @@ class SettingsActivity : AbstractActivity() {
             startActivity(Intent(this, MenuActivity::class.java))
             finish()
         }
-        buttonChangeBackground.setOnClickListener {
-            startActivity(Intent(this, ChangeBackgroundActivity::class.java))
-            finish()
-        }
-        buttonChangePlayer.setOnClickListener {
-            startActivity(Intent(this, ChangePlayerActivity::class.java))
-            finish()
-        }
         buttonResetHighscore.setOnClickListener {
             config.highscoreList.scores.clear()
             config.save()

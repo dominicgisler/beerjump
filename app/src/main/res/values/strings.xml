@@ -1,7 +1,5 @@
 <resources>
     <string name="app_name">Beer Jump</string>
-    <string name="dummy_button">Dummy Button</string>
-    <string name="dummy_content">DUMMY\nCONTENT</string>
     <string name="play">Spielen</string>
     <string name="highscore">Highscore</string>
     <string name="score">Score</string>
@@ -10,12 +8,9 @@
     <string name="settings">Einstellungen</string>
     <string name="name">Name</string>
     <string name="place">Platz</string>
-    <string name="zurueck">zurueck</string>
+    <string name="zurueck">zurück</string>
     <string name="zur_ck_ins_men">zurück ins Menü</string>
-    <string name="spieler_wechseln">Spieler wechseln</string>
-    <string name="hintergrund_wechseln">Hintergrund wechseln</string>
     <string name="highscore_zur_cksetzen">Highscore zurücksetzen</string>
-    <string name="standard_wiederherstellen">Standard wiederherstellen</string>
     <string name="gameScore">Game Score</string>
     <string name="ok">OK!</string>
     <string name="tunnel">Tunnel</string>
