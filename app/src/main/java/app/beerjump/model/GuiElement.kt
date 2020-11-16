@@ -1,5 +1,6 @@
 package app.beerjump.model
 
+import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.core.content.ContextCompat
@@ -43,10 +44,34 @@ open class GuiElement(val gameView: ViewGroup, var posX: Int, var posY: Int) {
     }
 
     open fun updateView(player: Player) {
-        view.x = (posX - player.promille * 10).toFloat()
-        view2.x = (posX + player.promille * 10).toFloat()
+        moveToX(view, (posX - player.promille * 5))
+        moveToX(view2, (posX + player.promille * 5))
         val alpha = (0.7 - player.promille / 10).toFloat()
-        view.alpha = if (alpha > 0.4) alpha else 0.4f
-        view2.alpha = if (alpha > 0.4) alpha else 0.4f
+        adjustAlpha(view, if (alpha > 0.4) alpha else 0.4f)
+        adjustAlpha(view2, if (alpha > 0.4) alpha else 0.4f)
+    }
+
+    fun moveToX(view: View, x: Double) {
+        if (view.x > x) {
+            view.x--
+        } else if (view.x < x) {
+            view.x++
+        }
+    }
+
+    fun moveToY(view: View, x: Double) {
+        if (view.x > x) {
+            view.x--
+        } else if (view.x < x) {
+            view.x++
+        }
+    }
+
+    fun adjustAlpha(view: View, alpha: Float) {
+        if (view.alpha > alpha) {
+            view.alpha -= 0.01f
+        } else if (view.alpha < alpha) {
+            view.alpha += 0.01f
+        }
     }
 }

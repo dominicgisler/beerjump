@@ -23,11 +23,6 @@ class Tunnel(gameView: ViewGroup, posX: Int, posY: Int) : GuiElement(gameView, p
         view.x = player.view.x - view.width / 2 + player.view.width / 2
         view.y = player.view.y - view.height / 2 + player.view.height / 2
         view.layoutParams = params
-        val tAlpha = (player.promille / 7).toFloat()
-        if (view.alpha > tAlpha && tAlpha >= 0) {
-            view.alpha -= 0.01.toFloat()
-        } else if (view.alpha < tAlpha && tAlpha <= 1) {
-            view.alpha += 0.01.toFloat()
-        }
+        adjustAlpha(view, (player.promille / 7).toFloat())
     }
 }
