@@ -1,19 +1,32 @@
 package app.beerjump.activity
 
+import android.content.Context
 import android.content.Intent
+import android.hardware.Sensor
+import android.hardware.SensorEvent
+import android.hardware.SensorEventListener
+import android.hardware.SensorManager
 import android.os.Bundle
 import android.view.MotionEvent
 import app.beerjump.R
 import app.beerjump.model.Game
 import kotlinx.android.synthetic.main.activity_game.*
 
-class GameActivity : AbstractActivity() {
+class GameActivity : AbstractActivity(), SensorEventListener {
     var lastX = -1
     lateinit var game: Game
+    lateinit var sensorManager: SensorManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_game)
+
+        sensorManager = getSystemService(Context.SENSOR_SERVICE) as SensorManager
+        sensorManager.registerListener(
+            this,
+            sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER),
+            SensorManager.SENSOR_DELAY_NORMAL
+        )
 
         val scores = config.highscoreList.scores
         var highscore = 0
@@ -56,5 +69,15 @@ class GameActivity : AbstractActivity() {
             lastX = -1
         }
         return false
+    }
+
+    override fun onAccuracyChanged(sensor: Sensor?, accuracy: Int) {
+    }
+
+    override fun onSensorChanged(event: SensorEvent?) {
+        if (event?.values != null) {
+            val x = (event.values[0] * 3).toInt()
+            game.player.direction = -x
+        }
     }
 }
