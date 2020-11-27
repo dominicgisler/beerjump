@@ -18,6 +18,7 @@ class GameActivity : AbstractActivity(), SensorEventListener {
     var pause = false
     lateinit var game: Game
     lateinit var sensorManager: SensorManager
+    lateinit var renderRun : Runnable
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,7 +38,7 @@ class GameActivity : AbstractActivity(), SensorEventListener {
         }
         game = Game(gameLayout, highscore)
 
-        val renderRun = object : Runnable {
+        renderRun = object : Runnable {
             override fun run() {
                 if (!game.step()) {
                     val intent = Intent(baseContext, GameScoreActivity::class.java)
@@ -56,15 +57,12 @@ class GameActivity : AbstractActivity(), SensorEventListener {
 
         buttonPause.setOnClickListener {
             pause = true
-            buttonPause.visibility = View.GONE
-            pauseView.visibility = View.VISIBLE
+            triggerPauseMenu()
         }
 
         buttonContinueGame.setOnClickListener {
             pause = false
-            pauseView.visibility = View.GONE
-            buttonPause.visibility = View.VISIBLE
-            gameView.post(renderRun)
+            triggerPauseMenu()
         }
 
         buttonEndGame.setOnClickListener {
@@ -76,6 +74,23 @@ class GameActivity : AbstractActivity(), SensorEventListener {
             game.generate()
             gameView.post(renderRun)
         }
+    }
+
+    fun triggerPauseMenu() {
+        if (pause) {
+            buttonPause.visibility = View.GONE
+            pauseView.visibility = View.VISIBLE
+        } else {
+            pauseView.visibility = View.GONE
+            buttonPause.visibility = View.VISIBLE
+            gameView.post(renderRun)
+        }
+    }
+
+    override fun onPause() {
+        super.onPause()
+        pause = true
+        triggerPauseMenu()
     }
 
     override fun onTouchEvent(event: MotionEvent): Boolean {
