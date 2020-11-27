@@ -8,12 +8,14 @@ import android.hardware.SensorEventListener
 import android.hardware.SensorManager
 import android.os.Bundle
 import android.view.MotionEvent
+import android.view.View
 import app.beerjump.R
 import app.beerjump.model.Game
 import kotlinx.android.synthetic.main.activity_game.*
 
 class GameActivity : AbstractActivity(), SensorEventListener {
     var lastX = -1
+    var pause = false
     lateinit var game: Game
     lateinit var sensorManager: SensorManager
 
@@ -34,21 +36,40 @@ class GameActivity : AbstractActivity(), SensorEventListener {
             highscore = scores.first().score
         }
         game = Game(gameLayout, highscore)
-        val act = this
 
         val renderRun = object : Runnable {
             override fun run() {
                 if (!game.step()) {
-                    val intent = Intent(act, GameScoreActivity::class.java)
+                    val intent = Intent(baseContext, GameScoreActivity::class.java)
                     intent.putExtra("score", game.player.score)
                     intent.putExtra("promille", game.player.promille)
                     startActivity(intent)
                     finish()
                 } else {
                     game.render()
-                    gameView.postDelayed(this, 0)
+                    if (!pause) {
+                        gameView.postDelayed(this, 0)
+                    }
                 }
             }
+        }
+
+        buttonPause.setOnClickListener {
+            pause = true
+            buttonPause.visibility = View.GONE
+            pauseView.visibility = View.VISIBLE
+        }
+
+        buttonContinueGame.setOnClickListener {
+            pause = false
+            pauseView.visibility = View.GONE
+            buttonPause.visibility = View.VISIBLE
+            gameView.post(renderRun)
+        }
+
+        buttonEndGame.setOnClickListener {
+            startActivity(Intent(baseContext, MenuActivity::class.java))
+            finish()
         }
 
         gameView.post {
