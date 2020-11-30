@@ -24,12 +24,14 @@ class GameActivity : AbstractActivity(), SensorEventListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_game)
 
-        sensorManager = getSystemService(Context.SENSOR_SERVICE) as SensorManager
-        sensorManager.registerListener(
-            this,
-            sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER),
-            SensorManager.SENSOR_DELAY_NORMAL
-        )
+        if (config.inputMethod == "sensor") {
+            sensorManager = getSystemService(Context.SENSOR_SERVICE) as SensorManager
+            sensorManager.registerListener(
+                this,
+                sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER),
+                SensorManager.SENSOR_DELAY_NORMAL
+            )
+        }
 
         val scores = config.highscoreList.scores
         var highscore = 0
@@ -94,6 +96,9 @@ class GameActivity : AbstractActivity(), SensorEventListener {
     }
 
     override fun onTouchEvent(event: MotionEvent): Boolean {
+        if (config.inputMethod == "sensor") {
+            return false
+        }
         val x = event.x.toInt()
         if (event.action == MotionEvent.ACTION_DOWN || event.action == MotionEvent.ACTION_MOVE) {
             if (lastX != -1) {
@@ -111,6 +116,9 @@ class GameActivity : AbstractActivity(), SensorEventListener {
     }
 
     override fun onSensorChanged(event: SensorEvent?) {
+        if (config.inputMethod == "touch") {
+            return
+        }
         if (event?.values != null) {
             val x = (event.values[0] * 3).toInt()
             game.player.direction = -x

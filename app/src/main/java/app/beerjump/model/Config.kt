@@ -1,12 +1,12 @@
 package app.beerjump.model
 
 import android.content.SharedPreferences
-import android.util.Log
 import com.google.gson.Gson
 import java.lang.Exception
 
 class Config(val sharedPref: SharedPreferences) {
     var highscoreList: HighscoreList = HighscoreList()
+    var inputMethod = "touch"
 
     init {
         val data = sharedPref.getString("highscore", "{\"last_user\":\"\",\"scores\":[]}")
@@ -17,12 +17,14 @@ class Config(val sharedPref: SharedPreferences) {
                 save()
             }
         }
+        inputMethod = sharedPref.getString("input", "touch").toString()
     }
 
     fun save() {
         with (sharedPref.edit()) {
             val json = Gson().toJson(highscoreList)
             putString("highscore", json)
+            putString("input", inputMethod)
             apply()
         }
     }

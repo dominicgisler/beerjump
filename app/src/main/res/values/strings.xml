@@ -14,4 +14,7 @@
     <string name="gameScore">Game Score</string>
     <string name="ok">OK!</string>
     <string name="tunnel">Tunnel</string>
+    <string name="eingabe">Eingabe</string>
+    <string name="touch">Touch</string>
+    <string name="sensor">Sensor</string>
 </resources>

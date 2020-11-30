@@ -39,10 +39,44 @@
         android:layout_marginTop="80dp"
         android:fontFamily="sans-serif-light"
         android:text="@string/highscore_zur_cksetzen"
-        app:layout_constraintBottom_toTopOf="@+id/buttonMenu"
+        app:layout_constraintBottom_toTopOf="@+id/inputTypeView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/textTitle" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/inputTypeView"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/buttonResetHighscore">
+
+        <TextView
+            android:id="@+id/inputTypeText"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:textSize="18sp"
+            android:text="@string/eingabe"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/buttonInputToggle"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ToggleButton
+            android:id="@+id/buttonInputToggle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-light"
+            android:textOff="@string/touch"
+            android:textOn="@string/sensor"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/inputTypeText"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <Button
         android:id="@+id/buttonMenu"
@@ -52,8 +86,9 @@
         android:layout_marginBottom="20dp"
         android:fontFamily="sans-serif-light"
         android:text="@string/zur_ck_ins_men"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/buttonResetHighscore" />
+        app:layout_constraintTop_toBottomOf="@+id/highscoreList" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

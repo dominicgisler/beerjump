@@ -12,6 +12,10 @@ class SettingsActivity : AbstractActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_settings)
 
+        if (config.inputMethod == "sensor") {
+            buttonInputToggle.isChecked = true
+        }
+
         buttonMenu.setOnClickListener {
             startActivity(Intent(this, MenuActivity::class.java))
             finish()
@@ -20,6 +24,14 @@ class SettingsActivity : AbstractActivity() {
             config.highscoreList.scores.clear()
             config.save()
             Toast.makeText(applicationContext, "Highscore zurückgesetzt", Toast.LENGTH_SHORT).show()
+        }
+        buttonInputToggle.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) {
+                config.inputMethod = "sensor"
+            } else {
+                config.inputMethod = "touch"
+            }
+            config.save()
         }
     }
 }
