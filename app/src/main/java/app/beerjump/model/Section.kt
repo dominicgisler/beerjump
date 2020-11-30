@@ -18,27 +18,17 @@ class Section(val gameView: ViewGroup, val startY: Int, val maxBars: Int) {
             val maxX = secWidth * (j + 1) - Bar.width - padding
             val minY = startY + padding
             val maxY = startY + height - padding
-            bars.add(Bar(
-                gameView,
-                ((Random.nextFloat() * (maxX - minX)) + minX).toInt(),
-                ((Random.nextFloat() * (maxY - minY)) + minY).toInt()
-            ))
-//            if (genBeer == j) {
-//                val beer = Beer()
-//                beer.posX = bar.posX + bar.width / 2 - beer.width / 2
-//                beer.posY = bar.posY + bar.height + 20
-//                beers.add(beer)
-//            } else if (genShot == j) {
-//                val shot = Shot()
-//                shot.posX = bar.posX + bar.width / 2 - shot.width / 2
-//                shot.posY = bar.posY + bar.height + 20
-//                shots.add(shot)
-//            }else if (genRocket == j) {
-//                val rocket = Rocket()
-//                rocket.posX = bar.posX + bar.width / 2 - rocket.width / 2
-//                rocket.posY = bar.posY + bar.height + 20
-//                rockets.add(rocket)
-//            }
+            val barX = ((Random.nextFloat() * (maxX - minX)) + minX).toInt()
+            val barY = ((Random.nextFloat() * (maxY - minY)) + minY).toInt()
+
+            var barVars = 0..1
+            if (maxBars <= 3) {
+                barVars = 0..2
+            }
+            when (barVars.random()) {
+                0,1 -> bars.add(Bar(gameView, barX, barY))
+                2 -> bars.add(MovingBar(gameView, barX, barY, minX, maxX))
+            }
         }
     }
 }

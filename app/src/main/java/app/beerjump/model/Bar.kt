@@ -4,7 +4,7 @@ import android.view.ViewGroup
 import app.beerjump.R
 import kotlin.random.Random
 
-class Bar(gameView: ViewGroup, posX: Int, posY: Int) : GuiElement(gameView, posX, posY) {
+open class Bar(gameView: ViewGroup, posX: Int, posY: Int) : GuiElement(gameView, posX, posY) {
     companion object {
         var width = 180
         var height = 40
@@ -19,10 +19,10 @@ class Bar(gameView: ViewGroup, posX: Int, posY: Int) : GuiElement(gameView, posX
         if (genItem) {
             val ipX = posX + width / 2 - Item.width / 2
             val ipY = posY + height + 20
-            when ((0..2).random()) {
-                0 -> item = Beer(gameView, ipX, ipY)
-                1 -> item = Shot(gameView, ipX, ipY)
-                2 -> item = Rocket(gameView, ipX, ipY)
+            when ((0..6).random()) {
+                0,1,2,3 -> item = Beer(gameView, ipX, ipY)
+                4 -> item = Shot(gameView, ipX, ipY)
+                5,6 -> item = Rocket(gameView, ipX, ipY)
             }
         }
     }
