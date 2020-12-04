@@ -16,6 +16,7 @@ import kotlinx.android.synthetic.main.activity_game.*
 class GameActivity : AbstractActivity(), SensorEventListener {
     var lastX = -1
     var pause = false
+    var finished = false
     lateinit var game: Game
     lateinit var sensorManager: SensorManager
     lateinit var renderRun : Runnable
@@ -46,6 +47,7 @@ class GameActivity : AbstractActivity(), SensorEventListener {
                     val intent = Intent(baseContext, GameScoreActivity::class.java)
                     intent.putExtra("score", game.player.score)
                     intent.putExtra("promille", game.player.promille)
+                    finished = true
                     startActivity(intent)
                     finish()
                 } else {
@@ -91,8 +93,10 @@ class GameActivity : AbstractActivity(), SensorEventListener {
 
     override fun onPause() {
         super.onPause()
-        pause = true
-        triggerPauseMenu()
+        if (!finished) {
+            pause = true
+            triggerPauseMenu()
+        }
     }
 
     override fun onTouchEvent(event: MotionEvent): Boolean {
