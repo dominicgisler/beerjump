@@ -11,6 +11,7 @@ import android.view.MotionEvent
 import android.view.View
 import app.beerjump.R
 import app.beerjump.model.Game
+import app.beerjump.model.SoundPlayer
 import kotlinx.android.synthetic.main.activity_game.*
 
 class GameActivity : AbstractActivity(), SensorEventListener {
@@ -49,6 +50,7 @@ class GameActivity : AbstractActivity(), SensorEventListener {
                     intent.putExtra("promille", game.player.promille)
                     finished = true
                     startActivity(intent)
+                    SoundPlayer.die.start()
                     finish()
                 } else {
                     game.render()

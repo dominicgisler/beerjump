@@ -9,11 +9,13 @@ object SoundPlayer {
     lateinit var beer : MediaPlayer
     lateinit var shot : MediaPlayer
     lateinit var rocket : MediaPlayer
+    lateinit var die : MediaPlayer
 
     fun init(gameView: ViewGroup) {
         shot = MediaPlayer.create(gameView.context, R.raw.shot)
         rocket = MediaPlayer.create(gameView.context, R.raw.rocket)
         hop = MediaPlayer.create(gameView.context, R.raw.hop)
         beer = MediaPlayer.create(gameView.context, R.raw.beer)
+        die = MediaPlayer.create(gameView.context, R.raw.die)
     }
 }
