@@ -1,32 +1,36 @@
 package app.beerjump.activity
 
-import androidx.lifecycle.Lifecycle
-import org.junit.jupiter.api.Assertions.*
-import androidx.test.*
-import androidx.test.ext.junit.rules.ActivityScenarioRule
-import junit.extensions.ActiveTestSuite
-import org.junit.Rule
+import androidx.test.core.app.ActivityScenario
+import androidx.test.espresso.Espresso.onView
+import androidx.test.espresso.assertion.ViewAssertions.matches
+import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
+import androidx.test.espresso.matcher.ViewMatchers.withId
+import androidx.test.ext.junit.runners.AndroidJUnit4
+import androidx.test.internal.runner.junit4.AndroidJUnit4ClassRunner
+import app.beerjump.R
+import kotlinx.android.synthetic.main.activity_menu.view.*
+import org.junit.After
+import org.junit.Before
 import org.junit.Test
 
-internal class MenuActivityTest {
-    @JvmField
-    @get:Rule
-    val menuActivityTestRule = ActivityScenarioRule<MenuActivity>(MenuActivity::class.java)
+import org.junit.Assert.*
+import org.junit.runner.RunWith
 
-    @org.junit.jupiter.api.BeforeEach
+@RunWith(AndroidJUnit4ClassRunner::class)
+
+class MenuActivityTest {
+
+    @Before
     fun setUp() {
-        val scenario = menuActivityTestRule.scenario
-        scenario.moveToState(Lifecycle.State.CREATED)
+        val menuActivityScenario = ActivityScenario.launch(MenuActivity::class.java)
+
+    @After
+    fun tearDown() {
     }
 
     @Test
-    fun assertActivityLayout(){
-
+    fun test1() {
+        onView(withId(R.id.menu)).check(matches(isDisplayed()))
     }
-
-    @org.junit.jupiter.api.AfterEach
-    fun tearDown() {
-
     }
-
 }

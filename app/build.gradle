@@ -5,6 +5,10 @@ apply plugin: 'kotlin-android-extensions'
 android {
     compileSdkVersion 30
     buildToolsVersion "30.0.2"
+    useLibrary 'android.test.runner'
+    useLibrary 'android.test.base'
+    useLibrary 'android.test.mock'
+
 
     defaultConfig {
         applicationId "app.beerjump"
@@ -36,5 +40,5 @@ dependencies {
     testImplementation("org.junit.jupiter:junit-jupiter:5.7.0")
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
-    androidTestImplementation 'org.junit.jupiter:junit-jupiter'
+
 }
