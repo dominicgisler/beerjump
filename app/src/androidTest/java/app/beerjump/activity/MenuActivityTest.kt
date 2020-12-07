@@ -4,16 +4,11 @@ import androidx.test.core.app.ActivityScenario
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.*
-import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.internal.runner.junit4.AndroidJUnit4ClassRunner
 import app.beerjump.R
-import kotlinx.android.synthetic.main.activity_menu.view.*
 import org.junit.After
 import org.junit.Before
 import org.junit.Test
-
-import org.junit.Assert.*
-import org.junit.Rule
 import org.junit.runner.RunWith
 
 @RunWith(AndroidJUnit4ClassRunner::class)
@@ -44,6 +39,7 @@ class MenuActivityTest {
     fun testTitle() {
         onView(withId(R.id.textTitle)).check(matches(withText("Beer Jump")))
     }
+
     @Test
     fun testVisabilityPlayButton() {
         onView(withId(R.id.buttonPlay)).check(matches(isDisplayed()))
