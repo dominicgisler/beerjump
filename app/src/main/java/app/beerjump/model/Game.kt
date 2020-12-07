@@ -13,12 +13,10 @@ class Game(val gameLayout: ViewGroup, val highscore: Int) {
 
     val player: Player = Player(gameLayout.gameView, 0, 0)
     val sections: ArrayList<Section> = ArrayList()
-    val tunnel: Tunnel = Tunnel(gameLayout.gameView, 0, 0)
+    lateinit var tunnel: Tunnel
 
     var gameView = gameLayout.gameView
     var statsView = gameLayout.statsView
-
-    val hop = MediaPlayer.create(gameView.context, R.raw.hop)
 
     fun generate() {
         for (i in 0..gameView.height / Section.height) {
@@ -27,6 +25,8 @@ class Game(val gameLayout: ViewGroup, val highscore: Int) {
         player.posX = gameView.width / 2 - Player.width / 2
         player.posY = 0
         statsView.scoreHighscore.text = highscore.toString()
+        tunnel = Tunnel(gameLayout.gameView, 0, 0)
+        SoundPlayer.init(gameView)
     }
 
     private fun addBarSection(startY: Int) {
@@ -51,7 +51,7 @@ class Game(val gameLayout: ViewGroup, val highscore: Int) {
                 if (player.speed < 0) {
                     if ((player.posX + Player.width / 2) in bar.posX..(bar.posX + Bar.width) && (player.posY) in bar.posY..(bar.posY + Bar.height)) {
                         player.speed = speedUp
-                        hop.start()
+                        SoundPlayer.hop.start()
                     }
                 }
                 if (bar.item != null) {

@@ -69,9 +69,9 @@ open class GuiElement(val gameView: ViewGroup, var posX: Int, var posY: Int) {
 
     fun adjustAlpha(view: View, alpha: Float) {
         if (view.alpha > alpha) {
-            view.alpha -= 0.01f
+            view.alpha -= 0.005f
         } else if (view.alpha < alpha) {
-            view.alpha += 0.01f
+            view.alpha += 0.005f
         }
     }
 }

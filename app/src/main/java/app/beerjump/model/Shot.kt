@@ -11,6 +11,7 @@ class Shot(gameView: ViewGroup, posX: Int, posY: Int) : Item(gameView, posX, pos
     }
 
     override fun pickup(player: Player) {
+        SoundPlayer.shot.start()
         player.promille += promille
     }
 }

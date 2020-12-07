@@ -11,6 +11,7 @@ class Rocket(gameView: ViewGroup, posX: Int, posY: Int) : Item(gameView, posX, p
     }
 
     override fun pickup(player: Player) {
+        SoundPlayer.rocket.start()
         player.speed = speed
     }
 }
