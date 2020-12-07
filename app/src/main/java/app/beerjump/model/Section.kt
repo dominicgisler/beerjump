@@ -7,11 +7,16 @@ class Section(val gameView: ViewGroup, val startY: Int, val maxBars: Int) {
     companion object {
         val height = 250
         val padding = 30
+        var num = 0
     }
     val bars = ArrayList<Bar>()
 
     init {
-        val numBars = (1..(if (maxBars > 0) maxBars else 1)).random()
+        num++
+        var numBars = (1..(if (maxBars > 0) maxBars else 1)).random()
+        if (num <= 1) {
+            numBars = 5
+        }
         val secWidth = gameView.width / numBars
         for (j in 0..numBars) {
             val minX = secWidth * j + padding

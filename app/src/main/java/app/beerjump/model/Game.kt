@@ -17,6 +17,7 @@ class Game(val gameLayout: ViewGroup, val highscore: Int) {
     var statsView = gameLayout.statsView
 
     fun generate() {
+        Section.num = 0
         for (i in 0..gameView.height / Section.height) {
             addBarSection(i * Section.height)
         }

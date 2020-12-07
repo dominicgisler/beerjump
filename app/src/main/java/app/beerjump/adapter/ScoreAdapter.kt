@@ -42,7 +42,7 @@ class ScoreAdapter(
             view = oldView
         }
         val score = getItem(index)
-        view.username.text = score.username
+        view.username.text = "${(index + 1)}.\u00A0${score.username}"
         view.promille.text = String.format("%.2f‰", score.promille)
         view.score.text = score.score.toString()
         return view
