@@ -1,6 +1,7 @@
 package app.beerjump.activity
 
 import androidx.test.espresso.Espresso
+import androidx.test.espresso.action.ViewActions
 import androidx.test.espresso.assertion.ViewAssertions
 import androidx.test.espresso.matcher.ViewMatchers
 import androidx.test.ext.junit.rules.ActivityScenarioRule
@@ -89,5 +90,16 @@ class GameScoreActivityTest {
     fun testVisabilitybuttonOk() {
         Espresso.onView(ViewMatchers.withId(R.id.ok))
             .check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
+    }
+
+    @Test
+    fun testNavigationbuttonOk() {
+        Espresso.onView(ViewMatchers.withId(R.id.ok))
+            .check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
+
+        Espresso.onView(ViewMatchers.withId(R.id.ok)).perform(ViewActions.click())
+        Espresso.onView(ViewMatchers.withId(R.id.highscore))
+            .check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
+
     }
 }

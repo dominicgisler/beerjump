@@ -12,6 +12,8 @@ import org.junit.Test
 import org.junit.Assert.*
 import org.junit.Rule
 
+//Tests need to be reviewed, do not all work correctly
+
 class GameActivityTest {
 
     @get:Rule
