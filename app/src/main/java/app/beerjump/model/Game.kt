@@ -1,8 +1,6 @@
 package app.beerjump.model
 
-import android.media.MediaPlayer
 import android.view.ViewGroup
-import app.beerjump.R
 import kotlinx.android.synthetic.main.activity_game.view.*
 
 class Game(val gameLayout: ViewGroup, val highscore: Int) {
@@ -48,6 +46,10 @@ class Game(val gameLayout: ViewGroup, val highscore: Int) {
 
         for (sec in sections) {
             for (bar in sec.bars) {
+                val posY = (gameView.height - bar.posY - Bar.height).toFloat() + height
+                if (posY > gameView.height) {
+                    continue
+                }
                 if (player.speed < 0) {
                     if ((player.posX + Player.width / 2) in bar.posX..(bar.posX + Bar.width) && (player.posY) in bar.posY..(bar.posY + Bar.height)) {
                         player.speed = speedUp
@@ -89,7 +91,9 @@ class Game(val gameLayout: ViewGroup, val highscore: Int) {
             for (bar in sec.bars) {
                 var posY = (gameView.height - bar.posY - Bar.height).toFloat() + height
                 if (posY < -Section.height || posY > gameView.height + Section.height) {
-                    bar.removeView()
+                    if (posY > gameView.height + Section.height) {
+                        bar.removeView()
+                    }
                     continue
                 }
                 bar.updateView(player)
