@@ -20,8 +20,4 @@ class MenuActivity : AbstractActivity() {
             startActivity(Intent(this, SettingsActivity::class.java))
         }
     }
-
-    fun test(): String {
-        return "hello"
-    }
 }
