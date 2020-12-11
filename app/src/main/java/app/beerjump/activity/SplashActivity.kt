@@ -6,7 +6,7 @@ import android.os.Handler
 import app.beerjump.R
 
 class SplashActivity : AbstractActivity() {
-    private val SPLASH_TIME_OUT:Long = 3000 // 1 sec
+    private val SPLASH_TIME_OUT:Long = 3000 // 3 sec
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

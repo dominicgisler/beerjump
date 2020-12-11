@@ -55,7 +55,7 @@ class GameActivity : AbstractActivity(), SensorEventListener {
                 } else {
                     game.render()
                     if (!pause) {
-                        gameView.postDelayed(this, 0)
+                        gameView.postDelayed(this, 15)
                     }
                 }
             }
