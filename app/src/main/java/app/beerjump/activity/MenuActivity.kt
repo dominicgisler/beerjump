@@ -19,5 +19,8 @@ class MenuActivity : AbstractActivity() {
         buttonSettings.setOnClickListener {
             startActivity(Intent(this, SettingsActivity::class.java))
         }
+        buttonAbout.setOnClickListener {
+            startActivity(Intent(this, AboutActivity::class.java))
+        }
     }
 }
