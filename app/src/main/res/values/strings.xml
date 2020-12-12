@@ -1,31 +1,28 @@
 <resources>
-    <string name="app_name">Beer Jump</string>
-    <string name="play">Spielen</string>
+    <string name="app_name" translatable="false">Beer Jump</string>
+    <string name="play">Play</string>
     <string name="highscore">Highscore</string>
     <string name="score">Score</string>
-    <string name="promille">Promille</string>
-    <string name="height">Höhe</string>
-    <string name="settings">Einstellungen</string>
+    <string name="promille">Alcohol level</string>
+    <string name="settings">Settings</string>
     <string name="rank_name"># Name</string>
     <string name="name">Name</string>
-    <string name="place">Platz</string>
-    <string name="zurueck">zurück</string>
-    <string name="zur_ck_ins_men">zurück ins Menü</string>
-    <string name="highscore_zur_cksetzen">Highscore zurücksetzen</string>
-    <string name="gameScore">Game Score</string>
+    <string name="back_to_menu">back to menu</string>
+    <string name="reset_highscore">reset highscore</string>
+    <string name="game_score">Game Score</string>
     <string name="ok">OK!</string>
     <string name="tunnel">Tunnel</string>
-    <string name="eingabe">Eingabe</string>
+    <string name="eingabe">Input</string>
     <string name="touch">Touch</string>
     <string name="sensor">Sensor</string>
-    <string name="about">Über uns</string>
-    <string name="developed">Geplant und entwickelt von</string>
-    <string name="published">Veröffentlicht von</string>
-    <string name="nils_mathys">Nils Mathys</string>
-    <string name="leo_meier">Leo Meier</string>
-    <string name="dominic_gisler">Dominic Gisler</string>
-    <string name="gisler_software">Gisler Software</string>
-    <string name="icons">Verwendete Icons von</string>
-    <string name="good_ware">Good Ware (flaticon.com/authors/good-ware)</string>
-    <string name="freepik">Freepik (flaticon.com/authors/freepik)</string>
+    <string name="about">About us</string>
+    <string name="developed">Planned and developed by</string>
+    <string name="published">Published by</string>
+    <string name="nils_mathys" translatable="false">Nils Mathys</string>
+    <string name="leo_meier" translatable="false">Leo Meier</string>
+    <string name="dominic_gisler" translatable="false">Dominic Gisler</string>
+    <string name="gisler_software" translatable="false">Gisler Software</string>
+    <string name="icons">Used icons from</string>
+    <string name="good_ware" translatable="false">Good Ware (flaticon.com/authors/good-ware)</string>
+    <string name="freepik" translatable="false">Freepik (flaticon.com/authors/freepik)</string>
 </resources>

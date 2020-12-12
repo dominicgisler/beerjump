@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="play">Spielen</string>
+    <string name="highscore">Highscore</string>
+    <string name="score">Score</string>
+    <string name="promille">Promille</string>
+    <string name="settings">Einstellungen</string>
+    <string name="rank_name"># Name</string>
+    <string name="name">Name</string>
+    <string name="back_to_menu">zurück ins Menü</string>
+    <string name="reset_highscore">Highscore zurücksetzen</string>
+    <string name="game_score">Game Score</string>
+    <string name="ok">OK!</string>
+    <string name="tunnel">Tunnel</string>
+    <string name="eingabe">Eingabe</string>
+    <string name="touch">Touch</string>
+    <string name="sensor">Sensor</string>
+    <string name="about">Über uns</string>
+    <string name="developed">Geplant und entwickelt von</string>
+    <string name="published">Veröffentlicht von</string>
+    <string name="icons">Verwendete Icons von</string>
+</resources>
