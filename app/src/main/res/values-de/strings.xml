@@ -19,4 +19,8 @@
     <string name="developed">Geplant und entwickelt von</string>
     <string name="published">Veröffentlicht von</string>
     <string name="icons">Verwendete Icons von</string>
+    <string name="game_paused">Spiel pausiert</string>
+    <string name="resume_game">Spiel fortsetzen</string>
+    <string name="end_game">Spiel beenden</string>
+    <string name="pause">Pause</string>
 </resources>

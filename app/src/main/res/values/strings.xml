@@ -25,4 +25,8 @@
     <string name="icons">Used icons from</string>
     <string name="good_ware" translatable="false">Good Ware (flaticon.com/authors/good-ware)</string>
     <string name="freepik" translatable="false">Freepik (flaticon.com/authors/freepik)</string>
+    <string name="game_paused">Game paused</string>
+    <string name="resume_game">Resume game</string>
+    <string name="end_game">End game</string>
+    <string name="pause">Pause</string>
 </resources>

@@ -2,11 +2,11 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/gameLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background"
-    tools:context=".activity.GameActivity"
-    android:id="@+id/gameLayout">
+    tools:context=".activity.GameActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/statsView"
@@ -134,9 +134,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif-light"
-            android:text="Spiel pausiert"
-            android:textColor="@color/white"
+            android:text="@string/game_paused"
             android:textAlignment="center"
+            android:textColor="@color/white"
             android:textSize="42sp"
             app:layout_constraintBottom_toTopOf="@id/buttonContinueGame"
             app:layout_constraintEnd_toEndOf="parent"
@@ -150,7 +150,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="80dp"
             android:fontFamily="sans-serif-light"
-            android:text="Spiel fortsetzen"
+            android:text="@string/resume_game"
             app:layout_constraintBottom_toTopOf="@+id/buttonEndGame"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -163,7 +163,7 @@
             android:layout_marginTop="20dp"
             android:layout_marginBottom="20dp"
             android:fontFamily="sans-serif-light"
-            android:text="Spiel beenden"
+            android:text="@string/end_game"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/buttonContinueGame" />
@@ -171,15 +171,16 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <Button
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/buttonPause"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
-        android:text="Pause"
+        android:layout_margin="16dp"
+        android:clickable="true"
+        android:contentDescription="@string/pause"
+        android:focusable="true"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@android:drawable/ic_media_pause" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
