@@ -6,6 +6,7 @@ import android.widget.Toast
 import app.beerjump.R
 import kotlinx.android.synthetic.main.activity_highscore.buttonMenu
 import kotlinx.android.synthetic.main.activity_settings.*
+import java.util.*
 
 class SettingsActivity : AbstractActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,8 +23,10 @@ class SettingsActivity : AbstractActivity() {
         }
         buttonResetHighscore.setOnClickListener {
             config.highscoreList.scores.clear()
+            config.uuid = UUID.randomUUID().toString()
             config.save()
-            Toast.makeText(applicationContext, "Highscore zurückgesetzt", Toast.LENGTH_SHORT).show()
+            config.syncDevice()
+            Toast.makeText(applicationContext, getString(R.string.highscore_resetted), Toast.LENGTH_SHORT).show()
         }
         buttonInputToggle.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {

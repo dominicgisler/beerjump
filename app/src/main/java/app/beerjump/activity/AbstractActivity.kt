@@ -3,6 +3,7 @@ package app.beerjump.activity
 import android.content.Context
 import android.os.Bundle
 import android.view.View
+import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import app.beerjump.R
 import app.beerjump.model.Config
@@ -13,8 +14,9 @@ abstract class AbstractActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_menu)
+        window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
         setDecorView()
-        config = Config(this.getSharedPreferences("config", Context.MODE_PRIVATE))
+        config = Config(this.getSharedPreferences("config", Context.MODE_PRIVATE), baseContext)
         config.highscoreList.scores.sortByDescending { it.score }
     }
 

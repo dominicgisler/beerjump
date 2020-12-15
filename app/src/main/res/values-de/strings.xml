@@ -9,6 +9,7 @@
     <string name="name">Name</string>
     <string name="back_to_menu">zurück ins Menü</string>
     <string name="reset_highscore">Highscore zurücksetzen</string>
+    <string name="highscore_resetted">Highscore wurde zurückgesetzt</string>
     <string name="game_score">Game Score</string>
     <string name="ok">OK!</string>
     <string name="tunnel">Tunnel</string>

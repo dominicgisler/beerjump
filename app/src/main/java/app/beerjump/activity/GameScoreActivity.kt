@@ -32,7 +32,7 @@ class GameScoreActivity : AbstractActivity() {
 
         ok.setOnClickListener {
             loadingView.visibility = View.VISIBLE
-            val svScore = Score(name.text.toString(), promille, score)
+            val svScore = Score(name.text.toString(), promille, score, true)
 
             val queue = Volley.newRequestQueue(baseContext)
 

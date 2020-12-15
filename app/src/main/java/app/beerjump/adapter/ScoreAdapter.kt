@@ -1,6 +1,7 @@
 package app.beerjump.adapter
 
 import android.content.Context
+import android.graphics.Typeface
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -35,16 +36,27 @@ class ScoreAdapter(
         index: Int, oldView: View?,
         viewGroup: ViewGroup?
     ): View {
-        var view: View
+        val view: View
         if (oldView == null) {
             view = layoutInflater.inflate(R.layout.score_cell, null)
         } else {
             view = oldView
         }
+
         val score = getItem(index)
+
+        var tfs : Int = Typeface.NORMAL
+        if (score.own) {
+            tfs = Typeface.BOLD
+        }
+
         view.username.text = "${(index + 1)}.\u00A0${score.username}"
         view.promille.text = String.format("%.2f‰", score.promille)
         view.score.text = score.score.toString()
+        view.username.setTypeface(null, tfs)
+        view.promille.setTypeface(null, tfs)
+        view.score.setTypeface(null, tfs)
+
         return view
     }
 }
