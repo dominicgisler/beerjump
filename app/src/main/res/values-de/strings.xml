@@ -28,4 +28,9 @@
     <string name="local">Lokal</string>
     <string name="global">Global</string>
     <string name="name_empty_error">Name darf nicht leer sein</string>
+    <string name="rate_title">Beer Jump bewerten</string>
+    <string name="rate_description">Würdest du dir einen Moment Zeit nehmen, um Beer Jump zu bewerten, falls es dir gefällt? Es dauert nicht länger als eine Minute. Vielen Dank für deine Unterstützung!</string>
+    <string name="rate_now">Jetzt bewerten</string>
+    <string name="no_thanks">Nein, danke</string>
+    <string name="remind_me_later">Später erinnern</string>
 </resources>

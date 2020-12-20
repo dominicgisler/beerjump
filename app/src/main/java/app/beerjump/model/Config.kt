@@ -17,6 +17,7 @@ class Config(val sharedPref: SharedPreferences, val baseContext: Context) {
     var inputMethod = "touch"
     var uuid = ""
     var starts = 0
+    var rating = ""
 
     init {
         val data = sharedPref.getString("highscore", "{\"last_user\":\"\",\"scores\":[]}")
@@ -30,6 +31,7 @@ class Config(val sharedPref: SharedPreferences, val baseContext: Context) {
         inputMethod = sharedPref.getString("input", "touch").toString()
         uuid = sharedPref.getString("uuid", UUID.randomUUID().toString()).toString()
         starts = sharedPref.getInt("starts", 1)
+        rating = sharedPref.getString("rating", "").toString()
         save()
     }
 
@@ -40,6 +42,7 @@ class Config(val sharedPref: SharedPreferences, val baseContext: Context) {
             putString("input", inputMethod)
             putString("uuid", uuid)
             putInt("starts", starts)
+            putString("rating", rating)
             apply()
         }
     }
@@ -54,6 +57,7 @@ class Config(val sharedPref: SharedPreferences, val baseContext: Context) {
             jsonObject.put("model", android.os.Build.MODEL)
             jsonObject.put("last_user", highscoreList.lastUser)
             jsonObject.put("starts", starts)
+            jsonObject.put("rating", rating)
         } catch (e: JSONException) {}
 
         val req = JsonObjectRequest(Request.Method.PUT, String.format(DEVICE_URL, uuid), jsonObject, {
@@ -71,6 +75,7 @@ class Config(val sharedPref: SharedPreferences, val baseContext: Context) {
         inputMethod = "touch"
         uuid = UUID.randomUUID().toString()
         starts = 1
+        rating = ""
         save()
         syncDevice()
     }

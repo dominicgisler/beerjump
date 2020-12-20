@@ -16,8 +16,13 @@ class SplashActivity : AbstractActivity() {
         config.save()
         config.syncDevice()
 
+        val intent = Intent(this, MenuActivity::class.java)
+        if (config.rating != "never" && config.rating != "rate" && config.starts % 6 == 0) {
+            intent.putExtra("show_rate_dialog", true)
+        }
+
         Handler().postDelayed({
-            startActivity(Intent(this, MenuActivity::class.java))
+            startActivity(intent)
             finish()
         }, SPLASH_TIME_OUT)
     }

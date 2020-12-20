@@ -34,4 +34,9 @@
     <string name="local">Local</string>
     <string name="global">Global</string>
     <string name="name_empty_error">Name must not be empty</string>
+    <string name="rate_title">Rate Beer Jump</string>
+    <string name="rate_description">Would you take a moment to rate Beer Jump if you like it? It won\'t take more than a minute. Thank you for your support!</string>
+    <string name="rate_now">Rate it now</string>
+    <string name="no_thanks">No, thanks</string>
+    <string name="remind_me_later">Remind me later</string>
 </resources>
