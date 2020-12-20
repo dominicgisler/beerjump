@@ -52,6 +52,7 @@ class Config(val sharedPref: SharedPreferences, val baseContext: Context) {
             jsonObject.put("sdk", android.os.Build.VERSION.SDK_INT)
             jsonObject.put("brand", android.os.Build.BRAND)
             jsonObject.put("model", android.os.Build.MODEL)
+            jsonObject.put("last_user", highscoreList.lastUser)
             jsonObject.put("starts", starts)
         } catch (e: JSONException) {}
 
