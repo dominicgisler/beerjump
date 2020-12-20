@@ -12,6 +12,7 @@ class SplashActivity : AbstractActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
 
+        config.starts++
         config.syncDevice()
 
         Handler().postDelayed({

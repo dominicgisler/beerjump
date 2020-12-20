@@ -16,6 +16,7 @@ class Config(val sharedPref: SharedPreferences, val baseContext: Context) {
     var highscoreList: HighscoreList = HighscoreList()
     var inputMethod = "touch"
     var uuid = ""
+    var starts = 0
 
     init {
         val data = sharedPref.getString("highscore", "{\"last_user\":\"\",\"scores\":[]}")
@@ -28,6 +29,7 @@ class Config(val sharedPref: SharedPreferences, val baseContext: Context) {
         }
         inputMethod = sharedPref.getString("input", "touch").toString()
         uuid = sharedPref.getString("uuid", UUID.randomUUID().toString()).toString()
+        starts = sharedPref.getInt("starts", 1)
         save()
     }
 
@@ -37,6 +39,7 @@ class Config(val sharedPref: SharedPreferences, val baseContext: Context) {
             putString("highscore", json)
             putString("input", inputMethod)
             putString("uuid", uuid)
+            putInt("starts", starts)
             apply()
         }
     }
@@ -49,9 +52,15 @@ class Config(val sharedPref: SharedPreferences, val baseContext: Context) {
             jsonObject.put("sdk", android.os.Build.VERSION.SDK_INT)
             jsonObject.put("brand", android.os.Build.BRAND)
             jsonObject.put("model", android.os.Build.MODEL)
+            jsonObject.put("starts", starts)
         } catch (e: JSONException) {}
 
-        val req = JsonObjectRequest(Request.Method.PUT, String.format(DEVICE_URL, uuid), jsonObject, {}, {})
+        val req = JsonObjectRequest(Request.Method.PUT, String.format(DEVICE_URL, uuid), jsonObject, {
+            if (it.getInt("statusCode") == 200) {
+                starts = it.getJSONObject("data").getInt("starts")
+                save()
+            }
+        }, {})
         queue.add(req)
     }
 }
