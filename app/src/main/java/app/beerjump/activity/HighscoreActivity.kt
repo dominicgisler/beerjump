@@ -2,12 +2,15 @@ package app.beerjump.activity
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import app.beerjump.R
 import app.beerjump.adapter.ScoreAdapter
 import app.beerjump.model.Score
 import com.android.volley.Request
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
+import com.google.android.material.tabs.TabLayout
+import com.google.android.material.tabs.TabLayout.OnTabSelectedListener
 import kotlinx.android.synthetic.main.activity_highscore.*
 import org.json.JSONException
 import org.json.JSONObject
@@ -22,7 +25,9 @@ class HighscoreActivity : AbstractActivity() {
         val adapter = ScoreAdapter(config.highscoreList.scores, baseContext)
         highscoreList.adapter = adapter
 
-        for (score in config.highscoreList.scores) {
+        val iter = config.highscoreList.scores.iterator()
+        while (iter.hasNext()) {
+            val score = iter.next()
             if (score.own && !score.synced) {
                 val queue = Volley.newRequestQueue(baseContext)
 
@@ -46,37 +51,59 @@ class HighscoreActivity : AbstractActivity() {
                     {}
                 )
                 queue.add(req)
+            } else if (!score.own) {
+                iter.remove()
+                config.save()
             }
         }
+        adapter.scores = config.highscoreList.scores
+        adapter.notifyDataSetChanged()
 
-        val queue = Volley.newRequestQueue(baseContext)
-        val req = JsonObjectRequest(
-            Request.Method.GET,
-            String.format(HIGHSCORE_URL, config.uuid),
-            null,
-            {
-                if (it.getInt("statusCode") == 200) {
-                    val scores = ArrayList<Score>()
-                    val arr = it.getJSONArray("data")
-                    for (i in 0 until arr.length()) {
-                        val score = Score(
-                            arr.getJSONObject(i).getString("name"),
-                            arr.getJSONObject(i).getDouble("promille"),
-                            arr.getJSONObject(i).getInt("score"),
-                            arr.getJSONObject(i).getBoolean("own")
-                        )
-                        score.synced = true
-                        scores.add(score)
-                    }
-                    config.highscoreList.scores = scores
-                    config.save()
-                    adapter.scores = scores
+        highscoreTabs.addOnTabSelectedListener(object : OnTabSelectedListener {
+            override fun onTabSelected(tab: TabLayout.Tab) {
+                progressBar.visibility = View.VISIBLE
+                adapter.scores = ArrayList()
+                adapter.notifyDataSetChanged()
+
+                if (tab.position == 1) {
+                    val queue = Volley.newRequestQueue(baseContext)
+                    val req = JsonObjectRequest(
+                        Request.Method.GET,
+                        String.format(HIGHSCORE_URL, config.uuid),
+                        null,
+                        {
+                            if (it.getInt("statusCode") == 200) {
+                                val scores = ArrayList<Score>()
+                                val arr = it.getJSONArray("data")
+                                for (i in 0 until arr.length()) {
+                                    val score = Score(
+                                        arr.getJSONObject(i).getString("name"),
+                                        arr.getJSONObject(i).getDouble("promille"),
+                                        arr.getJSONObject(i).getInt("score"),
+                                        arr.getJSONObject(i).getBoolean("own")
+                                    )
+                                    score.synced = true
+                                    scores.add(score)
+                                }
+                                adapter.scores = scores
+                                adapter.notifyDataSetChanged()
+                                progressBar.visibility = View.GONE
+                            }
+                        },
+                        {
+                            progressBar.visibility = View.GONE
+                        }
+                    )
+                    queue.add(req)
+                } else {
+                    adapter.scores = config.highscoreList.scores
                     adapter.notifyDataSetChanged()
+                    progressBar.visibility = View.GONE
                 }
-            },
-            {}
-        )
-        queue.add(req)
+            }
+            override fun onTabUnselected(tab: TabLayout.Tab) {}
+            override fun onTabReselected(tab: TabLayout.Tab) {}
+        })
 
         buttonMenu.setOnClickListener {
             startActivity(Intent(this, MenuActivity::class.java))

@@ -24,4 +24,6 @@
     <string name="resume_game">Spiel fortsetzen</string>
     <string name="end_game">Spiel beenden</string>
     <string name="pause">Pause</string>
+    <string name="local">Lokal</string>
+    <string name="global">Global</string>
 </resources>

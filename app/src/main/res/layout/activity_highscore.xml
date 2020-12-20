@@ -22,15 +22,36 @@
         android:id="@+id/textTitle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="50dp"
         android:fontFamily="sans-serif-light"
         android:text="@string/highscore"
         android:textAlignment="center"
-        android:textSize="35sp"
-        app:layout_constraintBottom_toTopOf="@id/textPromille"
+        android:textSize="42sp"
+        app:layout_constraintBottom_toTopOf="@id/highscoreTabs"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/highscoreTabs"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textTitle">
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/tabLocal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/local" />
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/tabGlobal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/global" />
+
+    </com.google.android.material.tabs.TabLayout>
 
     <TextView
         android:id="@+id/textUsername"
@@ -43,7 +64,7 @@
         android:textSize="18sp"
         app:layout_constraintEnd_toStartOf="@id/textPromille"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textTitle" />
+        app:layout_constraintTop_toBottomOf="@id/highscoreTabs" />
 
     <TextView
         android:id="@+id/textPromille"
@@ -55,7 +76,7 @@
         android:textSize="18sp"
         app:layout_constraintEnd_toStartOf="@id/textScore"
         app:layout_constraintStart_toEndOf="@id/textUsername"
-        app:layout_constraintTop_toBottomOf="@id/textTitle" />
+        app:layout_constraintTop_toBottomOf="@id/highscoreTabs" />
 
     <TextView
         android:id="@+id/textScore"
@@ -68,7 +89,7 @@
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/textPromille"
-        app:layout_constraintTop_toBottomOf="@id/textTitle" />
+        app:layout_constraintTop_toBottomOf="@id/highscoreTabs" />
 
     <ListView
         android:id="@+id/highscoreList"
@@ -78,6 +99,16 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/textPromille" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@id/buttonMenu"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/highscoreTabs" />
 
     <Button
         android:id="@+id/buttonMenu"

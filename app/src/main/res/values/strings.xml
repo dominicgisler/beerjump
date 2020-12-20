@@ -30,4 +30,6 @@
     <string name="resume_game">Resume game</string>
     <string name="end_game">End game</string>
     <string name="pause">Pause</string>
+    <string name="local">Local</string>
+    <string name="global">Global</string>
 </resources>
