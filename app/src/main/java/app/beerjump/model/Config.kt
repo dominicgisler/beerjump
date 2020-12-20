@@ -64,4 +64,14 @@ class Config(val sharedPref: SharedPreferences, val baseContext: Context) {
         }, {})
         queue.add(req)
     }
+
+    fun resetData() {
+        highscoreList.lastUser = ""
+        highscoreList.scores.clear()
+        inputMethod = "touch"
+        uuid = UUID.randomUUID().toString()
+        starts = 1
+        save()
+        syncDevice()
+    }
 }

@@ -31,37 +31,43 @@ class GameScoreActivity : AbstractActivity() {
         name.setText(config.highscoreList.lastUser)
 
         ok.setOnClickListener {
-            loadingView.visibility = View.VISIBLE
-            val svScore = Score(name.text.toString(), promille, score, true)
+            val inputName = name.text.toString()
+            if (inputName.isEmpty()) {
+                name.error = getString(R.string.name_empty_error)
+            } else {
+                loadingView.visibility = View.VISIBLE
+                val svScore = Score(inputName, promille, score, true)
 
-            val queue = Volley.newRequestQueue(baseContext)
+                val queue = Volley.newRequestQueue(baseContext)
 
-            val jsonObject = JSONObject()
-            try {
-                jsonObject.put("name", svScore.username)
-                jsonObject.put("promille", svScore.promille)
-                jsonObject.put("score", svScore.score)
-            } catch (e: JSONException) {}
-
-            val req = JsonObjectRequest(
-                Request.Method.POST,
-                String.format(HIGHSCORE_URL, config.uuid),
-                jsonObject,
-                {
-                    if (it.getInt("statusCode") == 200) {
-                        svScore.synced = true
-                    }
-                    config.highscoreList.addScore(svScore)
-                    config.save()
-                    startActivity(Intent(this, HighscoreActivity::class.java))
-                },
-                {
-                    config.highscoreList.addScore(svScore)
-                    config.save()
-                    startActivity(Intent(this, HighscoreActivity::class.java))
+                val jsonObject = JSONObject()
+                try {
+                    jsonObject.put("name", svScore.username)
+                    jsonObject.put("promille", svScore.promille)
+                    jsonObject.put("score", svScore.score)
+                } catch (e: JSONException) {
                 }
-            )
-            queue.add(req)
+
+                val req = JsonObjectRequest(
+                    Request.Method.POST,
+                    String.format(HIGHSCORE_URL, config.uuid),
+                    jsonObject,
+                    {
+                        if (it.getInt("statusCode") == 200) {
+                            svScore.synced = true
+                        }
+                        config.highscoreList.addScore(svScore)
+                        config.save()
+                        startActivity(Intent(this, HighscoreActivity::class.java))
+                    },
+                    {
+                        config.highscoreList.addScore(svScore)
+                        config.save()
+                        startActivity(Intent(this, HighscoreActivity::class.java))
+                    }
+                )
+                queue.add(req)
+            }
         }
     }
 }

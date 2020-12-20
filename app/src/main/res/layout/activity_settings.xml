@@ -40,7 +40,7 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="80dp"
         android:fontFamily="sans-serif-light"
-        android:text="@string/reset_highscore"
+        android:text="@string/reset_data"
         app:layout_constraintBottom_toTopOf="@+id/inputTypeView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

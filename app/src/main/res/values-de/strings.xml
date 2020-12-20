@@ -8,8 +8,9 @@
     <string name="rank_name"># Name</string>
     <string name="name">Name</string>
     <string name="back_to_menu">zurück ins Menü</string>
-    <string name="reset_highscore">Highscore zurücksetzen</string>
-    <string name="highscore_resetted">Highscore wurde zurückgesetzt</string>
+    <string name="reset_data">Daten zurücksetzen</string>
+    <string name="reset_data_confirm">Möchtest du die Daten wirklich zurücksetzen? Alle deine lokalen Einstellungen und Highscores gehen dabei verloren.</string>
+    <string name="data_resetted">Daten wurden zurückgesetzt</string>
     <string name="game_score">Game Score</string>
     <string name="ok">OK!</string>
     <string name="tunnel">Tunnel</string>
@@ -26,4 +27,5 @@
     <string name="pause">Pause</string>
     <string name="local">Lokal</string>
     <string name="global">Global</string>
+    <string name="name_empty_error">Name darf nicht leer sein</string>
 </resources>

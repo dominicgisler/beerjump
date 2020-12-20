@@ -1,12 +1,12 @@
 package app.beerjump.activity
 
+import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import app.beerjump.R
 import kotlinx.android.synthetic.main.activity_highscore.buttonMenu
 import kotlinx.android.synthetic.main.activity_settings.*
-import java.util.*
 
 class SettingsActivity : AbstractActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,11 +22,23 @@ class SettingsActivity : AbstractActivity() {
             finish()
         }
         buttonResetHighscore.setOnClickListener {
-            config.highscoreList.scores.clear()
-            config.uuid = UUID.randomUUID().toString()
-            config.save()
-            config.syncDevice()
-            Toast.makeText(applicationContext, getString(R.string.highscore_resetted), Toast.LENGTH_SHORT).show()
+            AlertDialog.Builder(this)
+                .setTitle(getString(R.string.reset_data))
+                .setMessage(getString(R.string.reset_data_confirm))
+                .setPositiveButton(
+                    android.R.string.ok
+                ) { _, _ ->
+                    config.resetData()
+                    Toast.makeText(
+                        applicationContext,
+                        getString(R.string.data_resetted),
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    setDecorView()
+                }
+                .setNegativeButton(android.R.string.cancel) { _, _ ->
+                    setDecorView()
+                }.show()
         }
         buttonInputToggle.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {

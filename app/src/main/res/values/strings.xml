@@ -8,8 +8,9 @@
     <string name="rank_name"># Name</string>
     <string name="name">Name</string>
     <string name="back_to_menu">back to menu</string>
-    <string name="reset_highscore">reset highscore</string>
-    <string name="highscore_resetted">Highscore has been reset</string>
+    <string name="reset_data">Reset data</string>
+    <string name="reset_data_confirm">Do you really want to reset the data? All your local settings and highscores will be lost.</string>
+    <string name="data_resetted">Data has been reset</string>
     <string name="game_score">Game Score</string>
     <string name="ok">OK!</string>
     <string name="tunnel">Tunnel</string>
@@ -32,4 +33,5 @@
     <string name="pause">Pause</string>
     <string name="local">Local</string>
     <string name="global">Global</string>
+    <string name="name_empty_error">Name must not be empty</string>
 </resources>
