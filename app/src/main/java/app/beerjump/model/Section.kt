@@ -26,13 +26,17 @@ class Section(val gameView: ViewGroup, val startY: Int, val maxBars: Int) {
             val barX = ((Random.nextFloat() * (maxX - minX)) + minX).toInt()
             val barY = ((Random.nextFloat() * (maxY - minY)) + minY).toInt()
 
-            var barVars = 0..1
-            if (maxBars <= 3) {
-                barVars = 0..2
+            var barVars = 0..2
+            if (maxBars <= 4) {
+                barVars = 0..3
+                if (maxBars <= 3) {
+                    barVars = 0..4
+                }
             }
             when (barVars.random()) {
-                0,1 -> bars.add(Bar(gameView, barX, barY))
-                2 -> bars.add(MovingBar(gameView, barX, barY, minX, maxX))
+                0,1,2 -> bars.add(Bar(gameView, barX, barY))
+                3 -> bars.add(MovingYBar(gameView, barX, barY, minY, maxY))
+                4 -> bars.add(MovingXBar(gameView, barX, barY, minX, maxX))
             }
         }
     }

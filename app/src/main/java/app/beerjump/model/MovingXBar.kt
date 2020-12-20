@@ -2,7 +2,7 @@ package app.beerjump.model
 
 import android.view.ViewGroup
 
-class MovingBar(gameView: ViewGroup, posX: Int, posY: Int, val minX: Int, val maxX: Int) : Bar(gameView, posX, posY) {
+class MovingXBar(gameView: ViewGroup, posX: Int, posY: Int, val minX: Int, val maxX: Int) : Bar(gameView, posX, posY) {
     var dir = 1
 
     override fun removeView() {
