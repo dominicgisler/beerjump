@@ -2,7 +2,7 @@
 <resources>
     <string name="play">Spielen</string>
     <string name="highscore">Highscore</string>
-    <string name="score">Score</string>
+    <string name="score">Punktzahl</string>
     <string name="promille">Promille</string>
     <string name="settings">Einstellungen</string>
     <string name="rank_name"># Name</string>
@@ -33,4 +33,20 @@
     <string name="rate_now">Jetzt bewerten</string>
     <string name="no_thanks">Nein, danke</string>
     <string name="remind_me_later">Später erinnern</string>
+    <string name="statistics">Statistiken</string>
+    <string name="app_started">App gestartet</string>
+    <string name="games_played">Spiele gespielt</string>
+    <string name="default_bars_jumped_on">Einfache Balken gesprungen</string>
+    <string name="horizontal_moving_bars">Horizontal bewegte Balken</string>
+    <string name="vertical_moving_bars">Vertikal bewegte Balken</string>
+    <string name="beers_drunk">Getrunkene Biere</string>
+    <string name="shots_drunk">Getrunkene Shots</string>
+    <string name="rockets_used">Genutzte Raketen</string>
+    <string name="total_duration">Gesamtdauer</string>
+    <string name="longest_duration">Längste Dauer</string>
+    <string name="last_duration">Letzte Dauer</string>
+    <string name="highest_score">Höchste Punktzahl</string>
+    <string name="last_score">Letzte Punktzahl</string>
+    <string name="falls">Stürze</string>
+    <string name="cancelled_games">Abgebrochene Spiele</string>
 </resources>

@@ -39,4 +39,20 @@
     <string name="rate_now">Rate it now</string>
     <string name="no_thanks">No, thanks</string>
     <string name="remind_me_later">Remind me later</string>
+    <string name="statistics">Statistics</string>
+    <string name="app_started">App started</string>
+    <string name="games_played">Games played</string>
+    <string name="default_bars_jumped_on">Default bars jumped on</string>
+    <string name="horizontal_moving_bars">Horizontal moving bars</string>
+    <string name="vertical_moving_bars">Vertical moving bars</string>
+    <string name="beers_drunk">Beers drunk</string>
+    <string name="shots_drunk">Shots drunk</string>
+    <string name="rockets_used">Rockets used</string>
+    <string name="total_duration">Total duration</string>
+    <string name="longest_duration">Longest duration</string>
+    <string name="last_duration">Last duration</string>
+    <string name="highest_score">Highest score</string>
+    <string name="last_score">Last score</string>
+    <string name="falls">Falls</string>
+    <string name="cancelled_games">Cancelled games</string>
 </resources>
