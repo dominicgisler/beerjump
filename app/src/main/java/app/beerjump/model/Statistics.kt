@@ -14,6 +14,8 @@ class Statistics() {
     var lastDuration = 0
     var highScore = 0
     var lastScore = 0
+    var highestPromille = 0.0f
+    var lastPromille = 0.0f
     var falls = 0
     var quits = 0
 }

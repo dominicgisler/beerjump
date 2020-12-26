@@ -43,7 +43,6 @@ class GameActivity : AbstractActivity(), SensorEventListener {
         }
         game = Game(gameLayout, highscore)
         Config.stats.plays++
-        Config.stats.highScore = highscore
         Config.save()
 
         val startTime = System.currentTimeMillis()
@@ -56,6 +55,14 @@ class GameActivity : AbstractActivity(), SensorEventListener {
                     Config.stats.durationTotal += seconds
                     if (seconds > Config.stats.durationTop) {
                         Config.stats.durationTop = seconds
+                    }
+                    Config.stats.lastScore = game.player.score
+                    if (game.player.score > Config.stats.highScore) {
+                        Config.stats.highScore = game.player.score
+                    }
+                    Config.stats.lastPromille = game.player.promille.toFloat()
+                    if (game.player.promille > Config.stats.highestPromille) {
+                        Config.stats.highestPromille = game.player.promille.toFloat()
                     }
                     Config.stats.falls++
                     Config.save()

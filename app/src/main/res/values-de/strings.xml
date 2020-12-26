@@ -49,4 +49,6 @@
     <string name="last_score">Letzte Punktzahl</string>
     <string name="falls">Stürze</string>
     <string name="cancelled_games">Abgebrochene Spiele</string>
+    <string name="enter">Eintragen</string>
+    <string name="skip">Überspringen</string>
 </resources>

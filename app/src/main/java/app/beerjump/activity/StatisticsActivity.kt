@@ -31,7 +31,7 @@ class StatisticsActivity : AbstractActivity() {
         stats.add(KeyValuePair(getString(R.string.last_duration), secondsToTime(Config.stats.lastDuration)))
         stats.add(KeyValuePair("", ""))
         stats.add(KeyValuePair(getString(R.string.highest_score), Config.stats.highScore.toString()))
-        stats.add(KeyValuePair(getString(R.string.last_duration), Config.stats.lastScore.toString()))
+        stats.add(KeyValuePair(getString(R.string.last_score), Config.stats.lastScore.toString()))
         stats.add(KeyValuePair("", ""))
         stats.add(KeyValuePair(getString(R.string.falls), Config.stats.falls.toString()))
         stats.add(KeyValuePair(getString(R.string.cancelled_games), Config.stats.quits.toString()))

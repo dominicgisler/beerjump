@@ -31,14 +31,17 @@ class GameScoreActivity : AbstractActivity() {
 
         name.setText(Config.highscoreList.lastUser)
 
-        ok.setOnClickListener {
+        skip.setOnClickListener {
+            startActivity(Intent(this, MenuActivity::class.java))
+            finish()
+        }
+        enter.setOnClickListener {
             val inputName = name.text.toString()
             if (inputName.isEmpty()) {
                 name.error = getString(R.string.name_empty_error)
             } else {
                 loadingView.visibility = View.VISIBLE
                 val svScore = Score(inputName, promille, score, true)
-                Config.stats.lastScore = score
 
                 val queue = Volley.newRequestQueue(baseContext)
 
@@ -61,11 +64,13 @@ class GameScoreActivity : AbstractActivity() {
                         Config.highscoreList.addScore(svScore)
                         Config.save()
                         startActivity(Intent(this, HighscoreActivity::class.java))
+                        finish()
                     },
                     {
                         Config.highscoreList.addScore(svScore)
                         Config.save()
                         startActivity(Intent(this, HighscoreActivity::class.java))
+                        finish()
                     }
                 )
                 queue.add(req)

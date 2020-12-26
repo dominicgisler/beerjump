@@ -55,4 +55,6 @@
     <string name="last_score">Last score</string>
     <string name="falls">Falls</string>
     <string name="cancelled_games">Cancelled games</string>
+    <string name="enter">Enter</string>
+    <string name="skip">Skip</string>
 </resources>

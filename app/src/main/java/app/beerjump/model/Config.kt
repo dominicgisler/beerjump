@@ -51,6 +51,8 @@ object Config {
         stats.lastDuration = sharedPref.getInt("last_duration", 0)
         stats.highScore = sharedPref.getInt("high_score", 0)
         stats.lastScore = sharedPref.getInt("last_score", 0)
+        stats.highestPromille = sharedPref.getFloat("highest_promille", 0.0f)
+        stats.lastPromille = sharedPref.getFloat("last_promille", 0.0f)
         stats.falls = sharedPref.getInt("falls", 0)
         stats.quits = sharedPref.getInt("quits", 0)
 
@@ -79,6 +81,8 @@ object Config {
             putInt("last_duration", stats.lastDuration)
             putInt("high_score", stats.highScore)
             putInt("last_score", stats.lastScore)
+            putFloat("highest_promille", stats.highestPromille)
+            putFloat("last_promille", stats.lastPromille)
             putInt("falls", stats.falls)
             putInt("quits", stats.quits)
 
@@ -111,6 +115,8 @@ object Config {
             jsonObject.put("last_duration", stats.lastDuration)
             jsonObject.put("high_score", stats.highScore)
             jsonObject.put("last_score", stats.lastScore)
+            jsonObject.put("highest_promille", stats.highestPromille)
+            jsonObject.put("last_promille", stats.lastPromille)
             jsonObject.put("falls", stats.falls)
             jsonObject.put("quits", stats.quits)
         } catch (e: JSONException) {}
