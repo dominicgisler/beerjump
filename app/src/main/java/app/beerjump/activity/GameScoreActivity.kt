@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import app.beerjump.R
+import app.beerjump.model.Config
 import app.beerjump.model.Score
 import com.android.volley.Request
 import com.android.volley.toolbox.JsonObjectRequest
@@ -24,11 +25,11 @@ class GameScoreActivity : AbstractActivity() {
 
         scoreScore.text = score.toString()
         scorePromille.text = String.format("%.2f‰", promille)
-        if (!config.highscoreList.scores.isEmpty()) {
-            scoreHighscore.text = config.highscoreList.scores.first().score.toString()
+        if (!Config.highscoreList.scores.isEmpty()) {
+            scoreHighscore.text = Config.highscoreList.scores.first().score.toString()
         }
 
-        name.setText(config.highscoreList.lastUser)
+        name.setText(Config.highscoreList.lastUser)
 
         ok.setOnClickListener {
             val inputName = name.text.toString()
@@ -37,6 +38,7 @@ class GameScoreActivity : AbstractActivity() {
             } else {
                 loadingView.visibility = View.VISIBLE
                 val svScore = Score(inputName, promille, score, true)
+                Config.stats.lastScore = score
 
                 val queue = Volley.newRequestQueue(baseContext)
 
@@ -50,19 +52,19 @@ class GameScoreActivity : AbstractActivity() {
 
                 val req = JsonObjectRequest(
                     Request.Method.POST,
-                    String.format(HIGHSCORE_URL, config.uuid),
+                    String.format(HIGHSCORE_URL, Config.uuid),
                     jsonObject,
                     {
                         if (it.getInt("statusCode") == 200) {
                             svScore.synced = true
                         }
-                        config.highscoreList.addScore(svScore)
-                        config.save()
+                        Config.highscoreList.addScore(svScore)
+                        Config.save()
                         startActivity(Intent(this, HighscoreActivity::class.java))
                     },
                     {
-                        config.highscoreList.addScore(svScore)
-                        config.save()
+                        Config.highscoreList.addScore(svScore)
+                        Config.save()
                         startActivity(Intent(this, HighscoreActivity::class.java))
                     }
                 )

@@ -33,4 +33,11 @@ open class Bar(gameView: ViewGroup, posX: Int, posY: Int) : GuiElement(gameView,
             item!!.removeView()
         }
     }
+
+    open fun jump(player: Player) {
+        SoundPlayer.hop.start()
+        if (this::class.java == Bar::class.java) {
+            Config.stats.cntBar++
+        }
+    }
 }

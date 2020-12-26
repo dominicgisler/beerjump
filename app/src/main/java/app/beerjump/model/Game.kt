@@ -54,7 +54,7 @@ class Game(val gameLayout: ViewGroup, val highscore: Int) {
                 if (player.speed < 0) {
                     if ((player.posX + Player.width / 2) in bar.posX..(bar.posX + Bar.width) && (player.posY) in bar.posY..(bar.posY + Bar.height)) {
                         player.speed = speedUp
-                        SoundPlayer.hop.start()
+                        bar.jump(player)
                     }
                 }
                 if (bar.item != null) {

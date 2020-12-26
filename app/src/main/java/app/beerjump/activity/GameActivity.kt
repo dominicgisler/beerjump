@@ -10,6 +10,7 @@ import android.os.Bundle
 import android.view.MotionEvent
 import android.view.View
 import app.beerjump.R
+import app.beerjump.model.Config
 import app.beerjump.model.Game
 import app.beerjump.model.SoundPlayer
 import kotlinx.android.synthetic.main.activity_game.*
@@ -26,7 +27,7 @@ class GameActivity : AbstractActivity(), SensorEventListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_game)
 
-        if (config.inputMethod == "sensor") {
+        if (Config.inputMethod == "sensor") {
             sensorManager = getSystemService(Context.SENSOR_SERVICE) as SensorManager
             sensorManager.registerListener(
                 this,
@@ -35,16 +36,29 @@ class GameActivity : AbstractActivity(), SensorEventListener {
             )
         }
 
-        val scores = config.highscoreList.scores
+        val scores = Config.highscoreList.scores
         var highscore = 0
         if (scores.size > 0) {
             highscore = scores.first().score
         }
         game = Game(gameLayout, highscore)
+        Config.stats.plays++
+        Config.stats.highScore = highscore
+        Config.save()
+
+        val startTime = System.currentTimeMillis()
 
         renderRun = object : Runnable {
             override fun run() {
                 if (!game.step()) {
+                    val seconds = ((System.currentTimeMillis() - startTime) / 1000).toInt()
+                    Config.stats.lastDuration = seconds
+                    Config.stats.durationTotal += seconds
+                    if (seconds > Config.stats.durationTop) {
+                        Config.stats.durationTop = seconds
+                    }
+                    Config.stats.falls++
+                    Config.save()
                     val intent = Intent(baseContext, GameScoreActivity::class.java)
                     intent.putExtra("score", game.player.score)
                     intent.putExtra("promille", game.player.promille)
@@ -72,6 +86,8 @@ class GameActivity : AbstractActivity(), SensorEventListener {
         }
 
         buttonEndGame.setOnClickListener {
+            Config.stats.quits++
+            Config.save()
             startActivity(Intent(baseContext, MenuActivity::class.java))
             finish()
         }
@@ -102,7 +118,7 @@ class GameActivity : AbstractActivity(), SensorEventListener {
     }
 
     override fun onTouchEvent(event: MotionEvent): Boolean {
-        if (config.inputMethod == "sensor") {
+        if (Config.inputMethod == "sensor") {
             return false
         }
         val x = event.x.toInt()
@@ -122,7 +138,7 @@ class GameActivity : AbstractActivity(), SensorEventListener {
     }
 
     override fun onSensorChanged(event: SensorEvent?) {
-        if (config.inputMethod == "touch") {
+        if (Config.inputMethod == "touch") {
             return
         }
         if (event?.values != null) {

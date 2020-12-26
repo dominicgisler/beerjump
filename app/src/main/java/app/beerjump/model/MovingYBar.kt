@@ -24,4 +24,9 @@ class MovingYBar(gameView: ViewGroup, posX: Int, posY: Int, val minY: Int, val m
         }
         super.updateView(player)
     }
+
+    override fun jump(player: Player) {
+        super.jump(player)
+        Config.stats.cntMovingYBar++
+    }
 }

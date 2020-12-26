@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.View
 import app.beerjump.R
 import app.beerjump.adapter.ScoreAdapter
+import app.beerjump.model.Config
 import app.beerjump.model.Score
 import com.android.volley.Request
 import com.android.volley.toolbox.JsonObjectRequest
@@ -22,10 +23,11 @@ class HighscoreActivity : AbstractActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_highscore)
 
-        val adapter = ScoreAdapter(config.highscoreList.scores, baseContext)
+        Config.highscoreList.scores.sortByDescending { it.score }
+        val adapter = ScoreAdapter(Config.highscoreList.scores, baseContext)
         highscoreList.adapter = adapter
 
-        val iter = config.highscoreList.scores.iterator()
+        val iter = Config.highscoreList.scores.iterator()
         while (iter.hasNext()) {
             val score = iter.next()
             if (score.own && !score.synced) {
@@ -40,12 +42,12 @@ class HighscoreActivity : AbstractActivity() {
 
                 val req = JsonObjectRequest(
                     Request.Method.POST,
-                    String.format(HIGHSCORE_URL, config.uuid),
+                    String.format(HIGHSCORE_URL, Config.uuid),
                     jsonObject,
                     {
                         if (it.getInt("statusCode") == 200) {
                             score.synced = true
-                            config.save()
+                            Config.save()
                         }
                     },
                     {}
@@ -53,10 +55,10 @@ class HighscoreActivity : AbstractActivity() {
                 queue.add(req)
             } else if (!score.own) {
                 iter.remove()
-                config.save()
+                Config.save()
             }
         }
-        adapter.scores = config.highscoreList.scores
+        adapter.scores = Config.highscoreList.scores
         adapter.notifyDataSetChanged()
 
         highscoreTabs.addOnTabSelectedListener(object : OnTabSelectedListener {
@@ -69,7 +71,7 @@ class HighscoreActivity : AbstractActivity() {
                     val queue = Volley.newRequestQueue(baseContext)
                     val req = JsonObjectRequest(
                         Request.Method.GET,
-                        String.format(HIGHSCORE_URL, config.uuid),
+                        String.format(HIGHSCORE_URL, Config.uuid),
                         null,
                         {
                             if (it.getInt("statusCode") == 200) {
@@ -96,7 +98,7 @@ class HighscoreActivity : AbstractActivity() {
                     )
                     queue.add(req)
                 } else {
-                    adapter.scores = config.highscoreList.scores
+                    adapter.scores = Config.highscoreList.scores
                     adapter.notifyDataSetChanged()
                     progressBar.visibility = View.GONE
                 }

@@ -6,6 +6,7 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import app.beerjump.R
+import app.beerjump.model.Config
 import kotlinx.android.synthetic.main.activity_menu.*
 
 class MenuActivity : AbstractActivity() {
@@ -18,9 +19,9 @@ class MenuActivity : AbstractActivity() {
                 .setTitle(getString(R.string.rate_title))
                 .setMessage(getString(R.string.rate_description))
                 .setPositiveButton(R.string.rate_now) { _, _ ->
-                    config.rating = "rate"
-                    config.save()
-                    config.syncDevice()
+                    Config.rating = "rate"
+                    Config.save()
+                    Config.syncDevice()
                     val appPackageName = packageName
                     try {
                         startActivity(
@@ -40,15 +41,15 @@ class MenuActivity : AbstractActivity() {
                     setDecorView()
                 }
                 .setNegativeButton(R.string.no_thanks) { _, _ ->
-                    config.rating = "never"
-                    config.save()
-                    config.syncDevice()
+                    Config.rating = "never"
+                    Config.save()
+                    Config.syncDevice()
                     setDecorView()
                 }
                 .setNeutralButton(R.string.remind_me_later) { _, _ ->
-                    config.rating = "remind"
-                    config.save()
-                    config.syncDevice()
+                    Config.rating = "remind"
+                    Config.save()
+                    Config.syncDevice()
                     setDecorView()
                 }.show()
         }

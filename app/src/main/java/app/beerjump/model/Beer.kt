@@ -13,5 +13,6 @@ class Beer(gameView: ViewGroup, posX: Int, posY: Int) : Item(gameView, posX, pos
     override fun pickup(player: Player) {
         SoundPlayer.beer.start()
         player.promille += promille
+        Config.stats.cntBeer++
     }
 }

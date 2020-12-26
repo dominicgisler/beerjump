@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import app.beerjump.R
+import app.beerjump.model.Config
 import kotlinx.android.synthetic.main.activity_highscore.buttonMenu
 import kotlinx.android.synthetic.main.activity_settings.*
 
@@ -13,7 +14,7 @@ class SettingsActivity : AbstractActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_settings)
 
-        if (config.inputMethod == "sensor") {
+        if (Config.inputMethod == "sensor") {
             buttonInputToggle.isChecked = true
         }
 
@@ -28,7 +29,7 @@ class SettingsActivity : AbstractActivity() {
                 .setPositiveButton(
                     android.R.string.ok
                 ) { _, _ ->
-                    config.resetData()
+                    Config.resetData()
                     Toast.makeText(
                         applicationContext,
                         getString(R.string.data_resetted),
@@ -42,11 +43,11 @@ class SettingsActivity : AbstractActivity() {
         }
         buttonInputToggle.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
-                config.inputMethod = "sensor"
+                Config.inputMethod = "sensor"
             } else {
-                config.inputMethod = "touch"
+                Config.inputMethod = "touch"
             }
-            config.save()
+            Config.save()
         }
     }
 }
