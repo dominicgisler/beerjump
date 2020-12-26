@@ -60,11 +60,11 @@ class MenuActivity : AbstractActivity() {
         buttonHighscore.setOnClickListener {
             startActivity(Intent(this, HighscoreActivity::class.java))
         }
-        buttonSettings.setOnClickListener {
-            startActivity(Intent(this, SettingsActivity::class.java))
-        }
         buttonStatistics.setOnClickListener {
             startActivity(Intent(this, StatisticsActivity::class.java))
+        }
+        buttonSettings.setOnClickListener {
+            startActivity(Intent(this, SettingsActivity::class.java))
         }
         buttonAbout.setOnClickListener {
             startActivity(Intent(this, AboutActivity::class.java))

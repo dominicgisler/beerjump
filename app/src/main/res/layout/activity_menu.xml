@@ -52,23 +52,10 @@
         android:layout_marginTop="20dp"
         android:fontFamily="sans-serif-light"
         android:text="@string/highscore"
-        app:layout_constraintBottom_toTopOf="@id/buttonSettings"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonPlay" />
-
-    <Button
-        android:id="@+id/buttonSettings"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="20dp"
-        android:fontFamily="sans-serif-light"
-        android:text="@string/settings"
         app:layout_constraintBottom_toTopOf="@id/buttonStatistics"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonHighscore" />
+        app:layout_constraintTop_toBottomOf="@+id/buttonPlay" />
 
     <Button
         android:id="@+id/buttonStatistics"
@@ -78,10 +65,23 @@
         android:layout_marginTop="20dp"
         android:fontFamily="sans-serif-light"
         android:text="@string/statistics"
+        app:layout_constraintBottom_toTopOf="@id/buttonSettings"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonHighscore" />
+
+    <Button
+        android:id="@+id/buttonSettings"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:fontFamily="sans-serif-light"
+        android:text="@string/settings"
         app:layout_constraintBottom_toTopOf="@id/buttonAbout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonSettings" />
+        app:layout_constraintTop_toBottomOf="@+id/buttonStatistics" />
 
     <Button
         android:id="@+id/buttonAbout"
@@ -93,6 +93,6 @@
         android:text="@string/about"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonStatistics" />
+        app:layout_constraintTop_toBottomOf="@+id/buttonSettings" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
