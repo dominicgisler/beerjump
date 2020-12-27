@@ -59,4 +59,7 @@
     <string name="skip">Skip</string>
     <string name="info">Info</string>
     <string name="data_privacy">Data privacy</string>
+    <string name="update_title">Update available</string>
+    <string name="update_description">A new update for Beer Jump is available. Would you like to update?</string>
+    <string name="update_now">Update it now</string>
 </resources>

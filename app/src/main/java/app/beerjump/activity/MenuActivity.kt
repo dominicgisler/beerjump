@@ -22,22 +22,7 @@ class MenuActivity : AbstractActivity() {
                     Config.rating = "rate"
                     Config.save()
                     Config.syncDevice()
-                    val appPackageName = packageName
-                    try {
-                        startActivity(
-                            Intent(
-                                Intent.ACTION_VIEW,
-                                Uri.parse("market://details?id=$appPackageName")
-                            )
-                        )
-                    } catch (anfe: ActivityNotFoundException) {
-                        startActivity(
-                            Intent(
-                                Intent.ACTION_VIEW,
-                                Uri.parse("https://play.google.com/store/apps/details?id=$appPackageName")
-                            )
-                        )
-                    }
+                    openStore()
                     setDecorView()
                 }
                 .setNegativeButton(R.string.no_thanks) { _, _ ->
@@ -50,6 +35,17 @@ class MenuActivity : AbstractActivity() {
                     Config.rating = "remind"
                     Config.save()
                     Config.syncDevice()
+                    setDecorView()
+                }.show()
+        } else if (intent.getBooleanExtra("show_update_dialog", false)) {
+            AlertDialog.Builder(this)
+                .setTitle(getString(R.string.update_title))
+                .setMessage(getString(R.string.update_description))
+                .setPositiveButton(R.string.update_now) { _, _ ->
+                    openStore()
+                    setDecorView()
+                }
+                .setNeutralButton(R.string.remind_me_later) { _, _ ->
                     setDecorView()
                 }.show()
         }
@@ -68,6 +64,25 @@ class MenuActivity : AbstractActivity() {
         }
         buttonInfo.setOnClickListener {
             startActivity(Intent(this, InfoActivity::class.java))
+        }
+    }
+
+    fun openStore() {
+        val appPackageName = packageName
+        try {
+            startActivity(
+                Intent(
+                    Intent.ACTION_VIEW,
+                    Uri.parse("market://details?id=$appPackageName")
+                )
+            )
+        } catch (anfe: ActivityNotFoundException) {
+            startActivity(
+                Intent(
+                    Intent.ACTION_VIEW,
+                    Uri.parse("https://play.google.com/store/apps/details?id=$appPackageName")
+                )
+            )
         }
     }
 }

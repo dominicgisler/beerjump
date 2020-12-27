@@ -53,4 +53,7 @@
     <string name="skip">Überspringen</string>
     <string name="info">Info</string>
     <string name="data_privacy">Datenschutz</string>
+    <string name="update_title">Update verfügbar</string>
+    <string name="update_description">Ein neues Update für Beer Jump ist verfügbar. Möchtest du die App aktualisieren?</string>
+    <string name="update_now">Jetzt aktualisieren</string>
 </resources>
