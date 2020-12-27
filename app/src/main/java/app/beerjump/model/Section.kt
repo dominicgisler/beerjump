@@ -5,9 +5,15 @@ import kotlin.random.Random
 
 class Section(val gameView: ViewGroup, val startY: Int, val maxBars: Int) {
     companion object {
-        val height = 250
-        val padding = 30
+        var height = 0
+        var padding = 0
         var num = 0
+
+        fun calcSizes(gameView: ViewGroup) {
+            val scale: Float = gameView.context.resources.displayMetrics.density
+            height = (100 * scale + 0.5f).toInt()
+            padding = (12 * scale + 0.5f).toInt()
+        }
     }
     val bars = ArrayList<Bar>()
 

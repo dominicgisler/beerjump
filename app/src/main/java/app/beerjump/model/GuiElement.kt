@@ -9,6 +9,12 @@ open class GuiElement(val gameView: ViewGroup, var posX: Int, var posY: Int) {
     companion object {
         var width = 0
         var height = 0
+
+        fun calcSizes(gameView: ViewGroup) {
+            val scale: Float = gameView.context.resources.displayMetrics.density
+            width = (width * scale + 0.5f).toInt()
+            height = (height * scale + 0.5f).toInt()
+        }
     }
 
     var view = ImageView(gameView.context)

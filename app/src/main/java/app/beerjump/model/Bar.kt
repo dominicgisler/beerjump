@@ -6,8 +6,14 @@ import kotlin.random.Random
 
 open class Bar(gameView: ViewGroup, posX: Int, posY: Int) : GuiElement(gameView, posX, posY) {
     companion object {
-        var width = 180
-        var height = 40
+        var width = 0
+        var height = 0
+
+        fun calcSizes(gameView: ViewGroup) {
+            val scale: Float = gameView.context.resources.displayMetrics.density
+            width = (70 * scale + 0.5f).toInt()
+            height = (16 * scale + 0.5f).toInt()
+        }
     }
     var item : Item? = null
     val itemChance = 0.05

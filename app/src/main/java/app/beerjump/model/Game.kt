@@ -9,14 +9,21 @@ class Game(val gameLayout: ViewGroup, val highscore: Int) {
     val promilleStep = -0.0001
     val difficultyStep = 20000
 
-    val player: Player = Player(gameLayout.gameView, 0, 0)
     val sections: ArrayList<Section> = ArrayList()
+    lateinit var player: Player
     lateinit var tunnel: Tunnel
 
     var gameView = gameLayout.gameView
     var statsView = gameLayout.statsView
 
     fun generate() {
+        // calculate sizes from dp to pixels
+        Section.calcSizes(gameView)
+        Bar.calcSizes(gameView)
+        Player.calcSizes(gameView)
+        Item.calcSizes(gameView)
+
+        player = Player(gameLayout.gameView, 0, 0)
         Section.num = 0
         for (i in 0..gameView.height / Section.height) {
             addBarSection(i * Section.height)
