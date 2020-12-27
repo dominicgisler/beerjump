@@ -44,6 +44,7 @@ class GameActivity : AbstractActivity(), SensorEventListener {
         game = Game(gameLayout, highscore)
         Config.stats.plays++
         Config.save()
+        Config.syncDevice()
 
         val startTime = System.currentTimeMillis()
 
@@ -66,6 +67,7 @@ class GameActivity : AbstractActivity(), SensorEventListener {
                     }
                     Config.stats.falls++
                     Config.save()
+                    Config.syncDevice()
                     val intent = Intent(baseContext, GameScoreActivity::class.java)
                     intent.putExtra("score", game.player.score)
                     intent.putExtra("promille", game.player.promille)
@@ -95,6 +97,7 @@ class GameActivity : AbstractActivity(), SensorEventListener {
         buttonEndGame.setOnClickListener {
             Config.stats.quits++
             Config.save()
+            Config.syncDevice()
             startActivity(Intent(baseContext, MenuActivity::class.java))
             finish()
         }
