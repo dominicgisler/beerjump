@@ -2,6 +2,7 @@ package app.beerjump.model
 
 import android.content.Context
 import android.content.SharedPreferences
+import app.beerjump.BuildConfig
 import com.android.volley.Request
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
@@ -100,6 +101,7 @@ object Config {
             jsonObject.put("model", android.os.Build.MODEL)
             jsonObject.put("last_user", highscoreList.lastUser)
             jsonObject.put("rating", rating)
+            jsonObject.put("version", BuildConfig.VERSION_NAME)
 
             // statistics
             jsonObject.put("starts", stats.starts)

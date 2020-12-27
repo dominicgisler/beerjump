@@ -51,4 +51,6 @@
     <string name="cancelled_games">Abgebrochene Spiele</string>
     <string name="enter">Eintragen</string>
     <string name="skip">Überspringen</string>
+    <string name="info">Info</string>
+    <string name="data_privacy">Datenschutz</string>
 </resources>
