@@ -103,13 +103,13 @@ class Game(val gameLayout: ViewGroup, val highscore: Int) {
                     continue
                 }
                 bar.updateView(player)
-                bar.view.y = (posY - player.promille * 2).toFloat()
-                bar.view2.y = (posY + player.promille * 2).toFloat()
+                bar.view.y = (posY - GuiElement.dpToPixels(gameView, player.promille.toFloat()))
+                bar.view2.y = (posY + GuiElement.dpToPixels(gameView, player.promille.toFloat()))
                 if (bar.item != null) {
                     val item = bar.item!!
                     posY = (gameView.height - item.posY - Item.height) + height
-                    item.view.y = (posY - player.promille * 2).toFloat()
-                    item.view2.y = (posY + player.promille * 2).toFloat()
+                    item.view.y = (posY - GuiElement.dpToPixels(gameView, player.promille.toFloat()))
+                    item.view2.y = (posY + GuiElement.dpToPixels(gameView, player.promille.toFloat()))
                     item.updateView(player)
                 }
             }
