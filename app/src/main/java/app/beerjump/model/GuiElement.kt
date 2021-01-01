@@ -5,15 +5,19 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.core.content.ContextCompat
 
-open class GuiElement(val gameView: ViewGroup, var posX: Int, var posY: Int) {
+open class GuiElement(val gameView: ViewGroup, var posX: Float, var posY: Float) {
     companion object {
-        var width = 0
-        var height = 0
+        var width = 0.0f
+        var height = 0.0f
 
-        fun calcSizes(gameView: ViewGroup) {
-            val scale: Float = gameView.context.resources.displayMetrics.density
-            width = (width * scale + 0.5f).toInt()
-            height = (height * scale + 0.5f).toInt()
+        fun dpToPixels(gameView: ViewGroup, dp: Float): Float {
+            var scale = gameView.context.resources.displayMetrics.density
+            val widthDp = (gameView.width / scale)
+            val minWidthDp = 420
+            if (widthDp < minWidthDp) {
+                scale *= (widthDp / minWidthDp)
+            }
+            return (dp * scale)
         }
     }
 
@@ -23,17 +27,17 @@ open class GuiElement(val gameView: ViewGroup, var posX: Int, var posY: Int) {
     init {
         gameView.addView(view)
         gameView.addView(view2)
-        view.x = posX.toFloat()
-        view2.x = posX.toFloat()
+        view.x = posX
+        view2.x = posX
     }
 
-    fun initViews(width: Int, height: Int, drawableId: Int) {
-        view.layoutParams.width = width
-        view2.layoutParams.width = width
-        view.layoutParams.height = height
-        view2.layoutParams.height = height
-        view.y = -height.toFloat()
-        view2.y = -height.toFloat()
+    fun initViews(width: Float, height: Float, drawableId: Int) {
+        view.layoutParams.width = width.toInt()
+        view2.layoutParams.width = width.toInt()
+        view.layoutParams.height = height.toInt()
+        view2.layoutParams.height = height.toInt()
+        view.y = -height
+        view2.y = -height
         view.setImageDrawable(ContextCompat.getDrawable(gameView.context, drawableId))
         view2.setImageDrawable(ContextCompat.getDrawable(gameView.context, drawableId))
         view.alpha = 0.7f
@@ -50,22 +54,14 @@ open class GuiElement(val gameView: ViewGroup, var posX: Int, var posY: Int) {
     }
 
     open fun updateView(player: Player) {
-        moveToX(view, (posX - player.promille * 5))
-        moveToX(view2, (posX + player.promille * 5))
+        moveToX(view, (posX - dpToPixels(gameView, (player.promille * 2).toFloat())))
+        moveToX(view2, (posX + dpToPixels(gameView, (player.promille * 2).toFloat())))
         val alpha = (0.7 - player.promille / 10).toFloat()
         adjustAlpha(view, if (alpha > 0.4) alpha else 0.4f)
         adjustAlpha(view2, if (alpha > 0.4) alpha else 0.4f)
     }
 
-    fun moveToX(view: View, x: Double) {
-        if (view.x > x) {
-            view.x--
-        } else if (view.x < x) {
-            view.x++
-        }
-    }
-
-    fun moveToY(view: View, x: Double) {
+    fun moveToX(view: View, x: Float) {
         if (view.x > x) {
             view.x--
         } else if (view.x < x) {

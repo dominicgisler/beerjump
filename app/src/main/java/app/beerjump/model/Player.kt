@@ -4,18 +4,18 @@ import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import app.beerjump.R
 
-class Player(gameView: ViewGroup, posX: Int, posY: Int) : GuiElement(gameView, posX, posY) {
+class Player(gameView: ViewGroup, posX: Float, posY: Float) : GuiElement(gameView, posX, posY) {
     companion object {
-        var width = 0
-        var height = 0
+        var width = 0.0f
+        var height = 0.0f
 
         fun calcSizes(gameView: ViewGroup) {
-            val scale: Float = gameView.context.resources.displayMetrics.density
-            width = (56 * scale + 0.5f).toInt()
-            height = (64 * scale + 0.5f).toInt()
+            width = dpToPixels(gameView, 56.0f)
+            height = dpToPixels(gameView, 64.0f)
         }
     }
-    var speed = 30
+
+    var speed: Float = Bar.speedUp
     var direction = 0
     var promille = 0.0
     var score = 0
@@ -28,11 +28,21 @@ class Player(gameView: ViewGroup, posX: Int, posY: Int) : GuiElement(gameView, p
     }
 
     fun updateView() {
-        view.x = posX.toFloat()
+        view.x = posX
         if (speed > 0) {
-            view.setImageDrawable(ContextCompat.getDrawable(gameView.context, R.drawable.ic_player_up))
+            view.setImageDrawable(
+                ContextCompat.getDrawable(
+                    gameView.context,
+                    R.drawable.ic_player_up
+                )
+            )
         } else {
-            view.setImageDrawable(ContextCompat.getDrawable(gameView.context, R.drawable.ic_player_down))
+            view.setImageDrawable(
+                ContextCompat.getDrawable(
+                    gameView.context,
+                    R.drawable.ic_player_down
+                )
+            )
         }
     }
 }

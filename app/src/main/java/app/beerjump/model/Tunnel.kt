@@ -4,9 +4,9 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import app.beerjump.R
 
-class Tunnel(gameView: ViewGroup, posX: Int, posY: Int) : GuiElement(gameView, posX, posY) {
-    val width = gameView.width * 4
-    val height = gameView.height * 3
+class Tunnel(gameView: ViewGroup, posX: Float, posY: Float) : GuiElement(gameView, posX, posY) {
+    val width = gameView.width * 4.0f
+    val height = gameView.height * 3.0f
 
     init {
         initViews(width, height, R.drawable.tunnel)

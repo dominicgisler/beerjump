@@ -4,7 +4,6 @@ import android.view.ViewGroup
 import kotlinx.android.synthetic.main.activity_game.view.*
 
 class Game(val gameLayout: ViewGroup, val highscore: Int) {
-    val speedUp = 30
     var height = 0
     val promilleStep = -0.0001
     val difficultyStep = 20000
@@ -23,44 +22,43 @@ class Game(val gameLayout: ViewGroup, val highscore: Int) {
         Player.calcSizes(gameView)
         Item.calcSizes(gameView)
 
-        player = Player(gameLayout.gameView, 0, 0)
+        player = Player(gameLayout.gameView, 0.0f, 0.0f)
         Section.num = 0
-        for (i in 0..gameView.height / Section.height) {
+        for (i in 0..(gameView.height / Section.height).toInt()) {
             addBarSection(i * Section.height)
         }
-        player.posX = gameView.width / 2 - Player.width / 2
-        player.posY = 0
+        player.posX = (gameView.width / 2 - Player.width / 2)
+        player.posY = 0.0f
         statsView.scoreHighscore.text = highscore.toString()
-        tunnel = Tunnel(gameLayout.gameView, 0, 0)
+        tunnel = Tunnel(gameLayout.gameView, 0.0f, 0.0f)
         SoundPlayer.init(gameView)
     }
 
-    private fun addBarSection(startY: Int) {
-        val maxBars = 5 - height/difficultyStep
+    private fun addBarSection(startY: Float) {
+        val maxBars = 5 - (height/difficultyStep).toInt()
         sections.add(Section(gameView, startY, maxBars))
     }
 
     fun step(): Boolean {
-        player.speed--
+        player.speed -= GuiElement.dpToPixels(gameView, 0.38f)
         if (player.promille > 0) {
             player.promille += promilleStep
         }
 
         if (player.posX < -Player.width) {
-            player.posX = gameView.width
+            player.posX = gameView.width.toFloat()
         } else if (player.posX > gameView.width) {
             player.posX = -Player.width
         }
 
         for (sec in sections) {
             for (bar in sec.bars) {
-                val posY = (gameView.height - bar.posY - Bar.height).toFloat() + height
+                val posY = (gameView.height - bar.posY - Bar.height) + height
                 if (posY > gameView.height) {
                     continue
                 }
                 if (player.speed < 0) {
                     if ((player.posX + Player.width / 2) in bar.posX..(bar.posX + Bar.width) && (player.posY) in bar.posY..(bar.posY + Bar.height)) {
-                        player.speed = speedUp
                         bar.jump(player)
                     }
                 }
@@ -77,7 +75,7 @@ class Game(val gameLayout: ViewGroup, val highscore: Int) {
 
 
         if (player.posY > (gameView.height / 2 + height) && player.speed > 0) {
-            height += player.speed
+            height += player.speed.toInt()
             player.score += (player.speed * (1 + player.promille)).toInt()
         }
 
@@ -89,7 +87,7 @@ class Game(val gameLayout: ViewGroup, val highscore: Int) {
             return false
         } else {
             player.posX += player.direction
-            player.posY += player.speed
+            player.posY += player.speed.toInt()
             return true
         }
     }
@@ -97,7 +95,7 @@ class Game(val gameLayout: ViewGroup, val highscore: Int) {
     fun render() {
         for (sec in sections) {
             for (bar in sec.bars) {
-                var posY = (gameView.height - bar.posY - Bar.height).toFloat() + height
+                var posY = (gameView.height - bar.posY - Bar.height) + height
                 if (posY < -Section.height || posY > gameView.height + Section.height) {
                     if (posY > gameView.height + Section.height) {
                         bar.removeView()
@@ -109,7 +107,7 @@ class Game(val gameLayout: ViewGroup, val highscore: Int) {
                 bar.view2.y = (posY + player.promille * 2).toFloat()
                 if (bar.item != null) {
                     val item = bar.item!!
-                    posY = (gameView.height - item.posY - Item.height).toFloat() + height
+                    posY = (gameView.height - item.posY - Item.height) + height
                     item.view.y = (posY - player.promille * 2).toFloat()
                     item.view2.y = (posY + player.promille * 2).toFloat()
                     item.updateView(player)
@@ -118,7 +116,7 @@ class Game(val gameLayout: ViewGroup, val highscore: Int) {
         }
 
         player.updateView()
-        player.view.y = (gameView.height - player.posY - Player.height).toFloat() + height
+        player.view.y = (gameView.height - player.posY - Player.height) + height
 
         statsView.scorePromille.text = String.format("%.2f‰", player.promille)
         statsView.scoreScore.text = player.score.toString()

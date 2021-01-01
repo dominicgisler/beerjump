@@ -2,13 +2,13 @@ package app.beerjump.model
 
 import android.view.ViewGroup
 
-class MovingYBar(gameView: ViewGroup, posX: Int, posY: Int, val minY: Int, val maxY: Int) : Bar(gameView, posX, posY) {
-    var dir = 1
+class MovingYBar(gameView: ViewGroup, posX: Float, posY: Float, val minY: Float, val maxY: Float) : Bar(gameView, posX, posY) {
+    var dir = 0.0f
 
-    override fun removeView() {
-        super.removeView()
-        if (item != null) {
-            item!!.removeView()
+    init {
+        when ((0..1).random()) {
+            0 -> dir = dpToPixels(gameView, 0.5f)
+            1 -> dir = dpToPixels(gameView, -0.5f)
         }
     }
 
@@ -17,10 +17,8 @@ class MovingYBar(gameView: ViewGroup, posX: Int, posY: Int, val minY: Int, val m
         if (item != null) {
             item!!.posY += dir
         }
-        if (posY > maxY) {
-            dir = -1
-        } else if (posY < minY) {
-            dir = 1
+        if (posY > maxY || posY < minY) {
+            dir *= -1
         }
         super.updateView(player)
     }

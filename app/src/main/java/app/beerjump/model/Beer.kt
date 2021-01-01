@@ -3,7 +3,7 @@ package app.beerjump.model
 import android.view.ViewGroup
 import app.beerjump.R
 
-class Beer(gameView: ViewGroup, posX: Int, posY: Int) : Item(gameView, posX, posY) {
+class Beer(gameView: ViewGroup, posX: Float, posY: Float) : Item(gameView, posX, posY) {
     val promille = 0.2
 
     init {

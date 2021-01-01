@@ -3,16 +3,15 @@ package app.beerjump.model
 import android.view.ViewGroup
 import kotlin.random.Random
 
-class Section(val gameView: ViewGroup, val startY: Int, val maxBars: Int) {
+class Section(val gameView: ViewGroup, val startY: Float, val maxBars: Int) {
     companion object {
-        var height = 0
-        var padding = 0
+        var height = 0.0f
+        var padding = 0.0f
         var num = 0
 
         fun calcSizes(gameView: ViewGroup) {
-            val scale: Float = gameView.context.resources.displayMetrics.density
-            height = (100 * scale + 0.5f).toInt()
-            padding = (12 * scale + 0.5f).toInt()
+            height = GuiElement.dpToPixels(gameView, 100.0f)
+            padding = GuiElement.dpToPixels(gameView, 12.0f)
         }
     }
     val bars = ArrayList<Bar>()
@@ -29,8 +28,8 @@ class Section(val gameView: ViewGroup, val startY: Int, val maxBars: Int) {
             val maxX = secWidth * (j + 1) - Bar.width - padding
             val minY = startY + padding
             val maxY = startY + height - padding
-            val barX = ((Random.nextFloat() * (maxX - minX)) + minX).toInt()
-            val barY = ((Random.nextFloat() * (maxY - minY)) + minY).toInt()
+            val barX = ((Random.nextFloat() * (maxX - minX)) + minX)
+            val barY = ((Random.nextFloat() * (maxY - minY)) + minY)
 
             var barVars = 0..2
             if (maxBars <= 4) {
