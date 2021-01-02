@@ -53,6 +53,8 @@
     <string name="last_duration">Last duration</string>
     <string name="highest_score">Highest score</string>
     <string name="last_score">Last score</string>
+    <string name="highest_promille">Highest alcohol level</string>
+    <string name="last_promille">Last alcohol level</string>
     <string name="falls">Falls</string>
     <string name="cancelled_games">Cancelled games</string>
     <string name="enter">Enter</string>

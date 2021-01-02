@@ -47,6 +47,8 @@
     <string name="last_duration">Letzte Dauer</string>
     <string name="highest_score">Höchste Punktzahl</string>
     <string name="last_score">Letzte Punktzahl</string>
+    <string name="highest_promille">Höchster Promillewert</string>
+    <string name="last_promille">Letzter Promillewert</string>
     <string name="falls">Stürze</string>
     <string name="cancelled_games">Abgebrochene Spiele</string>
     <string name="enter">Eintragen</string>

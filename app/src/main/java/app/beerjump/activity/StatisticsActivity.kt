@@ -33,6 +33,9 @@ class StatisticsActivity : AbstractActivity() {
         stats.add(KeyValuePair(getString(R.string.highest_score), Config.stats.highScore.toString()))
         stats.add(KeyValuePair(getString(R.string.last_score), Config.stats.lastScore.toString()))
         stats.add(KeyValuePair("", ""))
+        stats.add(KeyValuePair(getString(R.string.highest_promille), String.format("%.2f‰", Config.stats.highestPromille)))
+        stats.add(KeyValuePair(getString(R.string.last_promille), String.format("%.2f‰", Config.stats.lastPromille)))
+        stats.add(KeyValuePair("", ""))
         stats.add(KeyValuePair(getString(R.string.falls), Config.stats.falls.toString()))
         stats.add(KeyValuePair(getString(R.string.cancelled_games), Config.stats.quits.toString()))
 
