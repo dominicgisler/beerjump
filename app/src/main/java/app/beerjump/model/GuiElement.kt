@@ -10,14 +10,22 @@ open class GuiElement(val gameView: ViewGroup, var posX: Float, var posY: Float)
         var width = 0.0f
         var height = 0.0f
 
-        fun dpToPixels(gameView: ViewGroup, dp: Float): Float {
+        fun getDpPixelScale(gameView: ViewGroup): Float {
             var scale = gameView.context.resources.displayMetrics.density
             val widthDp = (gameView.width / scale)
             val minWidthDp = 420
             if (widthDp < minWidthDp) {
                 scale *= (widthDp / minWidthDp)
             }
-            return (dp * scale)
+            return scale
+        }
+
+        fun dpToPixels(gameView: ViewGroup, dp: Float): Float {
+            return (dp * getDpPixelScale(gameView))
+        }
+
+        fun pixelsToDp(gameView: ViewGroup, pixels: Float): Float {
+            return (pixels / getDpPixelScale(gameView))
         }
     }
 

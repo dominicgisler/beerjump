@@ -76,7 +76,7 @@ class Game(val gameLayout: ViewGroup, val highscore: Int) {
 
         if (player.posY > (gameView.height / 2 + height) && player.speed > 0) {
             height += player.speed.toInt()
-            player.score += (player.speed * (1 + player.promille)).toInt()
+            player.score += (GuiElement.pixelsToDp(gameView, player.speed) * 2.5 * (1 + player.promille)).toInt()
         }
 
         if (sections.size * Section.height < height + gameView.height) {
