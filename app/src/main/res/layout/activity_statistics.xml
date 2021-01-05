@@ -27,10 +27,39 @@
         android:text="@string/statistics"
         android:textAlignment="center"
         android:textSize="42sp"
-        app:layout_constraintBottom_toTopOf="@id/statisticsList"
+        app:layout_constraintBottom_toTopOf="@id/statisticsTabs"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/statisticsTabs"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@id/statisticsList"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textTitle">
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/tabLocal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/local" />
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/tabAverage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/average" />
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/tabTotal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/total" />
+
+    </com.google.android.material.tabs.TabLayout>
 
     <ListView
         android:id="@+id/statisticsList"
@@ -41,7 +70,16 @@
         app:layout_constraintBottom_toTopOf="@id/buttonMenu"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textTitle" />
+        app:layout_constraintTop_toBottomOf="@+id/statisticsTabs" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        app:layout_constraintBottom_toTopOf="@id/buttonMenu"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/statisticsTabs" />
 
     <Button
         android:id="@+id/buttonMenu"

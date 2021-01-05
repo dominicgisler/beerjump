@@ -58,4 +58,6 @@
     <string name="update_title">Update verfügbar</string>
     <string name="update_description">Ein neues Update für Beer Jump ist verfügbar. Möchtest du die App aktualisieren?</string>
     <string name="update_now">Jetzt aktualisieren</string>
+    <string name="total">Total</string>
+    <string name="average">Durchschnitt</string>
 </resources>
