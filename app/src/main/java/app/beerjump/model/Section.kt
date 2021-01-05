@@ -3,7 +3,7 @@ package app.beerjump.model
 import android.view.ViewGroup
 import kotlin.random.Random
 
-class Section(val gameView: ViewGroup, val startY: Float, val maxBars: Int) {
+class Section(val gameView: ViewGroup, val startY: Float) {
     companion object {
         var height = 0.0f
         var padding = 0.0f
@@ -15,8 +15,12 @@ class Section(val gameView: ViewGroup, val startY: Float, val maxBars: Int) {
         }
     }
     val bars = ArrayList<Bar>()
+    val difficultyStep = 100
+    var maxBars = 5
 
     init {
+        maxBars = (maxBars - (num / difficultyStep))
+
         num++
         var numBars = (1..(if (maxBars > 0) maxBars else 1)).random()
         if (num <= 1) {

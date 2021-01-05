@@ -6,7 +6,6 @@ import kotlinx.android.synthetic.main.activity_game.view.*
 class Game(val gameLayout: ViewGroup, val highscore: Int) {
     var height = 0
     val promilleStep = -0.0001
-    val difficultyStep = 20000
 
     val sections: ArrayList<Section> = ArrayList()
     lateinit var player: Player
@@ -35,8 +34,7 @@ class Game(val gameLayout: ViewGroup, val highscore: Int) {
     }
 
     private fun addBarSection(startY: Float) {
-        val maxBars = 5 - (height/difficultyStep).toInt()
-        sections.add(Section(gameView, startY, maxBars))
+        sections.add(Section(gameView, startY))
     }
 
     fun step(): Boolean {
