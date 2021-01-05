@@ -6,6 +6,8 @@ class Statistics() {
     var cntBar = 0
     var cntMovingXBar = 0
     var cntMovingYBar = 0
+    var cntDisappearingBar = 0
+    var cntTeleportingBar = 0
     var cntBeer = 0
     var cntShot = 0
     var cntRocket = 0

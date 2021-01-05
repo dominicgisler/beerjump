@@ -8,6 +8,7 @@ class Section(val gameView: ViewGroup, val startY: Float) {
         var height = 0.0f
         var padding = 0.0f
         var num = 0
+        val difficultyStep = 50
 
         fun calcSizes(gameView: ViewGroup) {
             height = GuiElement.dpToPixels(gameView, 100.0f)
@@ -15,14 +16,18 @@ class Section(val gameView: ViewGroup, val startY: Float) {
         }
     }
     val bars = ArrayList<Bar>()
-    val difficultyStep = 100
+    var difficulty = 1
     var maxBars = 5
 
     init {
-        maxBars = (maxBars - (num / difficultyStep))
+        difficulty = (num / difficultyStep)
+        maxBars = (maxBars - difficulty / 2)
+        if (maxBars <= 0) {
+            maxBars = 1
+        }
 
         num++
-        var numBars = (1..(if (maxBars > 0) maxBars else 1)).random()
+        var numBars = (1..maxBars).random()
         if (num <= 1) {
             numBars = 5
         }
@@ -35,17 +40,20 @@ class Section(val gameView: ViewGroup, val startY: Float) {
             val barX = ((Random.nextFloat() * (maxX - minX)) + minX)
             val barY = ((Random.nextFloat() * (maxY - minY)) + minY)
 
-            var barVars = 0..2
-            if (maxBars <= 4) {
-                barVars = 0..3
-                if (maxBars <= 3) {
-                    barVars = 0..4
-                }
+            val barVars = when (difficulty) {
+                0 -> 0..3
+                1 -> 0..4
+                2 -> 0..5
+                3 -> 0..6
+                4 -> 0..7
+                else -> 0..2
             }
             when (barVars.random()) {
-                0,1,2 -> bars.add(Bar(gameView, barX, barY))
-                3 -> bars.add(MovingYBar(gameView, barX, barY, minY, maxY))
-                4 -> bars.add(MovingXBar(gameView, barX, barY, minX, maxX))
+                4 -> bars.add(MovingYBar(gameView, barX, barY, minY, maxY))
+                5 -> bars.add(DisappearingBar(gameView, barX, barY))
+                6 -> bars.add(MovingXBar(gameView, barX, barY, minX, maxX))
+//                7 -> bars.add(TeleportingBar(gameView, barX, barY, minX, maxX, minY, maxY))
+                else -> bars.add(Bar(gameView, barX, barY))
             }
         }
     }

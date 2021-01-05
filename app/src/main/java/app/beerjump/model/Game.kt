@@ -50,14 +50,19 @@ class Game(val gameLayout: ViewGroup, val highscore: Int) {
         }
 
         for (sec in sections) {
-            for (bar in sec.bars) {
+            val iter = sec.bars.iterator()
+            while (iter.hasNext()) {
+                val bar = iter.next()
                 val posY = (gameView.height - bar.posY - Bar.height) + height
                 if (posY > gameView.height) {
                     continue
                 }
                 if (player.speed < 0) {
                     if ((player.posX + Player.width / 2) in bar.posX..(bar.posX + Bar.width) && (player.posY) in bar.posY..(bar.posY + Bar.height)) {
-                        bar.jump(player)
+                        if (!bar.jump(player)) {
+                            bar.removeView()
+                            iter.remove()
+                        }
                     }
                 }
                 if (bar.item != null) {

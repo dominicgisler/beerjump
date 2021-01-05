@@ -41,11 +41,12 @@ open class Bar(gameView: ViewGroup, posX: Float, posY: Float) : GuiElement(gameV
         }
     }
 
-    open fun jump(player: Player) {
+    open fun jump(player: Player): Boolean {
         player.speed = speedUp
         SoundPlayer.hop.start()
         if (this::class.java == Bar::class.java) {
             Config.stats.cntBar++
         }
+        return true
     }
 }

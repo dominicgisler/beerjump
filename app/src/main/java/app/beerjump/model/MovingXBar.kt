@@ -23,8 +23,9 @@ class MovingXBar(gameView: ViewGroup, posX: Float, posY: Float, val minX: Float,
         super.updateView(player)
     }
 
-    override fun jump(player: Player) {
+    override fun jump(player: Player): Boolean {
         super.jump(player)
         Config.stats.cntMovingXBar++
+        return true
     }
 }
