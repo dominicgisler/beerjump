@@ -8,20 +8,21 @@ class Section(val gameView: ViewGroup, val startY: Float) {
         var height = 0.0f
         var padding = 0.0f
         var num = 0
-        val difficultyStep = 50
+        val difficultyStep = 100
 
         fun calcSizes(gameView: ViewGroup) {
             height = GuiElement.dpToPixels(gameView, 100.0f)
             padding = GuiElement.dpToPixels(gameView, 12.0f)
         }
     }
+
     val bars = ArrayList<Bar>()
     var difficulty = 1
     var maxBars = 5
 
     init {
         difficulty = (num / difficultyStep)
-        maxBars = (maxBars - difficulty / 2)
+        maxBars = (maxBars - difficulty)
         if (maxBars <= 0) {
             maxBars = 1
         }
@@ -40,19 +41,12 @@ class Section(val gameView: ViewGroup, val startY: Float) {
             val barX = ((Random.nextFloat() * (maxX - minX)) + minX)
             val barY = ((Random.nextFloat() * (maxY - minY)) + minY)
 
-            val barVars = when (difficulty) {
-                0 -> 0..3
-                1 -> 0..4
-                2 -> 0..5
-                3 -> 0..6
-                4 -> 0..7
-                else -> 0..2
-            }
+            val barVars = 0..(3 + difficulty)
             when (barVars.random()) {
                 4 -> bars.add(MovingYBar(gameView, barX, barY, minY, maxY))
                 5 -> bars.add(DisappearingBar(gameView, barX, barY))
                 6 -> bars.add(MovingXBar(gameView, barX, barY, minX, maxX))
-//                7 -> bars.add(TeleportingBar(gameView, barX, barY, minX, maxX, minY, maxY))
+                7 -> bars.add(TeleportingBar(gameView, barX, barY, minX, maxX, minY, maxY))
                 else -> bars.add(Bar(gameView, barX, barY))
             }
         }

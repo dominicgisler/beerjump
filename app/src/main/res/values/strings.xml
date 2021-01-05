@@ -45,6 +45,8 @@
     <string name="default_bars_jumped_on">Default bars jumped on</string>
     <string name="horizontal_moving_bars">Horizontal moving bars</string>
     <string name="vertical_moving_bars">Vertical moving bars</string>
+    <string name="disappearing_bars">Disappearing bars</string>
+    <string name="teleporting_bars">Teleporting bars</string>
     <string name="beers_drunk">Beers drunk</string>
     <string name="shots_drunk">Shots drunk</string>
     <string name="rockets_used">Rockets used</string>

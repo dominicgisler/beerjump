@@ -39,6 +39,8 @@
     <string name="default_bars_jumped_on">Einfache Balken gesprungen</string>
     <string name="horizontal_moving_bars">Horizontal bewegte Balken</string>
     <string name="vertical_moving_bars">Vertikal bewegte Balken</string>
+    <string name="disappearing_bars">Verschwindende Balken</string>
+    <string name="teleporting_bars">Teleportierende Balken</string>
     <string name="beers_drunk">Getrunkene Biere</string>
     <string name="shots_drunk">Getrunkene Shots</string>
     <string name="rockets_used">Genutzte Raketen</string>
