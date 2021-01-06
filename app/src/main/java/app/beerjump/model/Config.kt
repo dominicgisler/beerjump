@@ -14,6 +14,7 @@ import java.util.*
 
 object Config {
     private val DEVICE_URL = "https://api.beerjump.app/device/%s"
+    private val VERSION_URL = "https://api.beerjump.app/version?v=%s"
     var highscoreList: HighscoreList = HighscoreList()
     var inputMethod = "touch"
     var uuid = ""
@@ -147,5 +148,18 @@ object Config {
         stats = Statistics()
         save()
         syncDevice()
+    }
+
+    fun checkVersion(callback: (hasUpdate: Boolean, version: String) -> Unit) {
+        val queue = Volley.newRequestQueue(context)
+        val req = JsonObjectRequest(Request.Method.GET, String.format(VERSION_URL, BuildConfig.VERSION_NAME), JSONObject(), {
+            if (it.getInt("statusCode") == 200) {
+                val data = it.getJSONObject("data")
+                val update = data.getBoolean("update")
+                val version = data.getString("latest")
+                callback(update, version)
+            }
+        }, {})
+        queue.add(req)
     }
 }

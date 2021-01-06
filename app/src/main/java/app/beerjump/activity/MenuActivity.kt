@@ -5,6 +5,7 @@ import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import app.beerjump.BuildConfig
 import app.beerjump.R
 import app.beerjump.model.Config
 import kotlinx.android.synthetic.main.activity_menu.*
@@ -40,7 +41,7 @@ class MenuActivity : AbstractActivity() {
         } else if (intent.getBooleanExtra("show_update_dialog", false)) {
             AlertDialog.Builder(this)
                 .setTitle(getString(R.string.update_title))
-                .setMessage(getString(R.string.update_description))
+                .setMessage(getString(R.string.update_description).format(BuildConfig.VERSION_NAME, intent.getStringExtra("latest_version")))
                 .setPositiveButton(R.string.update_now) { _, _ ->
                     openStore()
                     setDecorView()
