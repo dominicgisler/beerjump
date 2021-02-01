@@ -62,19 +62,11 @@ open class GuiElement(val gameView: ViewGroup, var posX: Float, var posY: Float)
     }
 
     open fun updateView(player: Player) {
-        moveToX(view, (posX - dpToPixels(gameView, (player.promille * 2).toFloat())))
-        moveToX(view2, (posX + dpToPixels(gameView, (player.promille * 2).toFloat())))
+        view.x = (posX - dpToPixels(gameView, (player.promille * 2).toFloat()))
+        view2.x = (posX + dpToPixels(gameView, (player.promille * 2).toFloat()))
         val alpha = (0.7 - player.promille / 10).toFloat()
         adjustAlpha(view, if (alpha > 0.4) alpha else 0.4f)
         adjustAlpha(view2, if (alpha > 0.4) alpha else 0.4f)
-    }
-
-    fun moveToX(view: View, x: Float) {
-        if (view.x > x) {
-            view.x--
-        } else if (view.x < x) {
-            view.x++
-        }
     }
 
     fun adjustAlpha(view: View, alpha: Float) {
