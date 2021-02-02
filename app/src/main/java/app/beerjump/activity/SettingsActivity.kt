@@ -41,6 +41,9 @@ class SettingsActivity : AbstractActivity() {
                     setDecorView()
                 }.show()
         }
+        buttonChangeCharacter.setOnClickListener {
+            startActivity(Intent(this, ChangeCharacterActivity::class.java))
+        }
         buttonInputToggle.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
                 Config.inputMethod = "sensor"

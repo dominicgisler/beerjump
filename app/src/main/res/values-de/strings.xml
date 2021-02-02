@@ -62,4 +62,5 @@
     <string name="update_now">Jetzt aktualisieren</string>
     <string name="total">Total</string>
     <string name="average">Durchschnitt</string>
+    <string name="change_player">Spielfigur ändern</string>
 </resources>
