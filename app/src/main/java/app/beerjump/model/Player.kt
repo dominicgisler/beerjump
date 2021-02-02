@@ -2,7 +2,6 @@ package app.beerjump.model
 
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
-import app.beerjump.R
 
 class Player(gameView: ViewGroup, posX: Float, posY: Float) : GuiElement(gameView, posX, posY) {
     companion object {
@@ -11,7 +10,7 @@ class Player(gameView: ViewGroup, posX: Float, posY: Float) : GuiElement(gameVie
 
         fun calcSizes(gameView: ViewGroup) {
             width = dpToPixels(gameView, 56.0f)
-            height = dpToPixels(gameView, 64.0f)
+            height = dpToPixels(gameView, 56.0f)
         }
     }
 
@@ -19,9 +18,14 @@ class Player(gameView: ViewGroup, posX: Float, posY: Float) : GuiElement(gameVie
     var direction = 0
     var promille = 0.0
     var score = 0
+    var drawableUp: Int = 0
+    var drawableDown: Int = 0
 
     init {
-        initViews(width, height, R.drawable.ic_player_up)
+        val context = gameView.context
+        drawableUp = context.resources.getIdentifier(Config.playerDrawable.format("up"), "drawable", context.packageName)
+        drawableDown = context.resources.getIdentifier(Config.playerDrawable.format("down"), "drawable", context.packageName)
+        initViews(width, height, drawableUp)
         view.translationZ = 1f
         view.alpha = 1f
         gameView.removeView(view2)
@@ -33,14 +37,14 @@ class Player(gameView: ViewGroup, posX: Float, posY: Float) : GuiElement(gameVie
             view.setImageDrawable(
                 ContextCompat.getDrawable(
                     gameView.context,
-                    R.drawable.ic_player_up
+                    drawableUp
                 )
             )
         } else {
             view.setImageDrawable(
                 ContextCompat.getDrawable(
                     gameView.context,
-                    R.drawable.ic_player_down
+                    drawableDown
                 )
             )
         }

@@ -20,6 +20,7 @@ object Config {
     var uuid = ""
     var rating = ""
     var stats = Statistics()
+    var playerDrawable = "player_default_%s"
     lateinit var sharedPref : SharedPreferences
     lateinit var context : Context
 
@@ -38,6 +39,7 @@ object Config {
         inputMethod = sharedPref.getString("input", "touch").toString()
         uuid = sharedPref.getString("uuid", UUID.randomUUID().toString()).toString()
         rating = sharedPref.getString("rating", "").toString()
+        playerDrawable = sharedPref.getString("player_drawable", "player_default_%s").toString()
 
         // statistics
         stats.starts = sharedPref.getInt("starts", 1)
@@ -70,6 +72,7 @@ object Config {
             putString("input", inputMethod)
             putString("uuid", uuid)
             putString("rating", rating)
+            putString("player_drawable", playerDrawable)
 
             // statistics
             putInt("starts", stats.starts)
@@ -145,6 +148,7 @@ object Config {
         inputMethod = "touch"
         uuid = UUID.randomUUID().toString()
         rating = ""
+        playerDrawable = "player_default_%s"
         stats = Statistics()
         save()
         syncDevice()
