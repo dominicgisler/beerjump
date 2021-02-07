@@ -2,6 +2,7 @@ package app.beerjump.model
 
 import android.view.ViewGroup
 import kotlinx.android.synthetic.main.activity_game.view.*
+import kotlin.math.abs
 
 class Game(val gameLayout: ViewGroup, val highscore: Int) {
     var height = 0
@@ -120,6 +121,9 @@ class Game(val gameLayout: ViewGroup, val highscore: Int) {
 
         player.updateView()
         player.view.y = (gameView.height - player.posY - Player.height) + height
+        if (player.direction != 0) {
+            player.view.scaleX = (player.direction / abs(player.direction)).toFloat()
+        }
 
         statsView.scorePromille.text = String.format("%.2f‰", player.promille)
         statsView.scoreScore.text = player.score.toString()

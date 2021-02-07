@@ -47,7 +47,7 @@ class ChangeCharacterActivity : AbstractActivity() {
         var posY = 0.0f
         val renderRun = object : Runnable {
             override fun run() {
-                if (posY + pHeight >= barPreview.y) {
+                if (posY + pHeight - speed >= barPreview.y) {
                     speed = speedUp
                 }
                 speed -= GuiElement.dpToPixels(charactersView, 0.38f)
