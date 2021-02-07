@@ -19,13 +19,24 @@ class ChangeCharacterActivity : AbstractActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_change_character)
 
-        for (i in 0..20) {
-            chars.add("player_default_%s")
-            chars.add("player_gingerbread_man")
-            chars.add("player_gnome")
-            chars.add("player_nutcracker")
-            chars.add("player_superhero_%s")
-        }
+        chars.add("player_default_%s")
+        chars.add("player_superhero_%s")
+        chars.add("player_astronaut")
+        chars.add("player_worker")
+        chars.add("player_gingerbread_man")
+        chars.add("player_gnome")
+        chars.add("player_nutcracker")
+        chars.add("player_king")
+        chars.add("player_queen")
+        chars.add("player_prince")
+        chars.add("player_princess")
+        chars.add("player_witch")
+        chars.add("player_wizard")
+        chars.add("player_ghost")
+        chars.add("player_skeleton")
+        chars.add("player_devil")
+        chars.add("player_robot")
+        chars.add("player_android")
 
         adapter = CharacterAdapter(chars, baseContext)
         charactersView.adapter = adapter
@@ -46,14 +57,22 @@ class ChangeCharacterActivity : AbstractActivity() {
                     playerPreview.setImageDrawable(
                         ContextCompat.getDrawable(
                             baseContext,
-                            baseContext.resources.getIdentifier(Config.playerDrawable.format("down"), "drawable", baseContext.packageName)
+                            baseContext.resources.getIdentifier(
+                                Config.playerDrawable.format("down"),
+                                "drawable",
+                                baseContext.packageName
+                            )
                         )
                     )
                 } else {
                     playerPreview.setImageDrawable(
                         ContextCompat.getDrawable(
                             baseContext,
-                            baseContext.resources.getIdentifier(Config.playerDrawable.format("up"), "drawable", baseContext.packageName)
+                            baseContext.resources.getIdentifier(
+                                Config.playerDrawable.format("up"),
+                                "drawable",
+                                baseContext.packageName
+                            )
                         )
                     )
                 }

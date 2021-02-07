@@ -1,3 +1,4 @@
+<!-- Icon designed by Freepik -->
 <vector android:height="128dp" android:viewportHeight="512"
     android:viewportWidth="512" android:width="128dp" xmlns:android="http://schemas.android.com/apk/res/android">
     <path android:fillColor="#ffd6bd" android:pathData="m256,183.026c-27.837,0 -50.403,-22.566 -50.403,-50.403v-50.403h100.806v50.403c0,27.837 -22.566,50.403 -50.403,50.403z"/>
