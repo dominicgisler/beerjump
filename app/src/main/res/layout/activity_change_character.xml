@@ -32,111 +32,47 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/charactersView"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:id="@+id/characterPreview"
+        android:layout_width="wrap_content"
+        android:layout_height="210dp"
+        android:layout_marginHorizontal="10dp"
         app:layout_constraintBottom_toTopOf="@id/buttonMenu"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/charactersView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/textTitle">
 
         <ImageView
-            android:id="@+id/player1"
+            android:id="@+id/playerPreview"
             android:layout_width="56dp"
             android:layout_height="56dp"
-            app:layout_constraintBottom_toTopOf="@+id/bar1"
-            app:layout_constraintEnd_toStartOf="@id/player2"
+            app:layout_constraintBottom_toTopOf="@+id/barPreview"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:srcCompat="@drawable/player_default_down" />
 
         <ImageView
-            android:id="@+id/bar1"
+            android:id="@+id/barPreview"
             android:layout_width="70dp"
             android:layout_height="16dp"
-            android:layout_marginBottom="100dp"
             android:layout_marginStart="5dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/bar2"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:srcCompat="@drawable/ic_disappearing_bar" />
+            app:srcCompat="@drawable/ic_bar" />
 
-        <ImageView
-            android:id="@+id/player2"
-            android:layout_width="56dp"
-            android:layout_height="56dp"
-            app:layout_constraintBottom_toTopOf="@+id/bar2"
-            app:layout_constraintEnd_toStartOf="@id/player3"
-            app:layout_constraintStart_toEndOf="@id/player1"
-            app:srcCompat="@drawable/player_gingerbread_man" />
-
-        <ImageView
-            android:id="@+id/bar2"
-            android:layout_width="70dp"
-            android:layout_height="16dp"
-            android:layout_marginBottom="100dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/bar3"
-            app:layout_constraintStart_toEndOf="@id/bar1"
-            app:srcCompat="@drawable/ic_disappearing_bar" />
-
-        <ImageView
-            android:id="@+id/player3"
-            android:layout_width="56dp"
-            android:layout_height="56dp"
-            app:layout_constraintBottom_toTopOf="@+id/bar3"
-            app:layout_constraintEnd_toStartOf="@id/player4"
-            app:layout_constraintStart_toEndOf="@id/player2"
-            app:srcCompat="@drawable/player_gnome" />
-
-        <ImageView
-            android:id="@+id/bar3"
-            android:layout_width="70dp"
-            android:layout_height="16dp"
-            android:layout_marginBottom="100dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/bar4"
-            app:layout_constraintStart_toEndOf="@id/bar2"
-            app:srcCompat="@drawable/ic_disappearing_bar" />
-
-        <ImageView
-            android:id="@+id/player4"
-            android:layout_width="56dp"
-            android:layout_height="56dp"
-            app:layout_constraintBottom_toTopOf="@+id/bar4"
-            app:layout_constraintEnd_toStartOf="@id/player5"
-            app:layout_constraintStart_toEndOf="@id/player3"
-            app:srcCompat="@drawable/player_nutcracker" />
-
-        <ImageView
-            android:id="@+id/bar4"
-            android:layout_width="70dp"
-            android:layout_height="16dp"
-            android:layout_marginBottom="100dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/bar5"
-            app:layout_constraintStart_toEndOf="@id/bar3"
-            app:srcCompat="@drawable/ic_disappearing_bar" />
-
-        <ImageView
-            android:id="@+id/player5"
-            android:layout_width="56dp"
-            android:layout_height="56dp"
-            app:layout_constraintBottom_toTopOf="@+id/bar5"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/player4"
-            app:srcCompat="@drawable/player_superhero_down" />
-
-        <ImageView
-            android:id="@+id/bar5"
-            android:layout_width="70dp"
-            android:layout_height="16dp"
-            android:layout_marginBottom="100dp"
-            android:layout_marginEnd="5dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/bar4"
-            app:srcCompat="@drawable/ic_disappearing_bar" />
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <GridView
+        android:id="@+id/charactersView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginHorizontal="10dp"
+        android:numColumns="3"
+        app:layout_constraintBottom_toTopOf="@id/buttonMenu"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/characterPreview"
+        app:layout_constraintTop_toBottomOf="@id/textTitle" />
 
     <Button
         android:id="@+id/buttonMenu"
