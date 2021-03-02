@@ -21,6 +21,7 @@ class ChangeCharacterActivity : AbstractActivity() {
 
         chars.add("player_default_%s")
         chars.add("player_superhero_%s")
+        chars.add("player_unicorn_%s")
         chars.add("player_astronaut")
         chars.add("player_worker")
         chars.add("player_gingerbread_man")
