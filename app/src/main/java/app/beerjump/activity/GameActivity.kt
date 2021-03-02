@@ -22,6 +22,7 @@ class GameActivity : AbstractActivity(), SensorEventListener {
     lateinit var game: Game
     lateinit var sensorManager: SensorManager
     lateinit var renderRun : Runnable
+    var initialized = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -105,6 +106,7 @@ class GameActivity : AbstractActivity(), SensorEventListener {
         gameView.post {
             game.generate()
             gameView.post(renderRun)
+            initialized = true
         }
     }
 
@@ -128,7 +130,7 @@ class GameActivity : AbstractActivity(), SensorEventListener {
     }
 
     override fun onTouchEvent(event: MotionEvent): Boolean {
-        if (Config.inputMethod == "sensor") {
+        if (!initialized || pause || Config.inputMethod == "sensor") {
             return false
         }
         val x = event.x.toInt()
@@ -148,7 +150,7 @@ class GameActivity : AbstractActivity(), SensorEventListener {
     }
 
     override fun onSensorChanged(event: SensorEvent?) {
-        if (Config.inputMethod == "touch") {
+        if (!initialized || pause || Config.inputMethod == "touch") {
             return
         }
         if (event?.values != null) {
