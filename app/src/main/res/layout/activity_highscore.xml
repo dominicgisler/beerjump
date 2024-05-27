@@ -26,6 +26,7 @@
         android:text="@string/highscore"
         android:textAlignment="center"
         android:textSize="42sp"
+        android:textColor="@color/textDark"
         app:layout_constraintBottom_toTopOf="@id/highscoreTabs"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -37,7 +38,8 @@
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textTitle">
+        app:layout_constraintTop_toBottomOf="@id/textTitle"
+        app:tabTextColor="@color/textDark">
 
         <com.google.android.material.tabs.TabItem
             android:id="@+id/tabLocal"
@@ -62,6 +64,7 @@
         android:text="@string/rank_name"
         android:textAlignment="textStart"
         android:textSize="18sp"
+        android:textColor="@color/textDark"
         app:layout_constraintEnd_toStartOf="@id/textPromille"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/highscoreTabs" />
@@ -74,6 +77,7 @@
         android:text="@string/promille"
         android:textAlignment="center"
         android:textSize="18sp"
+        android:textColor="@color/textDark"
         app:layout_constraintEnd_toStartOf="@id/textScore"
         app:layout_constraintStart_toEndOf="@id/textUsername"
         app:layout_constraintTop_toBottomOf="@id/highscoreTabs" />
@@ -87,6 +91,7 @@
         android:text="@string/score"
         android:textAlignment="textEnd"
         android:textSize="18sp"
+        android:textColor="@color/textDark"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/textPromille"
         app:layout_constraintTop_toBottomOf="@id/highscoreTabs" />
@@ -118,6 +123,7 @@
         android:layout_marginBottom="20dp"
         android:fontFamily="sans-serif-light"
         android:text="@string/back_to_menu"
+        android:textColor="@color/textDark"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

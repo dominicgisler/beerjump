@@ -6,6 +6,8 @@
     <color name="colorBackground">#F7EEBA</color>
     <color name="colorPrimary">#a6d3fb</color>
     <color name="colorPrimaryDark">#74a2ca</color>
+    <color name="textDark">@color/black</color>
+    <color name="textLight">@color/white</color>
 
     <color name="black_overlay">#66000000</color>
     <color name="grey">#d3d3d3</color>
