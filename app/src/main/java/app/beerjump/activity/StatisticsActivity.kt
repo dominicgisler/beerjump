@@ -14,7 +14,7 @@ import com.google.android.material.tabs.TabLayout
 import kotlinx.android.synthetic.main.activity_statistics.*
 
 class StatisticsActivity : AbstractActivity() {
-    private val STATISTICS_URL = "https://api.beerjump.app/statistics/%s"
+    private val STATISTICS_URL = "https://api.beerjump.gisler-software.ch/statistics/%s"
 
     var stats = ArrayList<KeyValuePair>()
     lateinit var adapter : StatisticsAdapter

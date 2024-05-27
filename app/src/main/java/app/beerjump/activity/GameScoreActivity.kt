@@ -14,7 +14,7 @@ import org.json.JSONException
 import org.json.JSONObject
 
 class GameScoreActivity : AbstractActivity() {
-    private val HIGHSCORE_URL = "https://api.beerjump.app/highscore/%s"
+    private val HIGHSCORE_URL = "https://api.beerjump.gisler-software.ch/highscore/%s"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

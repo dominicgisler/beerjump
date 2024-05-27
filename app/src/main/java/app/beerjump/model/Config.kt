@@ -13,8 +13,8 @@ import java.lang.Exception
 import java.util.*
 
 object Config {
-    private val DEVICE_URL = "https://api.beerjump.app/device/%s"
-    private val VERSION_URL = "https://api.beerjump.app/version?v=%s"
+    private val DEVICE_URL = "https://api.beerjump.gisler-software.ch/device/%s"
+    private val VERSION_URL = "https://api.beerjump.gisler-software.ch/version?v=%s"
     var highscoreList: HighscoreList = HighscoreList()
     var inputMethod = "touch"
     var uuid = ""

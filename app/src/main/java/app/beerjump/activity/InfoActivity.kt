@@ -15,7 +15,7 @@ class InfoActivity : AbstractActivity() {
             startActivity(
                 Intent(
                     Intent.ACTION_VIEW,
-                    Uri.parse("https://beerjump.app/datenschutz.html")
+                    Uri.parse("https://beerjump.gisler-software.ch/datenschutz.html")
                 )
             )
         }
