@@ -3,8 +3,7 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
 android {
-    compileSdkVersion 30
-    buildToolsVersion "30.0.2"
+    compileSdk 34
     useLibrary 'android.test.runner'
     useLibrary 'android.test.base'
     useLibrary 'android.test.mock'
@@ -13,9 +12,9 @@ android {
     defaultConfig {
         applicationId "app.beerjump"
         minSdkVersion 22
-        targetSdkVersion 30
-        versionCode 13
-        versionName "1.2.5"
+        targetSdk 34
+        versionCode 14
+        versionName "1.2.6"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -26,6 +25,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    namespace 'app.beerjump'
 }
 
 dependencies {
