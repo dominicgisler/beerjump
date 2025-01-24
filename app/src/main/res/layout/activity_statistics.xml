@@ -94,6 +94,7 @@
         android:textColor="@color/textDark"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        android:backgroundTint="@color/colorAccent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

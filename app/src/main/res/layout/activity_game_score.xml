@@ -137,7 +137,8 @@
         android:textColor="@color/textDark"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/enter"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        android:backgroundTint="@color/colorAccent" />
 
     <Button
         android:id="@+id/enter"
@@ -152,7 +153,8 @@
         android:textColor="@color/textDark"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/skip" />
+        app:layout_constraintStart_toEndOf="@id/skip"
+        android:backgroundTint="@color/colorAccent" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/loadingView"

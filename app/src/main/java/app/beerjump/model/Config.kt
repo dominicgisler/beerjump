@@ -16,7 +16,6 @@ object Config {
     private val DEVICE_URL = "https://api.beerjump.gisler-software.ch/device/%s"
     private val VERSION_URL = "https://api.beerjump.gisler-software.ch/version?v=%s"
     var highscoreList: HighscoreList = HighscoreList()
-    var inputMethod = "touch"
     var uuid = ""
     var rating = ""
     var stats = Statistics()
@@ -36,7 +35,6 @@ object Config {
                 save()
             }
         }
-        inputMethod = sharedPref.getString("input", "touch").toString()
         uuid = sharedPref.getString("uuid", UUID.randomUUID().toString()).toString()
         rating = sharedPref.getString("rating", "").toString()
         playerDrawable = sharedPref.getString("player_drawable", "player_default_%s").toString()
@@ -69,7 +67,6 @@ object Config {
         with (sharedPref.edit()) {
             val json = Gson().toJson(highscoreList)
             putString("highscore", json)
-            putString("input", inputMethod)
             putString("uuid", uuid)
             putString("rating", rating)
             putString("player_drawable", playerDrawable)
@@ -145,7 +142,6 @@ object Config {
     fun resetData() {
         highscoreList.lastUser = ""
         highscoreList.scores.clear()
-        inputMethod = "touch"
         uuid = UUID.randomUUID().toString()
         rating = ""
         playerDrawable = "player_default_%s"

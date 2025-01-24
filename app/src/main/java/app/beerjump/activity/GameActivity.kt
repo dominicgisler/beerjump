@@ -15,27 +15,17 @@ import app.beerjump.model.Game
 import app.beerjump.model.SoundPlayer
 import kotlinx.android.synthetic.main.activity_game.*
 
-class GameActivity : AbstractActivity(), SensorEventListener {
+class GameActivity : AbstractActivity() {
     var lastX = -1
     var pause = false
     var finished = false
     lateinit var game: Game
-    lateinit var sensorManager: SensorManager
     lateinit var renderRun : Runnable
     var initialized = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_game)
-
-        if (Config.inputMethod == "sensor") {
-            sensorManager = getSystemService(Context.SENSOR_SERVICE) as SensorManager
-            sensorManager.registerListener(
-                this,
-                sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER),
-                SensorManager.SENSOR_DELAY_NORMAL
-            )
-        }
 
         val scores = Config.highscoreList.scores
         var highscore = 0
@@ -130,7 +120,7 @@ class GameActivity : AbstractActivity(), SensorEventListener {
     }
 
     override fun onTouchEvent(event: MotionEvent): Boolean {
-        if (!initialized || pause || Config.inputMethod == "sensor") {
+        if (!initialized || pause) {
             return false
         }
         val x = event.x.toInt()
@@ -144,18 +134,5 @@ class GameActivity : AbstractActivity(), SensorEventListener {
             lastX = -1
         }
         return false
-    }
-
-    override fun onAccuracyChanged(sensor: Sensor?, accuracy: Int) {
-    }
-
-    override fun onSensorChanged(event: SensorEvent?) {
-        if (!initialized || pause || Config.inputMethod == "touch") {
-            return
-        }
-        if (event?.values != null) {
-            val x = (event.values[0] * 3).toInt()
-            game.player.direction = -x
-        }
     }
 }

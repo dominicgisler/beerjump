@@ -196,7 +196,8 @@
         app:layout_constraintBottom_toTopOf="@id/buttonMenu"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/aboutScrollView" />
+        app:layout_constraintTop_toBottomOf="@id/aboutScrollView"
+        android:backgroundTint="@color/colorAccent" />
 
     <Button
         android:id="@+id/buttonMenu"
@@ -209,6 +210,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/buttonData" />
+        app:layout_constraintTop_toBottomOf="@id/buttonData"
+        android:backgroundTint="@color/colorAccent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

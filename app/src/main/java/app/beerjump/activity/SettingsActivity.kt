@@ -14,10 +14,6 @@ class SettingsActivity : AbstractActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_settings)
 
-        if (Config.inputMethod == "sensor") {
-            buttonInputToggle.isChecked = true
-        }
-
         buttonMenu.setOnClickListener {
             startActivity(Intent(this, MenuActivity::class.java))
             finish()
@@ -43,14 +39,6 @@ class SettingsActivity : AbstractActivity() {
         }
         buttonChangeCharacter.setOnClickListener {
             startActivity(Intent(this, ChangeCharacterActivity::class.java))
-        }
-        buttonInputToggle.setOnCheckedChangeListener { _, isChecked ->
-            if (isChecked) {
-                Config.inputMethod = "sensor"
-            } else {
-                Config.inputMethod = "touch"
-            }
-            Config.save()
         }
     }
 }
